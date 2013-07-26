@@ -1,0 +1,156 @@
+<!-- Pokemon Eevee Evolution Battle Game
+2 Player Mode Verison 2.0.0 Beta
+
+~License Stuff~
+Lead Programmer & Game Designer: Jared 'Pkthunderr' Perreault <jared_perreault@yahoo.com>.
+QA & Move Designer: Ryan 'Ethopia' Henry <Africa doesn't have email>.
+No rights reserved, expect for the right to hate Ryan. Everyone must hate Ryan.
+Copyrighted (c) to Paradoxysaurs, 1827 in Atlantis, Atlantis.
+
+~Goals~
+1. Develop New UI thats prettier and easier to use
+2. Major code overhaul to fix massively inefficient code 
+3. Re-design moves with Ryan
+4. Overall balance the stats and move damage -->
+
+<!-- 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+NOTE:
+Max lines inside text box = 36
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link type="text/css" rel="stylesheet" href="style.css"/>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="application.js"></script>
+		<title>Eevolution 2.0 Alpha</title>
+	
+	</head>
+
+	<body>
+	
+		<!-- Body Wrapper Begins -->
+
+		<div id="heading_wrapper" class="global_wrapper">
+			<div class="extra_wrapper">
+				<div id="1_pic" class="bg_pic" style="background-image: url( '135Jolteon.png' )"></div>
+				<div id="jolt_pic" class="head_pic">
+					<span class="hpic">Jolteon</span>
+				</div>
+			</div>
+			<div class="extra_wrapper">
+				<div id="2_pic" class="bg_pic" style="background-image: url( '134Vaporeon.png' )"></div>
+				<div id="vap_pic" class="head_pic">
+					<span class="hpic">Vaporeon</span>
+				</div>
+			</div>
+			<div class="extra_wrapper">
+				<div id="3_pic" class="bg_pic" style="background-image: url( '136Flareon.png' )"></div>
+				<div id="flar_pic" class="head_pic">
+					<span class="hpic">Flareon</span>
+				</div>
+			</div>
+			<div class="extra_wrapper">
+				<div id="4_pic" class="bg_pic" style="background-image: url( '196Espeon.png' )"></div>
+				<div id="esp_pic" class="head_pic">
+					<span class="hpic">Espeon</span>
+				</div>
+			</div>
+			<div class="extra_wrapper">
+				<div id="5_pic" class="bg_pic" style="background-image: url( '197Umbreon.png' )"></div>
+				<div id="umb_pic" class="head_pic">
+					<span class="hpic">Umbreon</span>
+				</div>
+			</div>
+			<div class="extra_wrapper">
+				<div id="6_pic" class="bg_pic" style="background-image: url( '470Leafeon.png' )"></div>
+				<div id="leaf_pic" class="head_pic">
+					<span class="hpic">Leafeon</span>
+				</div>
+			</div>
+			<div class="extra_wrapper">
+				<div id="7_pic" class="bg_pic" style="background-image: url( '471Glaceon.png' )"></div>
+				<div id="glac_pic" class="head_pic">
+					<span class="hpic">Glaceon</span>
+				</div>
+			</div>
+			
+			<div class="random_wrapper">
+				<div id="r_pic" class="bg_pic" style="background-image: url( 'question-mark.gif' )"></div>
+				<div id="rand_pic" class="head_pic">
+					<span class="hpic">Random</span>
+				</div>
+			</div> 
+		</div>
+
+		<!-- Body Wrapper Begins -->
+
+		<div id="body_wrapper" class="global_wrapper">
+			<div id="player_wrapper" class="global_wrapper">
+				
+				<!-- Player 1 Menu -->
+				<div id="p1_wrapper" class="p_wrapper">
+					<div id="p1_pic" class="player_pic" style="background-image: url( '133Eevee.png' )"></div>
+					<div id="p1_info" class="player_info">
+						<span id="p1_name" class="p_name">Player 1: </span>
+						<br>
+						<span id="p1_health" class="p_health">Health: </span>
+						<div id="p1_button_wrapper" class="button_wrapper">
+							<div id="p1_b1" class="button b1">
+								<span>Move 1</span>
+							</div>
+							<div id="p1_b2" class="button b2">
+								<span>Move 2</span>
+							</div>
+							<div id="p1_b3" class="button b3">
+								<span>Move 3</span>
+							</div>
+							<div id="p1_b4" class="button b4">
+								<span>Move 4</span>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+
+				<!-- Player 2 Menu -->
+				<div id="p2_wrapper" class="p_wrapper">
+					<div id="p2_pic" class="player_pic" style="background-image: url( '133Eevee.png' )"></div>
+					<div id="p2_info" class="player_info">
+						<span id="p2_name" class="p_name">Player 2: </span>
+						<br>
+						<span id="p2_health" class="p_health">Health: </span>
+						<div id="p2_button_wrapper" class="button_wrapper">
+							<div id="p2_b1" class="button b1">
+								<span>Move 1</span>
+							</div>
+							<div id="p2_b2" class="button b2">
+								<span>Move 2</span>
+							</div>
+							<div id="p2_b3" class="button b3">
+								<span>Move 3</span>
+							</div>
+							<div id="p2_b4" class="button b4">
+								<span>Move 4</span>
+							</div>
+						</div>
+					
+					</div>
+				</div>
+			</div>
+			<div id="textarea_wrapper" class="global_wrapper">
+				<!-- Attempting to re-create a "textarea" using div's and ul's -->
+					<span id="intro">Choose A Pokemon!</span>
+					<ul>
+						<!-- a series of li's are created by the JQuery code to "re-create" a text area -->
+					</ul>
+			</div>
+		</div>
+	
+	</body>
+	
+</html>

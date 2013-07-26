@@ -1,0 +1,187 @@
+/* Global wrappers/buttons */
+#heading_wrapper {
+	width:1100px; 
+	height:75px;
+	border: 1px dashed black;
+}
+#body_wrapper {
+	width:1100px; 
+	height:510px; /*10 extra for design */
+	position: relative;
+	margin-top: 10px;
+}
+#player_wrapper { 
+	float: left;
+	width:600px; 
+	height:500px; 
+	border: 1px dashed black;
+}
+/*********************************************************/
+
+/*Textarea formatting*/
+#textarea_wrapper { 
+	float: right;
+	width:449px; 
+	height:499px; 
+	font-size: 14px;
+	font-family: Courier;
+	overflow: auto;
+	border: 1px dashed black;
+}
+#textarea_wrapper > ul { /*Text Area*/
+	list-style-type: none;
+	position: relative;
+	margin-left: -35px;
+}
+#intro {
+	font-size: 30px;
+}
+.p1t {
+	color: blue;
+}
+.p2t {
+	color: red;
+}
+/****************************************************/
+
+/*Header pics/divs */
+.extra_wrapper {
+	width: 125px;
+	height: 75px;
+	display: inline-block;
+	position: relative;
+	margin-left: 6px;
+	z-index: 2;
+}
+.random_wrapper {
+	width: 125px;
+	height: 75px;
+	display: inline-block;
+	position: relative;
+	margin-left: 6px;
+	z-index: 2;
+}
+.head_pic {
+	width: 124px;
+	height: 74px;
+	position: absolute;
+	border-radius: 10px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 74px;
+	z-index: 3;
+}
+.bg_pic {
+	width: 124px;
+	height: 74px;
+	position: absolute;
+	background-size: 124px 74px;
+	border-radius: 10px;
+	z-index: 1;
+}
+.hpic {
+	visibility: hidden;
+}
+
+.over {
+	visibility: visible;
+}
+#pName {
+	position: relative;
+	margin-left: 10px;
+}
+#pHealth {
+	position: relative;
+	margin-left: 10px;
+}
+/****************************************************/
+
+/*General Player Formatting*/
+.player_pic {
+	width:250px; 
+	height:245px; 
+	background-size: 248px 243px;
+	background-repeat: no-repeat;
+}
+.p_wrapper {
+	width: 599px;
+	height: 249px;
+	border: 1px dashed red;
+}
+.player_info {
+	width:349px; 
+	height:244px;
+	background-color: green;
+}
+.player_info > span { /*Player Name and Health */
+	position: relative;
+	margin-left: 5px;
+	font-size:20px; 
+	font-family:Impact;
+}
+.button_wrapper {
+	margin-left: 15px;
+	margin-top: 20px;
+	width:319px; 
+	height:159px;
+	background-color: orange;
+	border-radius: 20px;
+}
+.button_wrapper > div { /*Player's Button*/
+	display: inline-block;
+	position: relative;
+	width:150px; 
+	height:70px; 
+	border-radius: 20px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 70px;
+	font-size:20px; 
+	font-family:Impact;
+}
+.button {
+	background-color: purple;
+}
+
+/*****************************************************/
+
+/*Player 1 wrapper/style*/
+#p1_pic { 
+	float: left;
+}
+#p1_info { 
+	float: right;
+}
+#p1_b2 { 
+	margin-left: 15px;
+}
+#p1_b3 { 
+	margin-top: 20px;
+}
+#p1_b4 {
+	margin-top: 20px;
+	margin-left: 15px;
+}
+/************************************************************/
+
+/*Player 2 wrapper/style*/
+#p2_wrapper {
+	position: relative;
+	margin-top: 10px;
+}
+#p2_pic { 
+	float: right;
+}
+#p2_info { 
+	float: left ;
+}
+#p2_b2 { 
+	margin-left: 15px;
+}
+#p2_b3 { 
+	margin-top: 20px;
+}
+#p2_b4 {
+	margin-top: 20px;
+	margin-left: 15px;
+}

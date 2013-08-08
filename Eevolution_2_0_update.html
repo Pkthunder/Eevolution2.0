@@ -25,11 +25,13 @@ Max lines inside text box = 36
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link type="text/css" rel="stylesheet" href="style.css"/>
+		<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
 		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="core.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 		<script type="text/javascript" src="application.js"></script>
 		<script type="text/javascript" src="status_functions.js"></script>
 		<script type="text/javascript" src="move_functions.js"></script>
-		<script type="text/javascript" src="core.js"></script>
 		<title>Eevolution 2.0 Alpha</title>
 	
 	</head>
@@ -98,54 +100,55 @@ Max lines inside text box = 36
 				<!-- Player 1 Menu -->
 				<div id="p1_wrapper" class="p_wrapper">
 					<div id="p1_pic" class="player_pic" style="background-image: url( '133Eevee.png' )"></div>
-					<div id="p1_info" class="player_info">
-						<span id="p1_name" class="p_name">Player 1: </span>
-						<br>
-						<span id="p1_health" class="p_health">Health: </span>
+					<div id="p1_info" class="player_info well well-small">
+						<span id="p1_name" class="p_name">Player 1 </span>
+						<div class="progress progress-danger">
+    						<div class="bar" style="width: 100%;">100%</div>
+   					 	</div>
 						<div id="p1_button_wrapper" class="button_wrapper">
 							<div id="p1_b1" class="button b1">
-								<span>Move 1</span>
+								<button class="btn btn-block btn-large disabled" type="button">Choose A</button>
 							</div>
 							<div id="p1_b2" class="button b2">
-								<span>Move 2</span>
+								<button class="btn btn-block btn-large disabled" type="button">Pokemon!</button>
 							</div>
 							<div id="p1_b3" class="button b3">
-								<span>Move 3</span>
+								<button class="btn btn-block btn-large disabled" type="button">Choose A</button>
 							</div>
 							<div id="p1_b4" class="button b4">
-								<span>Move 4</span>
+								<button class="btn btn-block btn-large disabled" type="button">Pokemon!</button>
 							</div>
 						</div>
 						
 					</div>
 				</div>
-
+				<div id="dive" class="divider"></div>
 				<!-- Player 2 Menu -->
 				<div id="p2_wrapper" class="p_wrapper">
-					<div id="p2_pic" class="player_pic" style="background-image: url( '133Eevee.png' )"></div>
-					<div id="p2_info" class="player_info">
-						<span id="p2_name" class="p_name">Player 2: </span>
-						<br>
-						<span id="p2_health" class="p_health">Health: </span>
+					<div id="p2_info" class="player_info well well-small">
+						<span id="p2_name" class="p_name">Player 2 </span>
+						<div class="progress progress-danger">
+    						<div class="bar" style="width: 100%;">100%</div>
+   					 	</div>
 						<div id="p2_button_wrapper" class="button_wrapper">
 							<div id="p2_b1" class="button b1">
-								<span>Move 1</span>
+								<button class="btn btn-block btn-large disabled" type="button">Choose A</button>
 							</div>
 							<div id="p2_b2" class="button b2">
-								<span>Move 2</span>
+								<button class="btn btn-block btn-large disabled" type="button">Pokemon!</button>
 							</div>
 							<div id="p2_b3" class="button b3">
-								<span>Move 3</span>
+								<button class="btn btn-block btn-large disabled" type="button">Choose A</button>
 							</div>
 							<div id="p2_b4" class="button b4">
-								<span>Move 4</span>
+								<button class="btn btn-block btn-large disabled" type="button">Pokemon!</button>
 							</div>
 						</div>
-					
 					</div>
+					<div id="p2_pic" class="player_pic" style="background-image: url( '133Eevee.png' )"></div>
 				</div>
 			</div>
-			<div id="textarea_wrapper" class="global_wrapper">
+			<div id="textarea_wrapper" class="global_wrapper well well-small">
 				<!-- Attempting to re-create a "textarea" using div's and ul's -->
 					<span id="intro">Choose A Pokemon!</span>
 					<ul>

@@ -1,4 +1,8 @@
 /* Global wrappers/buttons */
+body {
+	padding-left: 10px;
+	padding-top: 10px;
+}
 #heading_wrapper {
 	width:1100px; 
 	height:75px;
@@ -6,15 +10,19 @@
 }
 #body_wrapper {
 	width:1100px; 
-	height:510px; /*10 extra for design */
+	height:430px; /*10 extra for design */
 	position: relative;
 	margin-top: 10px;
 }
 #player_wrapper { 
 	float: left;
 	width:600px; 
-	height:500px; 
-	border: 1px dashed black;
+	height:410px; 
+	/*border: 1px dashed black;*/
+}
+#dive {
+	height: 5px;
+	border-bottom: 1px solid #D8D8D8;
 }
 /*********************************************************/
 
@@ -22,11 +30,12 @@
 #textarea_wrapper { 
 	float: right;
 	width:449px; 
-	height:499px; 
+	height:388px; 
 	font-size: 14px;
 	font-family: Courier;
 	overflow: auto;
-	border: 1px dashed black;
+	padding-left: 5px;
+	padding-top: 5px;
 }
 #textarea_wrapper > ul { /*Text Area*/
 	list-style-type: none;
@@ -82,36 +91,25 @@
 .hpic {
 	visibility: hidden;
 }
-
 .over {
 	visibility: visible;
-}
-#pName {
-	position: relative;
-	margin-left: 10px;
-}
-#pHealth {
-	position: relative;
-	margin-left: 10px;
 }
 /****************************************************/
 
 /*General Player Formatting*/
 .player_pic {
-	width:250px; 
-	height:245px; 
-	background-size: 248px 243px;
+	width:238px; 
+	height:188px; 
+	background-size: 238px 188px;
 	background-repeat: no-repeat;
 }
 .p_wrapper {
 	width: 599px;
-	height: 249px;
-	border: 1px dashed red;
+	height: 199px;
 }
 .player_info {
-	width:349px; 
-	height:244px;
-	background-color: green;
+	width:324px; 
+	height:174px;
 }
 .player_info > span { /*Player Name and Health */
 	position: relative;
@@ -120,29 +118,22 @@
 	font-family:Impact;
 }
 .button_wrapper {
-	margin-left: 15px;
-	margin-top: 20px;
 	width:319px; 
-	height:159px;
-	background-color: orange;
-	border-radius: 20px;
+	height:115px;
 }
 .button_wrapper > div { /*Player's Button*/
 	display: inline-block;
 	position: relative;
-	width:150px; 
-	height:70px; 
-	border-radius: 20px;
+	width:148px; 
+	height:40px; 
 	text-align: center;
 	vertical-align: middle;
 	line-height: 70px;
 	font-size:20px; 
 	font-family:Impact;
+	margin-top:10px;
+	padding-left: 7px;
 }
-.button {
-	background-color: purple;
-}
-
 /*****************************************************/
 
 /*Player 1 wrapper/style*/
@@ -153,35 +144,34 @@
 	float: right;
 }
 #p1_b2 { 
-	margin-left: 15px;
+	margin-left: 4px;
 }
 #p1_b3 { 
-	margin-top: 20px;
+	margin-top: 10px;
 }
 #p1_b4 {
-	margin-top: 20px;
-	margin-left: 15px;
+	margin-top: 10px;
+	margin-left: 4px;
 }
 /************************************************************/
 
 /*Player 2 wrapper/style*/
 #p2_wrapper {
 	position: relative;
-	margin-top: 10px;
 }
 #p2_pic { 
 	float: right;
 }
 #p2_info { 
-	float: left ;
+	float: left;
 }
 #p2_b2 { 
-	margin-left: 15px;
+	margin-left: 4px;
 }
 #p2_b3 { 
-	margin-top: 20px;
+	margin-top: 10px;
 }
 #p2_b4 {
-	margin-top: 20px;
-	margin-left: 15px;
+	margin-top: 10px;
+	margin-left: 4px;
 }

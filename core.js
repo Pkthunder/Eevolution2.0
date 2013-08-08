@@ -38,6 +38,11 @@ var move2 = new Move;
 /*Global Variable Short List*/
 var turn = 1;
 var pick_turn = 1;
+//Custom Events
+var onBothPlayersReady = JQuery.Event("BothPlayersReady");
+var onDeath = JQuery.Event("Death");
+
+//Global Data Arrays
 var nameList = ['Jolteon', 'Vaporeon', 'Flareon', 'Espeon', 'Umbreon', 'Leafeon', 'Glaceon'];
 
 var creationList = [
@@ -106,3 +111,4 @@ var moveParams = [
 		["Ice Shard", 40, 1, true],
 		["Mirror Coat", null, null, true], //check priority
 		["Frost Breath", 40, .9, true] ] ];
+

@@ -40,7 +40,7 @@ Max lines inside text box = 36
 	
 		<!-- Body Wrapper Begins -->
 
-		<div id="heading_wrapper" class="global_wrapper">
+		<div id="heading_wrapper" class="global_wrapper well well-small">
 			<div class="extra_wrapper">
 				<div id="1_pic" class="bg_pic" style="background-image: url( '135Jolteon.png' )"></div>
 				<div id="jolt_pic" class="head_pic">
@@ -101,9 +101,10 @@ Max lines inside text box = 36
 				<div id="p1_wrapper" class="p_wrapper">
 					<div id="p1_pic" class="player_pic" style="background-image: url( '133Eevee.png' )"></div>
 					<div id="p1_info" class="player_info well well-small">
-						<span id="p1_name" class="p_name">Player 1 </span>
+						<span id="p1_name" class="p_name">Player 1: </span>
+						<div class="bar_div"></div>
 						<div class="progress progress-danger">
-    						<div class="bar" style="width: 100%;">100%</div>
+    						<div class="bar" style="width: 100%;"><span class="bar_val">100%</span></div>
    					 	</div>
 						<div id="p1_button_wrapper" class="button_wrapper">
 							<div id="p1_b1" class="button b1">
@@ -122,13 +123,18 @@ Max lines inside text box = 36
 						
 					</div>
 				</div>
+
+				<!-- Dividers -->
 				<div id="dive" class="divider"></div>
+				<div id="ddive" class="divider"></div>
+
 				<!-- Player 2 Menu -->
 				<div id="p2_wrapper" class="p_wrapper">
 					<div id="p2_info" class="player_info well well-small">
-						<span id="p2_name" class="p_name">Player 2 </span>
+						<span id="p2_name" class="p_name">Player 2: </span>
+						<div class="bar_div"></div>
 						<div class="progress progress-danger">
-    						<div class="bar" style="width: 100%;">100%</div>
+    						<div class="bar" style="width: 100%;"><span class="bar_val">100%</span></div>
    					 	</div>
 						<div id="p2_button_wrapper" class="button_wrapper">
 							<div id="p2_b1" class="button b1">
@@ -150,10 +156,10 @@ Max lines inside text box = 36
 			</div>
 			<div id="textarea_wrapper" class="global_wrapper well well-small">
 				<!-- Attempting to re-create a "textarea" using div's and ul's -->
-					<span id="intro">Choose A Pokemon!</span>
-					<ul>
-						<!-- a series of li's are created by the JQuery code to "re-create" a text area -->
-					</ul>
+				<span id="intro">Choose A Pokemon!</span>
+				<ul>
+					<!-- a series of li's are created by the JQuery code to "re-create" a text area -->
+				</ul>
 			</div>
 		</div>
 	

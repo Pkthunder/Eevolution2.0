@@ -2,6 +2,7 @@ var moveEffects = {
 //Jolteon
 	Yawn: function(Beasley) {
 		console.log("Evana Gizzi is an absolute babe");
+		alert("Test");
 	},
 	Discharge: function(Beasley) {
 		console.log("Evana Gizzi is an absolute babe");

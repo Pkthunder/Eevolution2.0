@@ -38,9 +38,10 @@ var move2 = new Move;
 /*Global Variable Short List*/
 var turn = 1;
 var pick_turn = 1;
+
 //Custom Events
-var onBothPlayersReady = JQuery.Event("BothPlayersReady");
-var onDeath = JQuery.Event("Death");
+var onBothPlayersReady = jQuery.Event("BothPlayersReady");
+var onDeath = jQuery.Event("Death");
 
 //Global Data Arrays
 var nameList = ['Jolteon', 'Vaporeon', 'Flareon', 'Espeon', 'Umbreon', 'Leafeon', 'Glaceon'];
@@ -54,7 +55,7 @@ var creationList = [
 	["Leafeon", 100, 100, 100, 100],
 	["Glaceon", 100, 100, 100, 100] ];
 
-var moveList = [ //test values
+var moveList = [
 	["Yawn", "Discharge", "Charge Beam", "Thunderbolt"],
 	["Wish", "Flail", "Water Pulse", "Auora Beam"],
 	["Facade", "Fire Fang", "Wil-O-Wisp", "Flame Charge"],
@@ -112,3 +113,14 @@ var moveParams = [
 		["Mirror Coat", null, null, true], //check priority
 		["Frost Breath", 40, .9, true] ] ];
 
+/*********************************************************************************/
+//Function Library
+
+// Text Area Function
+function refresh( inString ) {
+	$("#textarea_wrapper ul").append( '<li> > ' + inString + '</li>' );
+	if ( turn %2 == 0 || turn == 0 ) // if (even turn number, including zero)
+		$("#textarea_wrapper li:last").addClass("p2t");
+	else // if (odd turn number)
+		$("#textarea_wrapper li:last").addClass("p1t");
+}

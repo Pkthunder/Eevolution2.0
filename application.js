@@ -23,13 +23,14 @@ $(document).ready( function() {
 
 		// actual menu setup
 		where.find(".p_name").append( '<span class="pName">  ' + Evana[0] + '</span>');
-		where.find(".p_health").append( '<span class="pHealth">  ' + Evana[4] + '</span>');
+		//TODO: Research how to change the text inside a Bootstrap progress bar
+		//where.find(".bar_value").text('100%', Gizzi.health +" of "+ Gizzi.health);
 		
 		// set button names
-		where.find(".b1").text(moveList[who][0]);
-		where.find(".b2").text(moveList[who][1]);
-		where.find(".b3").text(moveList[who][2]);
-		where.find(".b4").text(moveList[who][3]);
+		where.find(".b1 > button").text(moveList[who][0]);
+		where.find(".b2 > button").text(moveList[who][1]);
+		where.find(".b3 > button").text(moveList[who][2]);
+		where.find(".b4 > button").text(moveList[who][3]);
 
 		return Gizzi;
 	}
@@ -57,7 +58,8 @@ $(document).ready( function() {
 			});
 			play2 = setMenu($Evana, $("#p2_info") );
 			play1.player = 2;
-			$(".button").each().addClass('move_click');
+			$(".btn").removeClass("disabled");
+			//$("#heading_wrapper").hide();
 		}
 
 		$(this).unbind("click mouseenter mouseleave");
@@ -73,8 +75,7 @@ $(document).ready( function() {
 
 		//prevents duplicates
 		do {
-			 Evana = Math.floor(Math.random()*7);
-			 Evana++;
+			 Evana = Math.floor(Math.random()*7) + 1;
 			 Gizzi = '"#' + Evana + '_pic"';
 			 Evana--;
 		} while ( Evana == play1.pokedex );
@@ -99,7 +100,7 @@ $(document).ready( function() {
 			$(".random_wrapper").on("mouseleave", function(){
 				$(this).unbind("click mouseenter mouseleave")
 			});
-			$(".button").addClass("move_click");
+			$(".btn").removeClass("disabled");
 		}
 
 		//correctly highlights/fades/displays text on the
@@ -116,18 +117,6 @@ $(document).ready( function() {
 
 	/*******************************************************************************************************/
 
-	// Text Area Function
-	function refresh( inString ) {
-		$("#textarea_wrapper ul").append( '<li> > ' + inString + '</li>' );
-		if ( turn %2 == 0 || turn == 0 ) // if (even turn number, including zero)
-			$("#textarea_wrapper li:last").addClass("p2t");
-		else // if (odd turn number)
-			$("#textarea_wrapper li:last").addClass("p1t");
-	}
-
-
-	/*******************************************************************************************************/
-
 	// Move Functions/Button Functions
 
 	//Move button mouse over function
@@ -141,14 +130,15 @@ $(document).ready( function() {
 	// takes place, or after
 	//Example: Facade is a Pre Effect to increase power if status
 	//Example: Charge Beam is a Post Effect, increases attack AFTER the turn
-	$(".move_click").on( "click", function() {
-		var Evana = getPoke($(this));
-		var Gizzi = getMove($(this));
-		Gizzi = Gizzi - 1;
-		var tooCute = new Move(	moveParams[Evana][Gizzi][1], moveParams[Evana][Gizzi][2],
-								moveParams[Evana][Gizzi][0], moveParams[Evana][Gizzi][3] );
-		alert(moveParams[Evana][Gizzi][0]);
-		loadMove(tooCute, $(this));
+	$("button").on( "click", function() {
+		// var Evana = getPoke($(this));
+		// var Gizzi = getMove($(this));
+		// Gizzi = Gizzi - 1;
+		// var tooCute = new Move(	moveParams[Evana][Gizzi][1], moveParams[Evana][Gizzi][2],
+		// 						moveParams[Evana][Gizzi][0], moveParams[Evana][Gizzi][3] );
+		// alert(moveParams[Evana][Gizzi][0]);
+		// loadMove(tooCute, $(this));
+		moveEffects["Yawn"];
 
 	});
 
@@ -183,17 +173,17 @@ $(document).ready( function() {
 
 	//Status Element Object functions
 
-	function addStatus( type, who ) {
-		var Gizzi = "play" + who;
-		var datAss = eval(Gizzi);
-		addStatusEffects[type](datAss);
-	}
+	// function addStatus( type, who ) {
+	// 	var Gizzi = "play" + who;
+	// 	var datAss = eval(Gizzi);
+	// 	addStatusEffects[type](datAss);
+	// }
 
-	function removeStatus( who ) {
-		var Evana = "play" + who;
-		var Gizzi = eval(Evana);
-		var type = Gizzi.status;
-		removeStatusEffects[type]();
-	}
+	// function removeStatus( who ) {
+	// 	var Evana = "play" + who;
+	// 	var Gizzi = eval(Evana);
+	// 	var type = Gizzi.status;
+	// 	removeStatusEffects[type]();
+	// }
 
 });

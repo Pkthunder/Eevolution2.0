@@ -2,40 +2,43 @@
 body {
 	padding-left: 10px;
 	padding-top: 10px;
+	background: url('pokeball.png') no-repeat;
+	background-position: 33% 50%;
 }
 #heading_wrapper {
 	width:1100px; 
 	height:75px;
-	border: 1px dashed black;
 }
 #body_wrapper {
-	width:1100px; 
-	height:430px; /*10 extra for design */
+	width:1120px; 
+	height:425px;
 	position: relative;
-	margin-top: 10px;
 }
 #player_wrapper { 
 	float: left;
 	width:600px; 
 	height:410px; 
-	/*border: 1px dashed black;*/
 }
 #dive {
-	height: 5px;
-	border-bottom: 1px solid #D8D8D8;
+	height: 15px;
+	border-bottom: 1px solid black;
+}
+#ddive {
+	height: 18px;
 }
 /*********************************************************/
 
 /*Textarea formatting*/
 #textarea_wrapper { 
 	float: right;
-	width:449px; 
-	height:388px; 
+	width:455px; 
+	height:405px; 
 	font-size: 14px;
 	font-family: Courier;
 	overflow: auto;
 	padding-left: 5px;
 	padding-top: 5px;
+	margin-left: 15px;
 }
 #textarea_wrapper > ul { /*Text Area*/
 	list-style-type: none;
@@ -79,6 +82,7 @@ body {
 	vertical-align: middle;
 	line-height: 74px;
 	z-index: 3;
+	font-size: 18px;
 }
 .bg_pic {
 	width: 124px;
@@ -131,8 +135,12 @@ body {
 	line-height: 70px;
 	font-size:20px; 
 	font-family:Impact;
-	margin-top:10px;
-	padding-left: 7px;
+	margin-top:6px;
+	padding-left: 6px;
+}
+.bar_div {
+	width: 100%;
+	height: 10px;
 }
 /*****************************************************/
 
@@ -174,4 +182,16 @@ body {
 #p2_b4 {
 	margin-top: 10px;
 	margin-left: 4px;
+}
+/************************************************************/
+
+/*Testing*/
+.p_name{
+	display: block;
+}
+.pName {
+	display: inline-block;
+	width: 50%;
+	margin: 0px auto;
+  	text-align: center;
 }

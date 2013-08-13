@@ -11,6 +11,7 @@ function Pokemon( name, attack, defense, speed, health, pokedex ) {
 	this.other = {};
 	this.status = null;
 	this.disabled = false; //cannot attack this turn if true
+	this.move = null;
 }
 
 //Move Object
@@ -21,6 +22,7 @@ function Move( pwr, acc, effect, pre ) {
 	this.acc = acc;
 	this.effect = effect;
 	this.pre = pre;
+	this.player = null;
 }
 
 //Status Aliment Object
@@ -28,13 +30,12 @@ function Move( pwr, acc, effect, pre ) {
 function Status( type, duration ) {
 	this.type = type;
 	this.duration = duration;
+	this.started = turn;
 }
 
 //	2 Player's Global variables
 var play1 = new Pokemon;
 var play2 = new Pokemon;
-var move1 = new Move;
-var move2 = new Move;
 /*Global Variable Short List*/
 var turn = 1;
 var pick_turn = 1;

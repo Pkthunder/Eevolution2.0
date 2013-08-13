@@ -100,7 +100,8 @@ $(document).ready( function() {
 			$(".random_wrapper").on("mouseleave", function(){
 				$(this).unbind("click mouseenter mouseleave")
 			});
-			$(".btn").removeClass("disabled");
+			$(".btn").removeClass("disabled")
+				.bind("click");
 		}
 
 		//correctly highlights/fades/displays text on the
@@ -130,24 +131,21 @@ $(document).ready( function() {
 	// takes place, or after
 	//Example: Facade is a Pre Effect to increase power if status
 	//Example: Charge Beam is a Post Effect, increases attack AFTER the turn
-	$("button").on( "click", function() {
-		// var Evana = getPoke($(this));
-		// var Gizzi = getMove($(this));
-		// Gizzi = Gizzi - 1;
-		// var tooCute = new Move(	moveParams[Evana][Gizzi][1], moveParams[Evana][Gizzi][2],
-		// 						moveParams[Evana][Gizzi][0], moveParams[Evana][Gizzi][3] );
-		// alert(moveParams[Evana][Gizzi][0]);
-		// loadMove(tooCute, $(this));
-		moveEffects["Yawn"];
-
+	$(".btn").on( "click", function() {
+		var Evana = getPoke($(this).parent());
+		var Gizzi = getMove($(this).parent());
+		Gizzi = Gizzi - 1;
+		var tooCute = new Move(	moveParams[Evana][Gizzi][1], moveParams[Evana][Gizzi][2],
+								moveParams[Evana][Gizzi][0], moveParams[Evana][Gizzi][3] );
+		loadMove(tooCute, $(this).parent());
 	});
 
 	function getPoke( Gizzi ) {
 		var Evana = Gizzi.parent().attr("id");
 		Evana = Evana.replace('p','').replace('_button_wrapper','');
-		var theCutest = "play" + Evana;
-		theCutest = eval(theCutest);
-		return theCutest.pokedex;
+		var Gizzi = "play" + Evana;
+		var akaBeez = eval(Gizzi);
+		return akaBeez.pokedex;
 	}
 
 	function getMove( Gizzi ) {
@@ -156,17 +154,35 @@ $(document).ready( function() {
 		return Evana;
 	}
 
+	function disabledButtons( who ) {
+		var wrapper = who.parent();
+		var butt = wrapper.find(".btn");
+		for ( var i=0; i<3; i++ ) {
+			butt.addClass("disabled");
+			butt.unbind("click");
+			butt = butt.next();
+		}
+		alert("end of disable");
+	}
+
 	function loadMove( moveItGurl, datPointer ) {
+		alert("moveItGurl: " +moveItGurl.effect);
+		var which = datPointer.parent().attr("id");
+		which = which.replace('p', '').replace('_button_wrapper', '');
+		var who = "play" + which;
 		if ( moveItGurl.pre ) {
 			var Evana = moveItGurl.effect;
 			Evana = Evana.replace(' ', '');
-			alert(Evana);
-			moveEffects[eval(Evana)](moveItGurl);
+			moveEffects[Evana](who);
 			console.log("Running pre-move effect");
 		}
-		var Gizzi = datPointer.parent().attr("id");
-		Gizzi = Gizzi.replace('p','').replace('_button_wrapper','');
-		alert("loadMove: var Gizzi: " +Gizzi);
+		var user = eval(who);
+		alert(user.move);
+		user.move = moveItGurl;
+		alert(user.move.effect);
+		//disable buttons
+		disabledButtons(datPointer);
+
 	}
 
 	/*******************************************************************************************************/

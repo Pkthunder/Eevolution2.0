@@ -29,140 +29,140 @@ Max lines inside text box = 36
 		<script type="text/javascript" src="jquery.js"></script>
 		<script type="text/javascript" src="core.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-		<script type="text/javascript" src="application.js"></script>
 		<script type="text/javascript" src="status_functions.js"></script>
 		<script type="text/javascript" src="move_functions.js"></script>
+		<script type="text/javascript" src="application.js"></script>
 		<title>Eevolution 2.0 Alpha</title>
 	
 	</head>
 
 	<body>
-	
-		<!-- Body Wrapper Begins -->
+			<!-- Body Wrapper Begins -->
+		<div id="body_container">
 
-		<div id="heading_wrapper" class="global_wrapper well well-small">
-			<div class="extra_wrapper">
-				<div id="1_pic" class="bg_pic" style="background-image: url( '135Jolteon.png' )"></div>
-				<div id="jolt_pic" class="head_pic">
-					<span class="hpic">Jolteon</span>
+			<div id="heading_wrapper" class="global_wrapper well well-small">
+				<div class="extra_wrapper">
+					<div id="1_pic" class="bg_pic" style="background-image: url( '135Jolteon.png' )"></div>
+					<div id="jolt_pic" class="head_pic">
+						<span class="hpic">Jolteon</span>
+					</div>
 				</div>
-			</div>
-			<div class="extra_wrapper">
-				<div id="2_pic" class="bg_pic" style="background-image: url( '134Vaporeon.png' )"></div>
-				<div id="vap_pic" class="head_pic">
-					<span class="hpic">Vaporeon</span>
+				<div class="extra_wrapper">
+					<div id="2_pic" class="bg_pic" style="background-image: url( '134Vaporeon.png' )"></div>
+					<div id="vap_pic" class="head_pic">
+						<span class="hpic">Vaporeon</span>
+					</div>
 				</div>
-			</div>
-			<div class="extra_wrapper">
-				<div id="3_pic" class="bg_pic" style="background-image: url( '136Flareon.png' )"></div>
-				<div id="flar_pic" class="head_pic">
-					<span class="hpic">Flareon</span>
+				<div class="extra_wrapper">
+					<div id="3_pic" class="bg_pic" style="background-image: url( '136Flareon.png' )"></div>
+					<div id="flar_pic" class="head_pic">
+						<span class="hpic">Flareon</span>
+					</div>
 				</div>
-			</div>
-			<div class="extra_wrapper">
-				<div id="4_pic" class="bg_pic" style="background-image: url( '196Espeon.png' )"></div>
-				<div id="esp_pic" class="head_pic">
-					<span class="hpic">Espeon</span>
+				<div class="extra_wrapper">
+					<div id="4_pic" class="bg_pic" style="background-image: url( '196Espeon.png' )"></div>
+					<div id="esp_pic" class="head_pic">
+						<span class="hpic">Espeon</span>
+					</div>
 				</div>
-			</div>
-			<div class="extra_wrapper">
-				<div id="5_pic" class="bg_pic" style="background-image: url( '197Umbreon.png' )"></div>
-				<div id="umb_pic" class="head_pic">
-					<span class="hpic">Umbreon</span>
+				<div class="extra_wrapper">
+					<div id="5_pic" class="bg_pic" style="background-image: url( '197Umbreon.png' )"></div>
+					<div id="umb_pic" class="head_pic">
+						<span class="hpic">Umbreon</span>
+					</div>
 				</div>
-			</div>
-			<div class="extra_wrapper">
-				<div id="6_pic" class="bg_pic" style="background-image: url( '470Leafeon.png' )"></div>
-				<div id="leaf_pic" class="head_pic">
-					<span class="hpic">Leafeon</span>
+				<div class="extra_wrapper">
+					<div id="6_pic" class="bg_pic" style="background-image: url( '470Leafeon.png' )"></div>
+					<div id="leaf_pic" class="head_pic">
+						<span class="hpic">Leafeon</span>
+					</div>
 				</div>
-			</div>
-			<div class="extra_wrapper">
-				<div id="7_pic" class="bg_pic" style="background-image: url( '471Glaceon.png' )"></div>
-				<div id="glac_pic" class="head_pic">
-					<span class="hpic">Glaceon</span>
+				<div class="extra_wrapper">
+					<div id="7_pic" class="bg_pic" style="background-image: url( '471Glaceon.png' )"></div>
+					<div id="glac_pic" class="head_pic">
+						<span class="hpic">Glaceon</span>
+					</div>
 				</div>
-			</div>
-			
-			<div class="random_wrapper">
-				<div id="r_pic" class="bg_pic" style="background-image: url( 'question-mark.gif' )"></div>
-				<div id="rand_pic" class="head_pic">
-					<span class="hpic">Random</span>
-				</div>
-			</div> 
-		</div>
-
-		<!-- Body Wrapper Begins -->
-
-		<div id="body_wrapper" class="global_wrapper">
-			<div id="player_wrapper" class="global_wrapper">
 				
-				<!-- Player 1 Menu -->
-				<div id="p1_wrapper" class="p_wrapper">
-					<div id="p1_pic" class="player_pic" style="background-image: url( '133Eevee.png' )"></div>
-					<div id="p1_info" class="player_info well well-small">
-						<span id="p1_name" class="p_name">Player 1: </span>
-						<div class="bar_div"></div>
-						<div class="progress progress-danger">
-    						<div class="bar" style="width: 100%;"><span class="bar_val">100%</span></div>
-   					 	</div>
-						<div id="p1_button_wrapper" class="button_wrapper">
-							<div id="p1_b1" class="button b1">
-								<button class="btn btn-block btn-large disabled" type="button">Choose A</button>
-							</div>
-							<div id="p1_b2" class="button b2">
-								<button class="btn btn-block btn-large disabled" type="button">Pokemon!</button>
-							</div>
-							<div id="p1_b3" class="button b3">
-								<button class="btn btn-block btn-large disabled" type="button">Choose A</button>
-							</div>
-							<div id="p1_b4" class="button b4">
-								<button class="btn btn-block btn-large disabled" type="button">Pokemon!</button>
-							</div>
-						</div>
-						
+				<div class="random_wrapper">
+					<div id="r_pic" class="bg_pic" style="background-image: url( 'question-mark.gif' )"></div>
+					<div id="rand_pic" class="head_pic">
+						<span class="hpic">Random</span>
 					</div>
-				</div>
-
-				<!-- Dividers -->
-				<div id="dive" class="divider"></div>
-				<div id="ddive" class="divider"></div>
-
-				<!-- Player 2 Menu -->
-				<div id="p2_wrapper" class="p_wrapper">
-					<div id="p2_info" class="player_info well well-small">
-						<span id="p2_name" class="p_name">Player 2: </span>
-						<div class="bar_div"></div>
-						<div class="progress progress-danger">
-    						<div class="bar" style="width: 100%;"><span class="bar_val">100%</span></div>
-   					 	</div>
-						<div id="p2_button_wrapper" class="button_wrapper">
-							<div id="p2_b1" class="button b1">
-								<button class="btn btn-block btn-large disabled" type="button">Choose A</button>
-							</div>
-							<div id="p2_b2" class="button b2">
-								<button class="btn btn-block btn-large disabled" type="button">Pokemon!</button>
-							</div>
-							<div id="p2_b3" class="button b3">
-								<button class="btn btn-block btn-large disabled" type="button">Choose A</button>
-							</div>
-							<div id="p2_b4" class="button b4">
-								<button class="btn btn-block btn-large disabled" type="button">Pokemon!</button>
-							</div>
-						</div>
-					</div>
-					<div id="p2_pic" class="player_pic" style="background-image: url( '133Eevee.png' )"></div>
-				</div>
+				</div> 
 			</div>
-			<div id="textarea_wrapper" class="global_wrapper well well-small">
-				<!-- Attempting to re-create a "textarea" using div's and ul's -->
-				<span id="intro">Choose A Pokemon!</span>
-				<ul>
-					<!-- a series of li's are created by the JQuery code to "re-create" a text area -->
-				</ul>
+
+			<!-- Body Wrapper Begins -->
+
+			<div id="body_wrapper" class="global_wrapper">
+				<div id="player_wrapper" class="global_wrapper">
+					
+					<!-- Player 1 Menu -->
+					<div id="p1_wrapper" class="p_wrapper">
+						<div id="p1_pic" class="player_pic" style="background-image: url( '133Eevee.png' )"></div>
+						<div id="p1_info" class="player_info well well-small">
+							<span id="p1_name" class="p_name">Player 1: </span>
+							<div class="bar_div"></div>
+							<div class="progress progress-danger">
+	    						<div class="bar" style="width: 100%;"><span class="bar_val">100%</span></div>
+	   					 	</div>
+							<div id="p1_button_wrapper" class="button_wrapper">
+								<div id="p1_b1" class="button b1">
+									<button class="btn btn-block btn-large disabled" type="button">Choose A</button>
+								</div>
+								<div id="p1_b2" class="button b2">
+									<button class="btn btn-block btn-large disabled" type="button">Pokemon!</button>
+								</div>
+								<div id="p1_b3" class="button b3">
+									<button class="btn btn-block btn-large disabled" type="button">Choose A</button>
+								</div>
+								<div id="p1_b4" class="button b4">
+									<button class="btn btn-block btn-large disabled" type="button">Pokemon!</button>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+
+					<!-- Dividers -->
+					<div id="dive" class="divider"></div>
+					<div id="ddive" class="divider"></div>
+
+					<!-- Player 2 Menu -->
+					<div id="p2_wrapper" class="p_wrapper">
+						<div id="p2_info" class="player_info well well-small">
+							<span id="p2_name" class="p_name">Player 2: </span>
+							<div class="bar_div"></div>
+							<div class="progress progress-danger">
+	    						<div class="bar" style="width: 100%;"><span class="bar_val">100%</span></div>
+	   					 	</div>
+							<div id="p2_button_wrapper" class="button_wrapper">
+								<div id="p2_b1" class="button b1">
+									<button class="btn btn-block btn-large disabled" type="button">Choose A</button>
+								</div>
+								<div id="p2_b2" class="button b2">
+									<button class="btn btn-block btn-large disabled" type="button">Pokemon!</button>
+								</div>
+								<div id="p2_b3" class="button b3">
+									<button class="btn btn-block btn-large disabled" type="button">Choose A</button>
+								</div>
+								<div id="p2_b4" class="button b4">
+									<button class="btn btn-block btn-large disabled" type="button">Pokemon!</button>
+								</div>
+							</div>
+						</div>
+						<div id="p2_pic" class="player_pic" style="background-image: url( '133Eevee.png' )"></div>
+					</div>
+				</div>
+				<div id="textarea_wrapper" class="global_wrapper well well-small">
+					<!-- Attempting to re-create a "textarea" using div's and ul's -->
+					<span id="intro">Choose A Pokemon!</span>
+					<ul>
+						<!-- a series of li's are created by the JQuery code to "re-create" a text area -->
+					</ul>
+				</div>
 			</div>
 		</div>
-	
 	</body>
 	
 </html>

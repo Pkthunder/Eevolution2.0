@@ -1,92 +1,93 @@
 var moveEffects = {
 //Jolteon
 	Yawn: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
-		alert("Test");
+		return Beasley;
 	},
 	Discharge: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 	ChargeBeam: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 /////////////////////////////////////////////////
 //Vaporeon
 	Wish: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 	Flail: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 	WaterPulse: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 	AuoraBeam: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 ////////////////////////////////////////////////
 //Flareon
 	Facade: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		if ( Beasley.status != null )
+			Beasley.move.pwr = Beasley.move.pwr * 2;
+		return Beasley;
 	},
 	FireFang: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 	Wisp: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 	FlameCharge: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 ///////////////////////////////////////////////
 //Espeon
 	Swift: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 	CalmMind: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 	MagicCoat: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 	StoredPower: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 ///////////////////////////////////////////////
 //Umbreon
 	Taunt: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 	Curse: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 	Toxic: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 	Payback: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 //////////////////////////////////////////////
 //Leafeon
 	LeachSeed: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 	Substitute: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 	SwordsDance: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 //////////////////////////////////////////////
 //Glaceon
 	IceShard: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 	MirrorCoat: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	},
 	FrostBreath: function(Beasley) {
-		console.log("Evana Gizzi is an absolute babe");
+		return Beasley;
 	}
 };
 

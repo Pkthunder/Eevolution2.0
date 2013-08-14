@@ -139,12 +139,29 @@ body {
 	line-height: 70px;
 	font-size:20px; 
 	font-family:Impact;
-	margin-top:6px;
+	margin-top:2px;
 	padding-left: 6px;
 }
 .bar_div {
 	width: 100%;
 	height: 10px;
+}
+.progress {
+    position: relative;
+    border: 1px solid black;
+    background-color: orange;
+}
+.bar {
+    z-index: 1;
+    position: absolute;
+}
+.progress span {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    color: black;
+    text-align: center;
+    width: 100%;
 }
 /*****************************************************/
 

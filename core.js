@@ -1,5 +1,5 @@
 /*Pokemon Object/Array*/
-function Pokemon( name, attack, defense, speed, health, pokedex ) {
+function Pokemon( name, attack, defense, speed, health, pokedex, $wrapper ) {
 	this.name = name;
 	this.attack = attack;
 	this.defense = defense;
@@ -12,6 +12,7 @@ function Pokemon( name, attack, defense, speed, health, pokedex ) {
 	this.status = null;
 	this.disabled = false; //cannot attack this turn if true
 	this.move = null;
+	this.$wrapper = $wrapper;
 }
 
 //Move Object
@@ -23,6 +24,7 @@ function Move( pwr, acc, effect, pre ) {
 	this.effect = effect;
 	this.pre = pre;
 	this.player = null;
+	this.priority = 0;
 }
 
 //Status Aliment Object
@@ -42,6 +44,7 @@ var pick_turn = 1;
 
 //Custom Events
 var onBothPlayersReady = jQuery.Event("BothPlayersReady");
+var onDamageRecorded = jQuery.Event("DamagedRecorded");
 var onDeath = jQuery.Event("Death");
 
 //Global Data Arrays
@@ -124,4 +127,13 @@ function refresh( inString ) {
 		$("#textarea_wrapper li:last").addClass("p2t");
 	else // if (odd turn number)
 		$("#textarea_wrapper li:last").addClass("p1t");
+}
+
+// Health Bar Function
+function updateHealthBar( poke ) {
+	var $txt = poke.$wrapper.find(".bar_val").parent();
+	$txt.find(".bar_val").remove();
+	$txt.append('<span class="bar_val">' +poke.health+' / '+poke.original_health+'</span>');
+	var percent = (poke.health / poke.original_health) *100;
+	$txt.parent().find(".bar").css({"width" : percent+'%'});
 }

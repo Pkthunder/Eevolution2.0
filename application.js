@@ -1,3 +1,5 @@
+/* This file includes all event handlers and a few support functions */
+
 $(document).ready( function() {
 
 	/*Header Button Functions*/
@@ -19,7 +21,7 @@ $(document).ready( function() {
 	function setMenu( who, where ) {
 		//assigns the choosen pokemon to the correct global
 		var Evana = creationList[who];
-		var Gizzi = new Pokemon( Evana[0], Evana[1], Evana[2], Evana[3], Evana[4], who );
+		var Gizzi = new Pokemon( Evana[0], Evana[1], Evana[2], Evana[3], Evana[4], who, where);
 
 		// actual menu setup
 		where.find(".p_name").append( '<span class="pName">  ' + Evana[0] + '</span>');
@@ -31,6 +33,9 @@ $(document).ready( function() {
 		where.find(".b2 > button").text(moveList[who][1]);
 		where.find(".b3 > button").text(moveList[who][2]);
 		where.find(".b4 > button").text(moveList[who][3]);
+
+		//set health
+		updateHealthBar(Gizzi);
 
 		return Gizzi;
 	}
@@ -57,9 +62,10 @@ $(document).ready( function() {
 				$(this).unbind("click mouseenter mouseleave");
 			});
 			play2 = setMenu($Evana, $("#p2_info") );
-			play1.player = 2;
+			play2.player = 2;
 			$(".btn").removeClass("disabled");
-			//$("#heading_wrapper").hide();
+			play1.other = play2;
+			play2.other = play1;
 		}
 
 		$(this).unbind("click mouseenter mouseleave");
@@ -96,12 +102,14 @@ $(document).ready( function() {
 				$(this).unbind("click mouseenter mouseleave");
 			});
 			play2 = setMenu(Evana, $("#p2_info") );
-			play1.player = 2;
-			$(".random_wrapper").on("mouseleave", function(){
+			play2.player = 2;
+			$(".random_wrapper").on("mouseleave", function() {
 				$(this).unbind("click mouseenter mouseleave")
 			});
 			$(".btn").removeClass("disabled")
 				.bind("click");
+			play1.other = play2;
+			play2.other = play1;
 		}
 
 		//correctly highlights/fades/displays text on the
@@ -162,28 +170,39 @@ $(document).ready( function() {
 			butt.unbind("click");
 			butt = butt.next();
 		}
-		alert("end of disable");
 	}
 
 	function loadMove( moveItGurl, datPointer ) {
-		alert("moveItGurl: " +moveItGurl.effect);
 		var which = datPointer.parent().attr("id");
 		which = which.replace('p', '').replace('_button_wrapper', '');
 		var who = "play" + which;
+		var user = eval(who);
+		user.move = moveItGurl;
+		//run a pre effect if one exists
 		if ( moveItGurl.pre ) {
 			var Evana = moveItGurl.effect;
 			Evana = Evana.replace(' ', '');
-			moveEffects[Evana](who);
+			user.move = moveEffects[Evana](user);
 			console.log("Running pre-move effect");
 		}
-		var user = eval(who);
-		alert(user.move);
-		user.move = moveItGurl;
-		alert(user.move.effect);
 		//disable buttons
 		disabledButtons(datPointer);
-
+		if ( play1.move != null && play2.move != null ) {
+			$(document).trigger("onBothPlayersReady");
+			console.log("onBothPlayersReady triggered");
+		}
 	}
+
+	$(document).on( "onBothPlayersReady", function() {
+		console.log("trigger successful");
+		play1.health = 15;
+		updateHealthBar(play1);
+		//all functions are defined inside battle_functions.js
+	});
+
+	$(document).on( "onDamageRecorded", function() {
+		$(".btn").removeClass("disabled").bind("click");
+	});
 
 	/*******************************************************************************************************/
 

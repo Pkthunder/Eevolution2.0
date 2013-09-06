@@ -101,10 +101,11 @@ $(document).ready( function() {
 			$(".extra_wrapper").each( function() {
 				$(this).unbind("click mouseenter mouseleave");
 			});
+			$(".random_wrapper").unbind("click");
 			play2 = setMenu(Evana, $("#p2_info") );
 			play2.player = 2;
 			$(".random_wrapper").on("mouseleave", function() {
-				$(this).unbind("click mouseenter mouseleave")
+				$(this).unbind("mouseenter mouseleave")
 			});
 			$(".btn").removeClass("disabled")
 				.bind("click");
@@ -144,7 +145,8 @@ $(document).ready( function() {
 		var Gizzi = getMove($(this).parent());
 		Gizzi = Gizzi - 1;
 		var tooCute = new Move(	moveParams[Evana][Gizzi][1], moveParams[Evana][Gizzi][2],
-								moveParams[Evana][Gizzi][0], moveParams[Evana][Gizzi][3] );
+								moveParams[Evana][Gizzi][0], moveParams[Evana][Gizzi][3],
+								moveParams[Evana][Gizzi][0] );
 		loadMove(tooCute, $(this).parent());
 	});
 
@@ -178,47 +180,37 @@ $(document).ready( function() {
 		var who = "play" + which;
 		var user = eval(who);
 		user.move = moveItGurl;
-		//run a pre effect if one exists
-		if ( moveItGurl.pre ) {
-			var Evana = moveItGurl.effect;
-			Evana = Evana.replace(' ', '');
-			user.move = moveEffects[Evana](user);
-			console.log("Running pre-move effect");
-		}
 		//disable buttons
 		disabledButtons(datPointer);
 		if ( play1.move != null && play2.move != null ) {
-			$(document).trigger("onBothPlayersReady");
+			$(document).trigger(onBothPlayersReady);
 			console.log("onBothPlayersReady triggered");
 		}
 	}
 
-	$(document).on( "onBothPlayersReady", function() {
-		console.log("trigger successful");
-		play1.health = 15;
-		updateHealthBar(play1);
+/*******************************************************************************************************/
+
+//Custom Event Handlers - BothPlayersReady, DamageRecorded, Death
+
+	$(document).on( "BothPlayersReady", function() {
+		console.log("BothPlayersReady triggered successful");
+		//starts 'Battle Phase'
 		//all functions are defined inside battle_functions.js
+		runBattlePhase();
+		//starts next round of 'Battle Phase'
+		$(document).trigger(onDamageRecorded);
 	});
 
-	$(document).on( "onDamageRecorded", function() {
+	$(document).on( "DamageRecorded", function() {
 		$(".btn").removeClass("disabled").bind("click");
+	});
+	
+	$(document).on( "Death", function(who) {
+	    refresh(who.name+" has fainted! "+who.other.name+" wins!");
+	    alert("Cunnilingus");
 	});
 
 	/*******************************************************************************************************/
 
-	//Status Element Object functions
-
-	// function addStatus( type, who ) {
-	// 	var Gizzi = "play" + who;
-	// 	var datAss = eval(Gizzi);
-	// 	addStatusEffects[type](datAss);
-	// }
-
-	// function removeStatus( who ) {
-	// 	var Evana = "play" + who;
-	// 	var Gizzi = eval(Evana);
-	// 	var type = Gizzi.status;
-	// 	removeStatusEffects[type]();
-	// }
 
 });

@@ -18,13 +18,14 @@ function Pokemon( name, attack, defense, speed, health, pokedex, $wrapper ) {
 //Move Object
 //pre is a boolean representing whether the effect has
 //pre-attack or post-attack effect
-function Move( pwr, acc, effect, pre ) {
+function Move( pwr, acc, effect, pre, name ) {
 	this.pwr = pwr;
 	this.acc = acc;
 	this.effect = effect;
 	this.pre = pre;
 	this.player = null;
 	this.priority = 0;
+	this.name = name;
 }
 
 //Status Aliment Object
@@ -130,7 +131,17 @@ function refresh( inString ) {
 }
 
 // Health Bar Function
+function deathCheck( poke ) {
+    if ( poke.health < 1 ) {
+        poke.health = 0;
+        $(document).trigger(onDeath, [poke]);
+        return true;
+    }
+}
 function updateHealthBar( poke ) {
+    if (deathCheck(poke)) {
+        alert("Game Over!");
+    }
 	var $txt = poke.$wrapper.find(".bar_val").parent();
 	$txt.find(".bar_val").remove();
 	$txt.append('<span class="bar_val">' +poke.health+' / '+poke.original_health+'</span>');

@@ -33,7 +33,7 @@ function calcDmg( attacker) {
 
 function recordDmg(target, damage) {
 	target.health = Math.round(target.health - damage);
-	refresh(target.other.name+ "'s " + target.other.move.name + " dealt " +
+	refresh(target, target.other.name+ "'s " + target.other.move.name + " dealt " +
 	        damage +" damage to "+target.name);
 	updateHealthBar(target);
 	turn++;
@@ -61,7 +61,7 @@ function runBattleSequence(attacker) {
     }
     //disabled check
     if (attacker.disabled) {
-        refresh(attacker.name+" is unable to attack!");
+        refresh(attacker, attacker.name+" is unable to attack!");
         return;
     }
     //run pre-effect

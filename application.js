@@ -25,8 +25,6 @@ $(document).ready( function() {
 
 		// actual menu setup
 		where.find(".p_name").append( '<span class="pName">  ' + Evana[0] + '</span>');
-		//TODO: Research how to change the text inside a Bootstrap progress bar
-		//where.find(".bar_value").text('100%', Gizzi.health +" of "+ Gizzi.health);
 		
 		// set button names
 		where.find(".b1 > button").text(moveList[who][0]);
@@ -36,6 +34,7 @@ $(document).ready( function() {
 
 		//set health
 		updateHealthBar(Gizzi);
+		
 
 		return Gizzi;
 	}
@@ -54,7 +53,8 @@ $(document).ready( function() {
 			$("#p1_pic").css( { "background-image" : 'url( ' + $img + ')' } );
 			play1 = setMenu($Evana, $("#p1_info") );
 			play1.player = 1;
-
+            play1.txt = "p1t";
+            refresh( play1, "Player 1 has choosen " + creationList[$Evana][0] );
 		}
 		else if ( pick_turn == 2 ) {
 			$("#p2_pic").css( { "background-image" : 'url( ' + $img + ')' } );
@@ -63,6 +63,8 @@ $(document).ready( function() {
 			});
 			play2 = setMenu($Evana, $("#p2_info") );
 			play2.player = 2;
+			play2.txt = "p2t";
+			refresh( play2, "Player 2 has choosen " + creationList[$Evana][0] );
 			$(".btn").removeClass("disabled");
 			$(".btn").addClass("activated");
 			play1.other = play2;
@@ -70,14 +72,11 @@ $(document).ready( function() {
 		}
 
 		$(this).unbind("click mouseenter mouseleave");
-		refresh( "Player " + pick_turn + " has choosen " + creationList[$Evana][0] );
+		//refresh( "Player " + pick_turn + " has choosen " + creationList[$Evana][0] );
 		pick_turn++;
 		turn++;
 	});
-	function test() {
-	    alert("poop");
-	}
-
+	
 	//Random Button Function
 	$(".random_wrapper").on( "click", function() {
 		var Evana;
@@ -99,6 +98,8 @@ $(document).ready( function() {
 			$("#p1_pic").css( { "background-image" : dotCom } );
 			play1 = setMenu(Evana, $("#p1_info") );
 			play1.player = 1;
+			play1.txt = "p1t";
+			refresh( play1, "Player 1 has choosen " + creationList[$Evana][0] );
 		}
 		else if ( pick_turn == 2 ) {
 			$("#p2_pic").css( { "background-image" : dotCom } );
@@ -108,6 +109,8 @@ $(document).ready( function() {
 			$(".random_wrapper").unbind("click");
 			play2 = setMenu(Evana, $("#p2_info") );
 			play2.player = 2;
+			play2.txt = "p2t";
+			refresh( play2, "Player 2 has choosen " + creationList[$Evana][0] );
 			$(".random_wrapper").on("mouseleave", function() {
 				$(this).unbind("mouseenter mouseleave")
 			});
@@ -124,7 +127,7 @@ $(document).ready( function() {
 		MarcG.find(".head_pic").css( {"border": "2px solid red"} );
 		MarcG.find(".bg_pic").fadeTo( "fast", 0.3 );
 		MarcG.unbind("click mouseenter mouseleave");
-		refresh( "Player " + pick_turn + " has choosen " + creationList[Evana][0] );
+		//refresh( "Player " + pick_turn + " has choosen " + creationList[Evana][0] );
 		pick_turn++;
 		turn++;
 	});
@@ -218,7 +221,7 @@ $(document).ready( function() {
 	$(document).on( "Death", function() {
 	    $(".btn").addClass("disabled");
 		$(".btn").removeClass("activated");
-	    refresh(onDeath.who.name+" has fainted! "+onDeath.who.other.name+" wins!");
+	    refresh(onDeath.who, onDeath.who.name+" has fainted! "+onDeath.who.other.name+" wins!");
 	});
 	
 	/*******************************************************************************************************/

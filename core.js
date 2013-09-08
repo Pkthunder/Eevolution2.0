@@ -13,6 +13,7 @@ function Pokemon( name, attack, defense, speed, health, pokedex, $wrapper ) {
 	this.disabled = false; //cannot attack this turn if true
 	this.move = null;
 	this.$wrapper = $wrapper;
+	this.txt = null;
 }
 
 //Move Object
@@ -122,12 +123,9 @@ var moveParams = [
 //Function Library
 
 // Text Area Function
-function refresh( inString ) {
+function refresh( who, inString ) {
 	$("#textarea_wrapper ul").append( '<li> > ' + inString + '</li>' );
-	if ( turn %2 == 0 || turn == 0 ) // if (even turn number, including zero)
-		$("#textarea_wrapper li:last").addClass("p2t");
-	else // if (odd turn number)
-		$("#textarea_wrapper li:last").addClass("p1t");
+	$("#textarea_wrapper li:last").addClass(who.txt);
 }
 
 // Health Bar Function

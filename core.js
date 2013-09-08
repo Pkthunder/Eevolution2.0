@@ -45,7 +45,7 @@ var pick_turn = 1;
 
 //Custom Events
 var onBothPlayersReady = jQuery.Event("BothPlayersReady");
-var onDamageRecorded = jQuery.Event("DamagedRecorded");
+var onDamageRecorded = jQuery.Event("DamageRecorded");
 var onDeath = jQuery.Event("Death");
 
 //Global Data Arrays
@@ -134,9 +134,11 @@ function refresh( inString ) {
 function deathCheck( poke ) {
     if ( poke.health < 1 ) {
         poke.health = 0;
-        $(document).trigger(onDeath, [poke]);
+        onDeath.who = poke;
+        $(document).trigger(onDeath);
         return true;
     }
+    return false;
 }
 function updateHealthBar( poke ) {
     if (deathCheck(poke)) {

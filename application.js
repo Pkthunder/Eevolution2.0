@@ -64,6 +64,7 @@ $(document).ready( function() {
 			play2 = setMenu($Evana, $("#p2_info") );
 			play2.player = 2;
 			$(".btn").removeClass("disabled");
+			$(".btn").addClass("activated");
 			play1.other = play2;
 			play2.other = play1;
 		}
@@ -73,6 +74,9 @@ $(document).ready( function() {
 		pick_turn++;
 		turn++;
 	});
+	function test() {
+	    alert("poop");
+	}
 
 	//Random Button Function
 	$(".random_wrapper").on( "click", function() {
@@ -107,8 +111,8 @@ $(document).ready( function() {
 			$(".random_wrapper").on("mouseleave", function() {
 				$(this).unbind("mouseenter mouseleave")
 			});
-			$(".btn").removeClass("disabled")
-				.bind("click");
+			$(".btn").removeClass("disabled");
+			$(".btn").addClass("activated");
 			play1.other = play2;
 			play2.other = play1;
 		}
@@ -131,16 +135,13 @@ $(document).ready( function() {
 
 	//Move button mouse over function
 
-	//TODO:
-
-	//On Click functions
-
 	// Pre is a boolean statement to determine wether or not
 	// the effect of the move should be applied before damage
 	// takes place, or after
 	//Example: Facade is a Pre Effect to increase power if status
 	//Example: Charge Beam is a Post Effect, increases attack AFTER the turn
-	$(".btn").on( "click", function() {
+	$(document).on( "click", ".activated", function() {
+	    console.log("running btn click handler");
 		var Evana = getPoke($(this).parent());
 		var Gizzi = getMove($(this).parent());
 		Gizzi = Gizzi - 1;
@@ -169,7 +170,7 @@ $(document).ready( function() {
 		var butt = wrapper.find(".btn");
 		for ( var i=0; i<3; i++ ) {
 			butt.addClass("disabled");
-			butt.unbind("click");
+			butt.removeClass("activated");
 			butt = butt.next();
 		}
 	}
@@ -198,18 +199,28 @@ $(document).ready( function() {
 		//all functions are defined inside battle_functions.js
 		runBattlePhase();
 		//starts next round of 'Battle Phase'
-		$(document).trigger(onDamageRecorded);
+		//if neither player has died
+		if (play1.health > 0 && play2.health > 0 ) {
+		    setTimeout( function() {
+		        $(document).trigger(onDamageRecorded);
+		    }, 2000 );
+		}
 	});
 
 	$(document).on( "DamageRecorded", function() {
-		$(".btn").removeClass("disabled").bind("click");
+	    console.log("DamageRecorded triggered successsful");
+	    play1.move = null;
+	    play2.move = null;
+        $(".btn").removeClass("disabled");
+        $(".btn").addClass("activated");
 	});
 	
-	$(document).on( "Death", function(who) {
-	    refresh(who.name+" has fainted! "+who.other.name+" wins!");
-	    alert("Cunnilingus");
+	$(document).on( "Death", function() {
+	    $(".btn").addClass("disabled");
+		$(".btn").removeClass("activated");
+	    refresh(onDeath.who.name+" has fainted! "+onDeath.who.other.name+" wins!");
 	});
-
+	
 	/*******************************************************************************************************/
 
 

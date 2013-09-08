@@ -33,9 +33,9 @@ function calcDmg( attacker) {
 
 function recordDmg(target, damage) {
 	target.health = Math.round(target.health - damage);
-	updateHealthBar(target);
 	refresh(target.other.name+ "'s " + target.other.move.name + " dealt " +
 	        damage +" damage to "+target.name);
+	updateHealthBar(target);
 	turn++;
 }
 
@@ -49,6 +49,11 @@ function runBattleSequence(attacker) {
     console.log("Entering Battle Phase for "+attacker.name);
     
     var dmg = 0;
+    //check for death to prevent zombie attacks
+    if (attacker.health < 1 ) {
+        console.log("Exiting Battle Phase for "+attacker.name+" - prevented zombie attack");
+        return;
+    }
     //run status effects
     if (attacker.status) {
         //run effect

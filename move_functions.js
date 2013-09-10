@@ -1,3 +1,4 @@
+//All effects of moves
 var moveEffects = {
 //Jolteon
 	Yawn: function(Beasley) {

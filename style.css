@@ -216,3 +216,16 @@ body {
 	margin: 0px auto;
   	text-align: center;
 }
+/************************************************************/
+
+#footer_wrapper {
+    height: 30px;
+    width: 99%;
+    margin-top:10px;
+    border: 1px dashed black;
+}
+#reset_btn {
+    display: inline-block;
+    position: relative;
+    float: right;
+}

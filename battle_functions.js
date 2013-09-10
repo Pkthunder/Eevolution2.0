@@ -33,7 +33,7 @@ function calcDmg( attacker) {
 
 function recordDmg(target, damage) {
 	target.health = Math.round(target.health - damage);
-	refresh(target, target.other.name+ "'s " + target.other.move.name + " dealt " +
+	refresh(target.other, target.other.name+ "'s " + target.other.move.name + " dealt " +
 	        damage +" damage to "+target.name);
 	updateHealthBar(target);
 	turn++;
@@ -41,7 +41,7 @@ function recordDmg(target, damage) {
 
 function runEffect( attacker ) {
     var Evana = attacker.move.effect;
-    Evana = Evana.replace(' ','');
+    Evana = Evana.replace(' ','').replace(' ','');
     moveEffects[Evana](attacker);
 }
 
@@ -51,7 +51,7 @@ function runBattleSequence(attacker) {
     var dmg = 0;
     //check for death to prevent zombie attacks
     if (attacker.health < 1 ) {
-        console.log("Exiting Battle Phase for "+attacker.name+" - prevented zombie attack");
+        console.log("Exiting Battle Phase for "+attacker.name+" - preventing zombie attack");
         return;
     }
     //run status effects

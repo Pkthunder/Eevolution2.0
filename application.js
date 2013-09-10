@@ -211,17 +211,23 @@ $(document).ready( function() {
 	});
 
 	$(document).on( "DamageRecorded", function() {
-	    console.log("DamageRecorded triggered successsful");
-	    play1.move = null;
-	    play2.move = null;
-        $(".btn").removeClass("disabled");
-        $(".btn").addClass("activated");
+	    if (play1.health > 0 && play2.health > 0 ) {
+    	    console.log("DamageRecorded triggered successsful");
+    	    play1.move = null;
+    	    play2.move = null;
+            $(".btn").removeClass("disabled");
+            $(".btn").addClass("activated");
+	    }
+	    else {
+	        console.log("DamageRecorded triggered successful - doing nothing due to detected death");
+	    }
 	});
 	
 	$(document).on( "Death", function() {
+	    console.log("onDeath was triggered successfully");
 	    $(".btn").addClass("disabled");
 		$(".btn").removeClass("activated");
-	    refresh(onDeath.who, onDeath.who.name+" has fainted! "+onDeath.who.other.name+" wins!");
+	    refresh(onDeath.who.other, onDeath.who.name+" has fainted! "+onDeath.who.other.name+" wins!");
 	});
 	
 	/*******************************************************************************************************/

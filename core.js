@@ -92,7 +92,7 @@ var moveParams = [
 	[ //Flareon - 2
 		["Facade", 70, 1, true],
 		["Fire Fang", 60, .95, true],
-		["Wil-O-Wisp", null, null, false],
+		["Wil O Wisp", null, null, false],
 		["Flame Charge", 50, 1, false] ],
 	
 	[ //Espeon - 3
@@ -133,15 +133,14 @@ function deathCheck( poke ) {
     if ( poke.health < 1 ) {
         poke.health = 0;
         onDeath.who = poke;
+        console.log("onDeath triggered");
         $(document).trigger(onDeath);
         return true;
     }
     return false;
 }
 function updateHealthBar( poke ) {
-    if (deathCheck(poke)) {
-        alert("Game Over!");
-    }
+    deathCheck(poke);
 	var $txt = poke.$wrapper.find(".bar_val").parent();
 	$txt.find(".bar_val").remove();
 	$txt.append('<span class="bar_val">' +poke.health+' / '+poke.original_health+'</span>');

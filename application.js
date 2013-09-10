@@ -99,20 +99,20 @@ $(document).ready( function() {
 			play1 = setMenu(Evana, $("#p1_info") );
 			play1.player = 1;
 			play1.txt = "p1t";
-			refresh( play1, "Player 1 has choosen " + creationList[$Evana][0] );
+			refresh( play1, "Player 1 has choosen " + creationList[Evana][0] );
 		}
 		else if ( pick_turn == 2 ) {
+		    $(".random_wrapper").unbind("click");
 			$("#p2_pic").css( { "background-image" : dotCom } );
 			$(".extra_wrapper").each( function() {
-				$(this).unbind("click mouseenter mouseleave");
+				$(".extra_wrapper").unbind("click mouseenter mouseleave");
 			});
-			$(".random_wrapper").unbind("click");
 			play2 = setMenu(Evana, $("#p2_info") );
 			play2.player = 2;
 			play2.txt = "p2t";
-			refresh( play2, "Player 2 has choosen " + creationList[$Evana][0] );
+			refresh( play2, "Player 2 has choosen " + creationList[Evana][0] );
 			$(".random_wrapper").on("mouseleave", function() {
-				$(this).unbind("mouseenter mouseleave")
+				$(".random_wrapper").unbind("mouseenter mouseleave");
 			});
 			$(".btn").removeClass("disabled");
 			$(".btn").addClass("activated");

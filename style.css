@@ -219,13 +219,17 @@ body {
 /************************************************************/
 
 #footer_wrapper {
-    height: 30px;
     width: 99%;
-    margin-top:10px;
-    border: 1px dashed black;
+    overflow:hidden;
+    line-height: 10px;
 }
-#reset_btn {
+#signature {
     display: inline-block;
-    position: relative;
+    font-size: 9px;
+    color: #BDBDBD;
+}
+#footer_wrapper button,
+#footer_wrapper a {
     float: right;
+    margin-left: 10px;
 }

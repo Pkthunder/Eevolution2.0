@@ -13,12 +13,6 @@ Copyrighted (c) to Paradoxysaurs, 1827 in Atlantis, Atlantis.
 3. Re-design moves with Ryan
 4. Overall balance the stats and move damage -->
 
-<!-- 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-NOTE:
-Max lines inside text box = 36
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
--->
 
 <!DOCTYPE html>
 <html>
@@ -26,9 +20,12 @@ Max lines inside text box = 36
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link type="text/css" rel="stylesheet" href="style.css"/>
 		<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
+	    <!-- <link type="text/css" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/> -->
 		<script type="text/javascript" src="jquery.js"></script>
+		<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+		<!-- <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script> -->
+		<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="core.js"></script>
-		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 		<script type="text/javascript" src="status_functions.js"></script>
 		<script type="text/javascript" src="move_functions.js"></script>
 		<script type="text/javascript" src="battle_functions.js"></script>
@@ -40,6 +37,21 @@ Max lines inside text box = 36
 	<body>
 			<!-- Body Wrapper Begins -->
 		<div id="body_container">
+		
+			<!-- TODO: Modal Integration -->
+            <div class="modal hide" id="myModal">
+              <div class="modal-header">
+                <button class="close" data-dismiss="modal">×</button>
+                <h3>Modal header</h3>
+              </div>
+              <div class="modal-body">
+              <p> Testing the thingy</p>
+              </div>
+              <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal">Close</a>
+              </div>
+            </div>
+            <!-- End of Modal -->
 
 			<div id="heading_wrapper" class="global_wrapper well well-small">
 				<div class="extra_wrapper">
@@ -165,13 +177,16 @@ Max lines inside text box = 36
 					</ul>
 				</div>
 			</div>
-		</div>
-		<!--
-		<div id="footer_wrapper">
-		    cunnilingus
-		    <button id="reset_btn" class="btn btn-danger" type="button">Reset</button>
-		</div>
-		-->
+			
+    		<div id="footer_wrapper">
+    		    <span id="signature">Eevolution 2 created by Jared Perreault<br>using Jquery and Twitter Bootstrap</span>
+    		    <button id="reset_btn" class="btn btn-danger" type="button">Reset</button>
+    		    <a id="how2_btn" class="btn btn-primary" data-toggle="modal" href="#myModal">How To Play</a>
+    		    <a href="http://www.linkedin.com/in/jaredperreault" target="_blank">
+    		        <button id="abt_me" class="btn btn-info" type="button">About Me</button>
+    		    </a>
+    		</div>
+    	</div>
 	</body>
 	
 </html>

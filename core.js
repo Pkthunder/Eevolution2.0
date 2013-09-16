@@ -67,7 +67,7 @@ var moveList = [
 	["Facade", "Fire Fang", "Wil-O-Wisp", "Flame Charge"],
 	["Swift", "Calm Mind", "Magic Coat", "Stored Power"],
 	["Taunt", "Curse", "Toxic", "Payback"],
-	["Leaf Blade", "Leach Seed", "Substitute", "Swords Dance"],
+	["Leaf Blade", "Leech Seed", "Substitute", "Swords Dance"],
 	["Blizzard", "Ice Shard", "Mirror Coat", "Frost Breath"] ];
 
 //To access: var[Pokemon.pokedex][Move Number][Move Stat Info]
@@ -109,7 +109,7 @@ var moveParams = [
 	
 	[ //Leafeon - 5
 		["Leaf Blade", 90, 1, null],
-		["Leach Seed", null, null, false],
+		["Leech Seed", null, null, false],
 		["Substitute", null, null, true], //check priority
 		["Swords Dance", null, null, false] ],
 		
@@ -118,6 +118,88 @@ var moveParams = [
 		["Ice Shard", 40, 1, true],
 		["Mirror Coat", null, null, true], //check priority
 		["Frost Breath", 40, .9, true] ] ];
+
+//a array of all move descriptions sorted in the same method
+//as the arrays above. This array is 2D -> moveDesc[Pokedex][Move Number]
+var moveDesc = [
+    //Jolteon - 0
+    [
+        //Yawn
+        "Causes opponent to fall Asleep in one turn",
+        //Discharge
+        "A damage move that also has a 50% chance of causing Paralysis",
+        //Charge Beam
+        "A weaker damage move that also has a 70% chance of raising Jolteon's Attack by one stage",
+        //Thunderbolt
+        "A standard high damage move",
+    ],
+    //Vaporeon
+    [
+        //Wish
+        "Heals for 1/2 of Vaporeon's maximum Health in one turn",
+        //Flail
+        "A move that inflicts damage and will inflict greater damage when Vaporeon's Health is low",
+        //Water Pulse
+        "A damage move that also has a 50% chance of causing Confusion",
+        //Auora Beam
+        "A damage move that also has a 30% chance of lowering the opponent's Attack by one stage",
+    ],
+    //Flareon
+    [
+        //Facade
+        "A move that inflicts greater damage if Flareon is affected by any Status Aliment",
+        //Fire Fang
+        "A damage move that also has a 20% chance to cause the opponent to Flinch",
+        //Wil O Wisp
+        "Burns Flareon's opponent",
+        //Flame Charge
+        "A weaker damage move that also increases Flareon's Speed by one stage",
+    ],
+    //Espeon
+    [
+        //Swift
+        "A damage move that is guaranteed to hit",
+        //Calm Mind
+        "Raises Espeon's Attack and Defense by one stage each",
+        //Magic Coat
+        "Creates a shield that reflects any Status Aliments back at the user",
+        //Stored Power
+        "The Power of this move increases by 20 for every positive Stat Stage Espeon has",
+    ],
+    //Umbreon
+    [
+        //Taunt
+        "Forces opponent to use a damaging move",
+        //Curse
+        "Raises Umbreon's Attack and Defense by one stage, but lowers Speed by one stage",
+        //Toxic
+        "Badly poisons the opponent, increasing the damage every turn",
+        //Payback
+        "A low Power move that doubles if Umbreon is attacked this turn",
+    ],
+    //Leafeon
+    [
+        //Leaf Blade
+        "A standard high damage move",
+        //Leech Seed
+        "A Status Aliment that causes Leafeon to absorb 1/8 of the opponent's current Health",
+        //Substitute
+        "At the cost of 1/4 of Leafeon's current Health, creates a clone of Leafeon which takes the opponent's attacks until it faints. The clone's health is equal to the amount sacrificed",
+        //Swords Dance
+        "Raises Leafeon's Attack by two stages",
+    ],
+    //Glaceon
+    [
+        //Blizzard
+        "A very high damage move, but slightly inaccurate",
+        //Ice Shard
+        "A weaker damage move that always goes first",
+        //Mirror Coat
+        "Blocks the opponent's damaging attack, and deals 1.5x the damage it would of dealth",
+        //Frost Breath
+        "A damage move that ignores the opponent's Defense",
+    ]
+];
 
 /*********************************************************************************/
 //Function Library

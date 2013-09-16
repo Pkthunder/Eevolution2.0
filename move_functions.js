@@ -70,7 +70,7 @@ var moveEffects = {
 	},
 //////////////////////////////////////////////
 //Leafeon
-	LeachSeed: function(Beasley) {
+	LeechSeed: function(Beasley) {
 		return Beasley.move.effect;
 	},
 	Substitute: function(Beasley) {

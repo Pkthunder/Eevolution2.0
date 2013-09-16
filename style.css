@@ -47,7 +47,7 @@ body {
 #textarea_wrapper > ul { /*Text Area*/
 	list-style-type: none;
 	position: relative;
-	margin-left: -35px;
+	margin-left:5px;
 }
 #intro {
 	font-size: 30px;
@@ -232,4 +232,17 @@ body {
 #footer_wrapper a {
     float: right;
     margin-left: 10px;
+}
+.accordion-group a {
+    font-size: 20px;
+}
+.accordion-inner p {
+    margin-left: 25px;
+}
+.line-one {
+    display:inline-block;
+    margin-right: 10px;
+}
+.line-two {
+    display:block;
 }

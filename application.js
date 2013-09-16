@@ -9,12 +9,12 @@ $(document).ready( function() {
 		function() {
 			$(this).find("span").toggleClass("over");
 			$(this).find(".head_pic").css( {"border": "2px solid red"} );
-			$(this).find(".bg_pic").fadeTo( "fast", 0.3 );
+			$(this).find(".bg_pic").fadeTo( 25, 0.3 );
 		},
 		function() {
 			$(this).find("span").toggleClass("over");
 			$(this).find(".head_pic").css( {"border": "none"});
-			$(this).find(".bg_pic").fadeTo( "fast", 1 );
+			$(this).find(".bg_pic").fadeTo( 25, 1 );
 		});
 
 	/*Mouse click header button functions*/
@@ -65,8 +65,8 @@ $(document).ready( function() {
 			play2.player = 2;
 			play2.txt = "p2t";
 			refresh( play2, "Player 2 has choosen " + creationList[$Evana][0] );
+			$(".btn.disabled").addClass("activated");
 			$(".btn").removeClass("disabled");
-			$(".btn").addClass("activated");
 			play1.other = play2;
 			play2.other = play1;
 		}
@@ -114,8 +114,8 @@ $(document).ready( function() {
 			$(".random_wrapper").on("mouseleave", function() {
 				$(".random_wrapper").unbind("mouseenter mouseleave");
 			});
+			$(".btn.disabled").addClass("activated");
 			$(".btn").removeClass("disabled");
-			$(".btn").addClass("activated");
 			play1.other = play2;
 			play2.other = play1;
 		}
@@ -227,16 +227,46 @@ $(document).ready( function() {
 	    console.log("onDeath was triggered successfully");
 	    $(".btn.activated").addClass("disabled");
 		$(".btn").removeClass("activated");
-		$("#footer_wrapper button, #footer_wrapper a").removeClass("disabled");
 	    refresh(onDeath.who.other, onDeath.who.name+" has fainted! "+onDeath.who.other.name+" wins!");
 	});
 	
 	/*******************************************************************************************************/
 
     //Footer button functions
+    
+    //Reset Button
     $("#reset_btn").on("click", function() {
         $(this).unbind("click");
         window.location.reload();
     });
+    
+    $(".accordion-group a").on("click", function() {
+        $(this).unbind("click");
+        var Evana = $(this).parent().parent();
+        var Gizzi = Evana.attr("id");
+        Gizzi = getPokefromName(Gizzi);
+        Evana = Evana.find(".accordion-inner");
+        for ( var i=0; i<4; i++ ) {
+            Evana.append(
+                    '<h5>' + moveParams[Gizzi][i][0] + '</h5>' +
+                    '<p class="well well-small">' +
+                        '<span class="line-one"><strong>Power:</strong> ' + getMoveParam(Gizzi, i, 1) + '</span>' +
+                        '<span class="line-one"><strong>Accuracy:</strong> ' + getMoveParam(Gizzi, i, 2) + '</span>' +
+                        '<span class="line-two"> ' + moveDesc[Gizzi][i] + '</span>' +
+                    '</p>' );
+        }
+    });
+    
+    function getMoveParam( Evana, Gizzi, Param ) {
+        return ( moveParams[Evana][Gizzi][Param] == null ) ? 'N/A' : moveParams[Evana][Gizzi][Param];
+    }
+    
+    function getPokefromName( Marc ) {
+        for ( var i=0; i<7; i++ ) {
+            if ( Marc == creationList[i][0] ) {
+                return i;
+            }
+        }
+    }
 
 });

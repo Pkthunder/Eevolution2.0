@@ -20,11 +20,8 @@ Copyrighted (c) to Paradoxysaurs, 1827 in Atlantis, Atlantis.
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link type="text/css" rel="stylesheet" href="style.css"/>
 		<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
-	    <!-- <link type="text/css" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/> -->
 		<script type="text/javascript" src="jquery.js"></script>
-		<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
-		<!-- <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script> -->
-		<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 		<script type="text/javascript" src="core.js"></script>
 		<script type="text/javascript" src="status_functions.js"></script>
 		<script type="text/javascript" src="move_functions.js"></script>
@@ -35,17 +32,133 @@ Copyrighted (c) to Paradoxysaurs, 1827 in Atlantis, Atlantis.
 	</head>
 
 	<body>
-			<!-- Body Wrapper Begins -->
+	    <!-- Body Wrapper Begins -->
 		<div id="body_container">
 		
-			<!-- TODO: Modal Integration -->
+			<!-- TODO: Complete How2 Modal -->
             <div class="modal hide" id="myModal">
               <div class="modal-header">
                 <button class="close" data-dismiss="modal">×</button>
-                <h3>Modal header</h3>
+                <h4>How To Play</h4>
               </div>
               <div class="modal-body">
               <p> Testing the thingy</p>
+              </div>
+              <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal">Close</a>
+              </div>
+            </div>
+            <!-- End of How2 Modal -->
+            
+            <!-- TODO: Complete Modal -->
+            <div class="modal hide" id="moveModal">
+              <div class="modal-header">
+                <button class="close" data-dismiss="modal">×</button>
+                <h4>Move List</h4>
+              </div>
+              <div class="modal-body">
+                <div class="accordion" id="move-list-display">
+                
+                    <div class="alert alert-info">
+                        <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+                        <strong>To All Hardcore Pokemon Fans</strong> 
+                        <br>Some moves may have been altered from the traditional Pokemon moves. Sorry. I hope you still love me!
+                    </div>
+                            
+                <!-- Jolteon -->
+                    <div class="accordion-group" id="Jolteon">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#move-list-display" href="#collapseOne">
+                                Jolteon
+                            </a>
+                        </div>
+                        <div id="collapseOne" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <!-- Filled in dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                <!-- Vaporeon -->
+                    <div class="accordion-group" id="Vaporeon">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#move-list-display" href="#collapseTwo">
+                                Vaporeon
+                            </a>
+                        </div>
+                        <div id="collapseTwo" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <!-- Filled in dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                <!-- Flareon -->
+                    <div class="accordion-group" id="Flareon">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#move-list-display" href="#collapseThree">
+                                Flareon
+                            </a>
+                        </div>
+                        <div id="collapseThree" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <!-- Filled in dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                <!-- Espeon -->
+                    <div class="accordion-group" id="Espeon">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#move-list-display" href="#collapseFour">
+                                Espeon
+                            </a>
+                        </div>
+                        <div id="collapseFour" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <!-- Filled in dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                <!-- Umbreon -->
+                    <div class="accordion-group" id="Umbreon">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#move-list-display" href="#collapseFive">
+                                Umbreon
+                            </a>
+                        </div>
+                        <div id="collapseFive" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <!-- Filled in dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                <!-- Leafeon -->
+                    <div class="accordion-group" id="Leafeon">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#move-list-display" href="#collapseSix">
+                                Leafeon
+                            </a>
+                        </div>
+                        <div id="collapseSix" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <!-- Filled in dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                <!-- Glaceon -->
+                    <div class="accordion-group" id="Glaceon">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#move-list-display" href="#collapseSeven">
+                                Glaceon
+                            </a>
+                        </div>
+                        <div id="collapseSeven" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <!-- Filled in dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
               </div>
               <div class="modal-footer">
                 <a href="#" class="btn" data-dismiss="modal">Close</a>
@@ -179,9 +292,10 @@ Copyrighted (c) to Paradoxysaurs, 1827 in Atlantis, Atlantis.
 			</div>
 			
     		<div id="footer_wrapper">
-    		    <span id="signature">Eevolution 2 created by Jared Perreault<br>using Jquery and Twitter Bootstrap</span>
+    		    <span id="signature">Eevolution 2 created by Jared Perreault<br>using jQuery and Twitter Bootstrap</span>
     		    <button id="reset_btn" class="btn btn-danger" type="button">Reset</button>
     		    <a id="how2_btn" class="btn btn-primary" data-toggle="modal" href="#myModal">How To Play</a>
+    		    <a id="how2_btn" class="btn btn-primary" data-toggle="modal" href="#moveModal">Move List</a>
     		    <a href="http://www.linkedin.com/in/jaredperreault" target="_blank">
     		        <button id="abt_me" class="btn btn-info" type="button">About Me</button>
     		    </a>

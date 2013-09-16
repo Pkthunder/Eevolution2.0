@@ -28,7 +28,7 @@ function calcDmg( attacker) {
 
 	var rand = getRandom();
 	var Dmg = (((((42 * attacker.attack * attacker.move.pwr) / attacker.other.defense) / 50) + 2) * rand) / 100;
-	return Math.round(Dmg);
+	return (Dmg > 0 ) ? Math.round(Dmg) : 0;
 }
 
 function recordDmg(target, damage) {
@@ -48,7 +48,8 @@ function runEffect( attacker ) {
 function runBattleSequence(attacker) {
     console.log("Entering Battle Phase for "+attacker.name);
     
-    var dmg = 0;
+    var dmg = -1;
+    var done = false; //a bool to tell if the status/effect should end the battle phase
     //check for death to prevent zombie attacks
     if (attacker.health < 1 ) {
         console.log("Exiting Battle Phase for "+attacker.name+" - preventing zombie attack");
@@ -75,13 +76,13 @@ function runBattleSequence(attacker) {
         if (attacker.move.pre == false) {
             runEffect(attacker);
         }
+        //Record the Calculated Damage
+        recordDmg(attacker.other, dmg);
     }
     //run post-effect without a damaging attack
-    if (dmg == 0 && attacker.move.pre == false) {
-        dmg = runEffect(attacker);
+    if (dmg == -1 && attacker.move.pre == false) {
+        runEffect(attacker);
     }
-    //Record the Calculated Damage
-    recordDmg(attacker.other, dmg);
 }
 
 function runBattlePhase() {

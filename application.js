@@ -203,11 +203,11 @@ $(document).ready( function() {
 		runBattlePhase();
 		//starts next round of 'Battle Phase'
 		//if neither player has died
-		if (play1.health > 0 && play2.health > 0 ) {
-		    setTimeout( function() {
-		        $(document).trigger(onDamageRecorded);
-		    }, 2000 );
-		}
+    		if (play1.health > 0 && play2.health > 0) {
+    		    setTimeout( function() {
+    		        $(document).trigger(onDamageRecorded);
+    		    }, 4500 );
+    		}
 	});
 
 	$(document).on( "DamageRecorded", function() {

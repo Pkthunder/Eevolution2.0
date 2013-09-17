@@ -79,45 +79,45 @@ var moveList = [
 var moveParams = [
 	[ //Jolteon - 0
 		["Yawn", null, null, false], //0
-		["Discharge", 80, 1, false], //1
-		["Charge Beam", 50, .9, false], //2
-		["Thunderbolt", 95, 1] ], //3
+		["Discharge", 80, 100, false], //1
+		["Charge Beam", 50, 90, false], //2
+		["Thunderbolt", 95, 0] ], //3
 
 	[ //Vaporeon - 1
 		["Wish", null, null, false], //0
-		["Flail", 20, 1, true], //1
-		["Water Pulse", 60, 1, false], //2
-		["Auora Beam", 65, 1, false] ], //3
+		["Flail", 20, 100, true], //1
+		["Water Pulse", 60, 100, false], //2
+		["Auora Beam", 65, 100, false] ], //3
 	
 	[ //Flareon - 2
-		["Facade", 70, 1, true],
-		["Fire Fang", 60, .95, true],
+		["Facade", 70, 100, true],
+		["Fire Fang", 60, 95, true],
 		["Wil O Wisp", null, null, false],
-		["Flame Charge", 50, 1, false] ],
+		["Flame Charge", 50, 100, false] ],
 	
 	[ //Espeon - 3
 		["Swift", null, null, true],
 		["Calm Mind", null, null, false],
 		["Magic Coat", null, null,, true],
-		["Stored Power", 20, 1, true] ],
+		["Stored Power", 20, 100, true] ],
 	
 	[ //Umbreon - 4
 		["Taunt", null, null, false],
 		["Curse", null, null, false],
 		["Toxic", null, null, false],
-		["Payback", 50, 1, true] ],
+		["Payback", 50, 100, true] ],
 	
 	[ //Leafeon - 5
-		["Leaf Blade", 90, 1, null],
+		["Leaf Blade", 90, 100, null],
 		["Leech Seed", null, null, false],
 		["Substitute", null, null, true], //check priority
 		["Swords Dance", null, null, false] ],
 		
 	[ //Glaceon - 6
-		["Blizzard", 120, .7, null],
-		["Ice Shard", 40, 1, true],
+		["Blizzard", 120, 70, null],
+		["Ice Shard", 40, 100, true],
 		["Mirror Coat", null, null, true], //check priority
-		["Frost Breath", 40, .9, true] ] ];
+		["Frost Breath", 40, 90, true] ] ];
 
 //a array of all move descriptions sorted in the same method
 //as the arrays above. This array is 2D -> moveDesc[Pokedex][Move Number]

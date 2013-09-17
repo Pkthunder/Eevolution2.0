@@ -14,6 +14,12 @@ function priorityCheck() {
 	return (play1.move.priority > play2.move.priority) ? play1 : play2;
 }
 
+function hitCheck( attacker ) {
+    var Gizzi = attacker.move.acc;
+    var Evana = Math.floor(Math.random()*100) + 1;
+    return (Evana <= Gizzi) ? true : false;
+}
+
 function getRandom() {
 	var Evana = Math.floor(Math.random()*15) + 1;
 	Evana = Evana + 85;
@@ -50,6 +56,7 @@ function runBattleSequence(attacker) {
     
     var dmg = -1;
     var done = false; //a bool to tell if the status/effect should end the battle phase
+    
     //check for death to prevent zombie attacks
     if (attacker.health < 1 ) {
         console.log("Exiting Battle Phase for "+attacker.name+" - preventing zombie attack");
@@ -67,22 +74,29 @@ function runBattleSequence(attacker) {
     }
     //run pre-effect
     if (attacker.move.pre) {
-        runEffect(attacker);
+        //runEffect(attacker);
     }
     //calculate damage
     if (attacker.move.pwr != null) {
+        if ( !hitCheck(attacker) ) {
+            console.log(attacker.name +" missed");
+            refresh( attacker, "but "+attacker.name+" missed the target!");
+            return;
+        }
         dmg = calcDmg(attacker);
         //Run post-effect after an damaging attack
         if (attacker.move.pre == false) {
-            runEffect(attacker);
+            //runEffect(attacker);
         }
         //Record the Calculated Damage
         recordDmg(attacker.other, dmg);
     }
     //run post-effect without a damaging attack
     if (dmg == -1 && attacker.move.pre == false) {
-        runEffect(attacker);
+        //runEffect(attacker);
     }
+
+    console.log("Battle Sequence Ended");
 }
 
 function runBattlePhase() {
@@ -96,8 +110,16 @@ function runBattlePhase() {
     }
     second = first.other;
     //run the Sequence - delay second sequence for better UX
-    runBattleSequence(first);
+    refresh(first, first.name + " uses " + first.move.name);
     setTimeout( function() {
-        runBattleSequence(second);
-    }, 2000);
+        runBattleSequence(first);   
+    }, 1000);
+    if ( second.health > 0 ) {
+        setTimeout( function() {
+            refresh(second, second.name + " uses " + second.move.name);
+            setTimeout(function() {
+                runBattleSequence(second);
+            }, 1000); 
+        }, 2000);
+    }
 }

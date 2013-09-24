@@ -201,11 +201,11 @@ $(document).ready( function() {
 		runBattlePhase();
 		//starts next round of 'Battle Phase'
 		//if neither player has died
-    		if (play1.health > 0 && play2.health > 0) {
-    		    setTimeout( function() {
-    		        $(document).trigger(onDamageRecorded);
-    		    }, 5500 );
-    		}
+		if (play1.health > 0 && play2.health > 0) {
+		    setTimeout( function() {
+		        $(document).trigger(onDamageRecorded);
+		    }, 5500 );
+		}
 	});
 
 	$(document).on( "DamageRecorded", function() {
@@ -214,8 +214,18 @@ $(document).ready( function() {
     	    play1.move = null;
     	    play2.move = null;
     	    turn++; //increment turn counter
-            $(".btn.disabled").addClass("activated");
-            $(".btn").removeClass("disabled");
+    	    setTimeout(function() {
+    	        if (play1.status != null) {
+                    removeAliment(play1); //defined in status_function.js
+    	        }
+            }, 1000);
+            setTimeout(function() {
+                if (play2.status != null) {
+                    removeAliment(play2);
+                }
+                $(".btn.disabled").addClass("activated");
+                $(".btn").removeClass("disabled");
+            }, 1000);
 	    }
 	    else {
 	        console.log("DamageRecorded triggered successful - doing nothing due to detected death");

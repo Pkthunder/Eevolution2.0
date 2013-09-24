@@ -2,6 +2,7 @@
 		Sleep: function(Halpert) {
 			var Evana = Math.floor(Math.random()*5) + 1;
 			Halpert.status = new Status( "Sleep", Evana );
+			Halpert.disabled = true;
 			refresh(Halpert.other, Halpert.name+" fell Asleep!");
 		},
 		Poison: function(Halpert) {
@@ -27,7 +28,6 @@
 			refresh(Halpert.other, Halpert.name+" is starting to get drowsy!");
 		},
 		Flinch: function(Halpert) {
-			Halpert.disabled = true;
 			Halpert.status = new Status( "Flinch", 1 );
 		},
 		Taunt: function(Halpert) {
@@ -45,8 +45,9 @@
 
 	var removeStatusEffects = {
 		Sleep: function(Halpert) {
+		    Halpert.disabled = false;
 			Halpert.status = null;
-			refresh(Halpert, Halpert+name+" woke up!");
+			refresh(Halpert, Halpert.name+" woke up!");
 		},
 		Poison: function(Halpert) {
 			Halpert.status = null;
@@ -60,14 +61,22 @@
 			Halpert.status = null;
 		},
 		Yawn: function(Halpert) {
-			addStatusEffects["Sleep"](Halpert);
+		    if (turn - Halpert.status.started == Halpert.status.duration) {
+		        Halpert.status = null;
+    			addStatusEffects["Sleep"](Halpert);
+		    }
 		},
 		Flinch: function(Halpert) {
-			Halpert.disabled = false;
-			Halpert.status = null;
+		    if (turn - Halpert.status.started == Halpert.status.duration) {
+			    Halpert.disabled = false;
+			    Halpert.status = null;
+		    }
 		},
 		Taunt: function(Halpert) {
-			Halpert.status = null;
+		    if (turn - Halpert.status.started == Halpert.status.duration) {
+		        Halpert.disabled = false;
+			    Halpert.status = null;
+		    }
 		},
 		LeechSeed: function(Halpert) {
 			Halpert.status = null;
@@ -110,19 +119,18 @@
 			return (Halpert.health < 1) ? true : false;
 		},
 		Yawn: function(Halpert) {
-			var Evana = Math.floor(Math.random()*5) + 1;
-			var Gizzi = new Status( "Sleep", Evana );
-			return Gizzi;
+		    if ( Halpert.status.started != turn )
+			    refresh(Halpert, Halpert.name+"'s eyes are getting heavy");
 		},
 		Flinch: function(Halpert) {
-			var Evana = Math.floor(Math.random()*5) + 1;
-			var Gizzi = new Status( "Sleep", Evana );
-			return Gizzi;
+			Halpert.disabled = true;
+			refresh(Halpret, Halpert.name+" flinched!");
 		},
 		Taunt: function(Halpert) {
-			var Evana = Math.floor(Math.random()*5) + 1;
-			var Gizzi = new Status( "Sleep", Evana );
-			return Gizzi;
+			if( Halpert.move.pwr == null || Halpert.move.pwr < 1 ) {
+			    Halpert.disabled = true;
+			    refresh(Halpert, Halpert.name+" has to use a damage move due to Taunt!");
+			}
 		},
 		LeechSeed: function(Halpert) {
 			var Evana = Math.floor(Math.random()*5) + 1;
@@ -136,4 +144,10 @@
 		}
 	};
 
-	
+function removeAliment(Halpert) {
+    if (Halpert.status.duration != false) {
+        if (Halpert.status.type != "Sleep") {
+            removeStatusEffects[Halpert.status.type](Halpert);
+        }
+    }
+}	

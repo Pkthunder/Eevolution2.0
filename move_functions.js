@@ -2,7 +2,12 @@
 var moveEffects = {
 //Jolteon
 	Yawn: function(Beasley) {
-		return false;
+		if (Beasley.other.status == null || Beasley.other.status.type != "Yawn") {
+		    addStatusEffects["Yawn"](Beasley.other);
+		}
+		else {
+		    refresh(Beasley, "but it failed!")   
+		}
 	},
 	Discharge: function(Beasley) {
 		return false;
@@ -63,7 +68,13 @@ var moveEffects = {
 ///////////////////////////////////////////////
 //Umbreon
 	Taunt: function(Beasley) {
-		return false;
+		if (Beasley.other.status == null ) {
+	        addStatusEffects["Taunt"](Beasley.other);   
+	    }
+		else {
+		    refresh(Beasley, "but it failed!");
+	    }
+	    return true;
 	},
 	Curse: function(Beasley) {
 		return false;

@@ -115,7 +115,8 @@ function runBattlePhase() {
     }
     second = first.other;
     
-    refresh(null, "--- Turn: "+turn+" ---");
+    //prints the Turn # (in black i.e. the null)
+    refresh(null, "--- Turn: "+turn+" --- <");
     
     //First's Turn
     if (runAliment(first)) {
@@ -129,6 +130,10 @@ function runBattlePhase() {
         }
         //disabled check
         if (first.disabled) {
+            if (first.status.type == "Sleep") {
+                refresh(first, first.name+" is sleeping!");
+                return;
+            }
             refresh(first, first.name+" is unable to attack!");
             return;
         }
@@ -151,6 +156,10 @@ function runBattlePhase() {
             }
             //disabled check
             if (second.disabled) {
+                if (second.status.type == "Sleep") {
+                    refresh(second, second.name+" is sleeping!");
+                    return;
+                }
                 refresh(second, second.name+" is unable to attack!");
                 return;
             }

@@ -38,8 +38,8 @@ function Status( type, duration ) {
 }
 
 //	2 Player's Global variables
-var play1 = new Pokemon;
-var play2 = new Pokemon;
+var play1 = new Pokemon();
+var play2 = new Pokemon();
 /*Global Variable Short List*/
 var turn = 1;
 var pick_turn = 1;
@@ -52,14 +52,15 @@ var onDeath = jQuery.Event("Death");
 //Global Data Arrays
 var nameList = ['Jolteon', 'Vaporeon', 'Flareon', 'Espeon', 'Umbreon', 'Leafeon', 'Glaceon'];
 
+//Name, Attack, Defense, Speed, Health
 var creationList = [
-	["Jolteon", 100, 100, 100, 100],
-	["Vaporeon", 100, 100, 100, 100],
-	["Flareon", 100, 100, 100, 100],
-	["Espeon", 100, 100, 100, 100],
-	["Umbreon", 100, 100, 100, 100],
-	["Leafeon", 100, 100, 100, 100],
-	["Glaceon", 100, 100, 100, 100] ];
+	["Jolteon", 202, 144, 238, 240],
+	["Vaporeon", 202, 144, 121, 370],
+	["Flareon", 238, 157, 121, 240],
+	["Espeon", 238, 144, 202, 240],
+	["Umbreon", 121, 220, 121, 300],
+	["Leafeon", 202, 180, 175, 240],
+	["Glaceon", 238, 189, 121, 240] ];
 
 var moveList = [
 	["Yawn", "Discharge", "Charge Beam", "Thunderbolt"],
@@ -78,10 +79,10 @@ var moveList = [
 //									var[3] = Pre Effect Boolean
 var moveParams = [
 	[ //Jolteon - 0
-		["Yawn", null, null, false], //0
+		["Yawn", null, 100, false], //0
 		["Discharge", 80, 100, false], //1
 		["Charge Beam", 50, 90, false], //2
-		["Thunderbolt", 95, 0] ], //3
+		["Thunderbolt", 95, 100] ], //3
 
 	[ //Vaporeon - 1
 		["Wish", null, null, false], //0
@@ -92,7 +93,7 @@ var moveParams = [
 	[ //Flareon - 2
 		["Facade", 70, 100, true],
 		["Fire Fang", 60, 95, true],
-		["Wil O Wisp", null, null, false],
+		["Wil O Wisp", null, 75, false],
 		["Flame Charge", 50, 100, false] ],
 	
 	[ //Espeon - 3
@@ -102,14 +103,14 @@ var moveParams = [
 		["Stored Power", 20, 100, true] ],
 	
 	[ //Umbreon - 4
-		["Taunt", null, null, false],
+		["Taunt", null, 100, false],
 		["Curse", null, null, false],
-		["Toxic", null, null, false],
+		["Toxic", null, 90, false],
 		["Payback", 50, 100, true] ],
 	
 	[ //Leafeon - 5
 		["Leaf Blade", 90, 100, null],
-		["Leech Seed", null, null, false],
+		["Leech Seed", null, 90, false],
 		["Substitute", null, null, true], //check priority
 		["Swords Dance", null, null, false] ],
 		

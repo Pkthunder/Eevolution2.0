@@ -20,6 +20,28 @@ function hitCheck( attacker ) {
     return (Evana <= Gizzi) ? true : false;
 }
 
+//check for death to prevent zombie attacks
+function preventZombieAtk(attacker)
+{
+    if (attacker.health < 1 ) {
+        console.log("Exiting Battle Phase for "+attacker.name+" - preventing zombie attack");
+        return true;
+    }
+    return false;
+}
+    //disabled check
+function disabledCheck(attacker)
+{
+    if (attacker.disabled) {
+        if (attacker.status.type == "Flinch")
+            refresh(attacker, attacker.name+" Flinched!");
+        else
+            refresh(attacker, attacker.name+" is unable to attack!");
+        return true;
+    }
+    return false;
+}
+
 function getRandom() {
 	var Evana = Math.floor(Math.random()*15) + 1;
 	Evana = Evana + 85;
@@ -42,13 +64,20 @@ function recordDmg(target, damage) {
 	refresh(target.other, target.other.name+ "'s " + target.other.move.name + " dealt " +
 	        damage +" damage to "+target.name);
 	updateHealthBar(target);
-	turn++;
 }
 
 function runEffect( attacker ) {
     var Evana = attacker.move.effect;
     Evana = Evana.replace(' ','').replace(' ','');
-    moveEffects[Evana](attacker);
+    return moveEffects[Evana](attacker);
+}
+
+function runAliment(attacker) {
+    if (attacker.status) {
+        console.log("running status effect: " + attacker.status.type + " on " + attacker.name);
+        return turnStatusEffects[attacker.status.type](attacker); //returns true if Aliment causes death
+    }
+    return false;
 }
 
 function runBattleSequence(attacker) {
@@ -57,23 +86,9 @@ function runBattleSequence(attacker) {
     var dmg = -1;
     var done = false; //a bool to tell if the status/effect should end the battle phase
     
-    //check for death to prevent zombie attacks
-    if (attacker.health < 1 ) {
-        console.log("Exiting Battle Phase for "+attacker.name+" - preventing zombie attack");
-        return;
-    }
-    //run status effects
-    if (attacker.status) {
-        //run effect
-        console.log("running status effect: " + attacker.status + " on " + attacker.name);
-    }
-    //disabled check
-    if (attacker.disabled) {
-        refresh(attacker, attacker.name+" is unable to attack!");
-        return;
-    }
     //run pre-effect
     if (attacker.move.pre) {
+        console.log("Running pre-effect...");
         //runEffect(attacker);
     }
     //calculate damage
@@ -86,6 +101,7 @@ function runBattleSequence(attacker) {
         dmg = calcDmg(attacker);
         //Run post-effect after an damaging attack
         if (attacker.move.pre == false) {
+            console.log("Running post-effect WITH attack...");
             //runEffect(attacker);
         }
         //Record the Calculated Damage
@@ -93,10 +109,21 @@ function runBattleSequence(attacker) {
     }
     //run post-effect without a damaging attack
     if (dmg == -1 && attacker.move.pre == false) {
-        //runEffect(attacker);
+        console.log("Running post-effect AFTER attack");
+        if ( !hitCheck(attacker) ) {
+            console.log(attacker.name +" missed");
+            refresh( attacker, "but it failed to connect!");
+            return;
+        }
+        done = runEffect(attacker);
     }
 
-    console.log("Battle Sequence Ended");
+    //Temp Catch All
+    if (dmg < 0 && attacker.move.pwr == null && done == false) {
+        refresh( attacker, "The move failed because I haven't added it yet. Sorry!");   
+    }
+
+    console.log("Battle Sequence Ended for "+attacker.name);
 }
 
 function runBattlePhase() {
@@ -109,17 +136,35 @@ function runBattlePhase() {
         first = speedCheck();
     }
     second = first.other;
-    //run the Sequence - delay second sequence for better UX
-    refresh(first, first.name + " uses " + first.move.name);
+    //First attacker's turn:
+    // if (runAliment(first)) {
+    //     return;
+    // }
+    runAliment(first);
     setTimeout( function() {
-        runBattleSequence(first);   
-    }, 1000);
-    if ( second.health > 0 ) {
-        setTimeout( function() {
-            refresh(second, second.name + " uses " + second.move.name);
-            setTimeout(function() {
-                runBattleSequence(second);
-            }, 1000); 
-        }, 2000);
-    }
+        if (!preventZombieAtk(first) && !disabledCheck(first)) {
+            refresh(first, first.name + " uses " + first.move.name);
+            setTimeout( function() {
+                runBattleSequence(first);   
+            }, 1000);
+        }
+    },1000);
+    //Second Attacker's turn:
+    //run the Sequence - delay second sequence for better UX
+    setTimeout( function() {
+        if (second.health > 0 && first.health > 0) {
+            // if (runAliment(second)) {
+            //     return;
+            // }
+            runAliment(second);
+            setTimeout( function() {
+                if (!preventZombieAtk(second) && !disabledCheck(second)) {
+                    refresh(second, second.name + " uses " + second.move.name);
+                    setTimeout(function() {
+                        runBattleSequence(second);
+                    }, 1000); 
+                }
+            }, 1000);
+        }
+    }, 2750);
 }

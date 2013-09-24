@@ -74,7 +74,6 @@ $(document).ready( function() {
 		$(this).unbind("click mouseenter mouseleave");
 		//refresh( "Player " + pick_turn + " has choosen " + creationList[$Evana][0] );
 		pick_turn++;
-		turn++;
 	});
 	
 	//Random Button Function
@@ -129,7 +128,6 @@ $(document).ready( function() {
 		MarcG.unbind("click mouseenter mouseleave");
 		//refresh( "Player " + pick_turn + " has choosen " + creationList[Evana][0] );
 		pick_turn++;
-		turn++;
 	});
 
 	/*******************************************************************************************************/
@@ -206,7 +204,7 @@ $(document).ready( function() {
     		if (play1.health > 0 && play2.health > 0) {
     		    setTimeout( function() {
     		        $(document).trigger(onDamageRecorded);
-    		    }, 4500 );
+    		    }, 5500 );
     		}
 	});
 
@@ -215,6 +213,7 @@ $(document).ready( function() {
     	    console.log("DamageRecorded triggered successsful");
     	    play1.move = null;
     	    play2.move = null;
+    	    turn++; //increment turn counter
             $(".btn.disabled").addClass("activated");
             $(".btn").removeClass("disabled");
 	    }

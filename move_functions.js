@@ -2,93 +2,104 @@
 var moveEffects = {
 //Jolteon
 	Yawn: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 	Discharge: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 	ChargeBeam: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 /////////////////////////////////////////////////
 //Vaporeon
 	Wish: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 	Flail: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 	WaterPulse: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 	AuoraBeam: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 ////////////////////////////////////////////////
 //Flareon
 	Facade: function(Beasley) {
 		if ( Beasley.status != null )
 			Beasley.move.pwr = Beasley.move.pwr * 2;
-		return Beasley.move.effect;
+		return false;
 	},
 	FireFang: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
-	Wisp: function(Beasley) {
-		return Beasley.move.effect;
+	WilOWisp: function(Beasley) {
+		if (Beasley.other.status == null ) {
+	        addStatusEffects["Burn"](Beasley.other);   
+	    }
+		else {
+		    refresh(Beasley, "but it failed!");
+	    }
+	    return true;
 	},
 	FlameCharge: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 ///////////////////////////////////////////////
 //Espeon
 	Swift: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 	CalmMind: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 	MagicCoat: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 	StoredPower: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 ///////////////////////////////////////////////
 //Umbreon
 	Taunt: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 	Curse: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 	Toxic: function(Beasley) {
-		return Beasley.move.effect;
+	    if (Beasley.other.status == null ) {
+	        addStatusEffects["Poison"](Beasley.other);   
+	    }
+		else {
+		    refresh(Beasley, "but it failed!");
+	    }
+	    return true;
 	},
 	Payback: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 //////////////////////////////////////////////
 //Leafeon
 	LeechSeed: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 	Substitute: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 	SwordsDance: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 //////////////////////////////////////////////
 //Glaceon
 	IceShard: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 	MirrorCoat: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	},
 	FrostBreath: function(Beasley) {
-		return Beasley.move.effect;
+		return false;
 	}
 };
-

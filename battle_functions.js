@@ -20,28 +20,6 @@ function hitCheck( attacker ) {
     return (Evana <= Gizzi) ? true : false;
 }
 
-//check for death to prevent zombie attacks
-function preventZombieAtk(attacker)
-{
-    if (attacker.health < 1 ) {
-        console.log("Exiting Battle Phase for "+attacker.name+" - preventing zombie attack");
-        return true;
-    }
-    return false;
-}
-    //disabled check
-function disabledCheck(attacker)
-{
-    if (attacker.disabled) {
-        if (attacker.status.type == "Flinch")
-            refresh(attacker, attacker.name+" Flinched!");
-        else
-            refresh(attacker, attacker.name+" is unable to attack!");
-        return true;
-    }
-    return false;
-}
-
 function getRandom() {
 	var Evana = Math.floor(Math.random()*15) + 1;
 	Evana = Evana + 85;
@@ -86,6 +64,16 @@ function runBattleSequence(attacker) {
     var dmg = -1;
     var done = false; //a bool to tell if the status/effect should end the battle phase
     
+    //check for death to prevent zombie attacks
+    if (attacker.health < 1 ) {
+        console.log("Exiting Battle Phase for "+attacker.name+" - preventing zombie attack");
+        return;
+    }
+    //disabled check
+    if (attacker.disabled) {
+        refresh(attacker, attacker.name+" is unable to attack!");
+        return;
+    }
     //run pre-effect
     if (attacker.move.pre) {
         console.log("Running pre-effect...");
@@ -101,7 +89,7 @@ function runBattleSequence(attacker) {
         dmg = calcDmg(attacker);
         //Run post-effect after an damaging attack
         if (attacker.move.pre == false) {
-            console.log("Running post-effect WITH attack...");
+            console.log("Running post-effect WITH attack...")
             //runEffect(attacker);
         }
         //Record the Calculated Damage
@@ -112,7 +100,7 @@ function runBattleSequence(attacker) {
         console.log("Running post-effect AFTER attack");
         if ( !hitCheck(attacker) ) {
             console.log(attacker.name +" missed");
-            refresh( attacker, "but it failed to connect!");
+            refresh( attacker, "but it failed!");
             return;
         }
         done = runEffect(attacker);
@@ -123,6 +111,7 @@ function runBattleSequence(attacker) {
         refresh( attacker, "The move failed because I haven't added it yet. Sorry!");   
     }
 
+    turn++;
     console.log("Battle Sequence Ended for "+attacker.name);
 }
 
@@ -136,35 +125,23 @@ function runBattlePhase() {
         first = speedCheck();
     }
     second = first.other;
-    //First attacker's turn:
-    // if (runAliment(first)) {
-    //     return;
-    // }
-    runAliment(first);
-    setTimeout( function() {
-        if (!preventZombieAtk(first) && !disabledCheck(first)) {
-            refresh(first, first.name + " uses " + first.move.name);
-            setTimeout( function() {
-                runBattleSequence(first);   
-            }, 1000);
-        }
-    },1000);
-    //Second Attacker's turn:
+    if (runAliment(first)) {
+        return;
+    }
     //run the Sequence - delay second sequence for better UX
+    refresh(first, first.name + " uses " + first.move.name);
     setTimeout( function() {
-        if (second.health > 0 && first.health > 0) {
-            // if (runAliment(second)) {
-            //     return;
-            // }
-            runAliment(second);
-            setTimeout( function() {
-                if (!preventZombieAtk(second) && !disabledCheck(second)) {
-                    refresh(second, second.name + " uses " + second.move.name);
-                    setTimeout(function() {
-                        runBattleSequence(second);
-                    }, 1000); 
-                }
-            }, 1000);
+        runBattleSequence(first);   
+    }, 1000);
+    setTimeout( function() {
+        if (second.health > 0) {
+            if (runAliment(second)) {
+                return;
+            }
+            refresh(second, second.name + " uses " + second.move.name);
         }
-    }, 2750);
+        setTimeout(function() {
+            runBattleSequence(second);
+        }, 1000); 
+    }, 2000);
 }

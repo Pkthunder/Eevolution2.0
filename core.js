@@ -216,6 +216,7 @@ function refresh( who, inString ) {
 	    $("#textarea_wrapper ul").append( '<li> > ' + inString + '</li>' );
 	    $("#textarea_wrapper li:last").addClass(who.txt);
     }
+    $("#textarea_wrapper").animate({scrollTop: $('#textarea_wrapper li:last').offset().top});
 }
 
 // Health Bar Function

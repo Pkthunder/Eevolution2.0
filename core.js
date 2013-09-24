@@ -207,8 +207,15 @@ var moveDesc = [
 
 // Text Area Function
 function refresh( who, inString ) {
-	$("#textarea_wrapper ul").append( '<li> > ' + inString + '</li>' );
-	$("#textarea_wrapper li:last").addClass(who.txt);
+    if ( who == null ) {
+        var format = $(".p3t");
+        $("#textarea_wrapper ul").append( '<li> > ' + inString + '</li>' );
+	    $("#textarea_wrapper li:last").addClass(format);
+    }
+    else {
+	    $("#textarea_wrapper ul").append( '<li> > ' + inString + '</li>' );
+	    $("#textarea_wrapper li:last").addClass(who.txt);
+    }
 }
 
 // Health Bar Function

@@ -64,16 +64,6 @@ function runBattleSequence(attacker) {
     var dmg = -1;
     var done = false; //a bool to tell if the status/effect should end the battle phase
     
-    //check for death to prevent zombie attacks
-    if (attacker.health < 1 ) {
-        console.log("Exiting Battle Phase for "+attacker.name+" - preventing zombie attack");
-        return;
-    }
-    //disabled check
-    if (attacker.disabled) {
-        refresh(attacker, attacker.name+" is unable to attack!");
-        return;
-    }
     //run pre-effect
     if (attacker.move.pre) {
         console.log("Running pre-effect...");
@@ -110,8 +100,7 @@ function runBattleSequence(attacker) {
     if (dmg < 0 && attacker.move.pwr == null && done == false) {
         refresh( attacker, "The move failed because I haven't added it yet. Sorry!");   
     }
-
-    turn++;
+    
     console.log("Battle Sequence Ended for "+attacker.name);
 }
 
@@ -125,23 +114,50 @@ function runBattlePhase() {
         first = speedCheck();
     }
     second = first.other;
+    
+    refresh(null, "--- Turn: "+turn+" ---");
+    
+    //First's Turn
     if (runAliment(first)) {
         return;
     }
-    //run the Sequence - delay second sequence for better UX
-    refresh(first, first.name + " uses " + first.move.name);
     setTimeout( function() {
-        runBattleSequence(first);   
+        //check for death to prevent zombie attacks
+        if (first.health < 1 ) {
+            console.log("Exiting Battle Phase for "+first.name+" - preventing zombie attack");
+            return;
+        }
+        //disabled check
+        if (first.disabled) {
+            refresh(first, first.name+" is unable to attack!");
+            return;
+        }
+        refresh(first, first.name + " uses " + first.move.name);
+        setTimeout( function() {
+            runBattleSequence(first);   
+        }, 1000);
     }, 1000);
-    setTimeout( function() {
-        if (second.health > 0) {
-            if (runAliment(second)) {
+    
+    //Second's Turn
+    setTimeout( function() {     //run the Sequence - delay second sequence for better UX
+        if (runAliment(second)) {
+            return;
+        }
+        setTimeout( function() {
+            //check for death to prevent zombie attacks
+            if (second.health < 1 ) {
+                console.log("Exiting Battle Phase for "+second.name+" - preventing zombie attack");
+                return;
+            }
+            //disabled check
+            if (second.disabled) {
+                refresh(second, second.name+" is unable to attack!");
                 return;
             }
             refresh(second, second.name + " uses " + second.move.name);
-        }
-        setTimeout(function() {
-            runBattleSequence(second);
-        }, 1000); 
-    }, 2000);
+            setTimeout(function() {
+                runBattleSequence(second);
+            }, 1000); 
+        }, 1000);
+    }, 2750);
 }

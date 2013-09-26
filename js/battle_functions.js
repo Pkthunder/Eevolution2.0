@@ -74,6 +74,7 @@ function runBattleSequence(attacker) {
     }
     //calculate damage
     if (attacker.move.pwr != null) {
+        dmg = 0;
         if ( !hitCheck(attacker) ) {
             console.log(attacker.name +" missed");
             refresh( attacker, "but "+attacker.name+" missed the target!");
@@ -89,14 +90,20 @@ function runBattleSequence(attacker) {
         recordDmg(attacker.other, dmg);
     }
     //run post-effect without a damaging attack
-    if (dmg == -1 && attacker.move.pre == false) {
+    if (attacker.move.pre == false) {
         console.log("Running post-effect AFTER attack");
-        if ( !hitCheck(attacker) ) {
-            console.log(attacker.name +" missed");
-            refresh( attacker, "but it failed!");
-            return;
+        if ( dmg == -1 ) {
+            //only check for hit/miss if the attack isn't a damage move
+            if ( !hitCheck(attacker) ) {
+                console.log(attacker.name +" missed");
+                refresh( attacker, "but it failed!");
+                return;
+            }
         }
-        done = runEffect(attacker);
+        if ( dmg != 0 ) {
+            //a check to see if the damage move missed (therefore the effects missed)
+            done = runEffect(attacker);
+        }
     }
 
     //Temp Catch All
@@ -161,6 +168,9 @@ function runBattlePhase() {
             if (second.disabled) {
                 if (second.status.type == "Sleep") {
                     refresh(second, second.name+" is sleeping!");
+                    return;
+                }
+                if (second.status.type == "Confusion") {
                     return;
                 }
                 refresh(second, second.name+" is unable to attack!");

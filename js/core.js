@@ -48,7 +48,6 @@ function Stat_Stages(attack, defense, speed, health) {
     this.original_attack = attack;
     this.original_defense = defense;
     this.original_speed = speed;
-    this.original_health = health;
 }
 
 //	2 Player's Global variables

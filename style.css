@@ -2,7 +2,7 @@
 body {
 	padding-left: 10px;
 	padding-top: 10px;
-	background: url('pokeball.png') no-repeat center;
+	background: url('img/pokeball.png') no-repeat center;
 }
 #body_container {
 	width: 1121px;
@@ -57,6 +57,9 @@ body {
 }
 .p2t {
 	color: red;
+}
+.p3t {
+    color: black;
 }
 /****************************************************/
 

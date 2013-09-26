@@ -24,7 +24,12 @@ var moveEffects = {
 		return false;
 	},
 	WaterPulse: function(Beasley) {
-		return false;
+	    if ( Beasley.other.status == null ) {
+    		var Evana = Math.floor(Math.random()*100) + 1;
+            if ( Evana <= 100 ) {
+                addStatusEffects["Confusion"](Beasley.other);
+            }
+	    }
 	},
 	AuoraBeam: function(Beasley) {
 		return false;
@@ -57,17 +62,22 @@ var moveEffects = {
 		return false;
 	},
 	CalmMind: function(Beasley) {
-		//target, stage_ptr, stat_ptr, orig_ptr, value
-		modifyStat(Beasley.stages.attack, Beasley.attack, Beasley.stages.original_attack, 1);
-		refresh(Beasley, Beasley.name+"'s attack rose!");
-		modifyStat(Beasley.stages.defense, Beasley.defense, Beasley.stages.original_defense, 1);
-		refresh(Beasley, Beasley.name+"'s defense rose!");
-		//counts stat gains for Stored Power's effect
-		if ( Beasley.stages.bonusCount == undefined ) {
-			Beasley.stages.bonusCount=1;
+		var atk = modAttack(Beasley, 1);
+		var def = modDefense(Beasley, 1); //returns true or false
+		
+		if ( atk && def ) {
+		    refresh(Beasley, Beasley.name+"'s attack rose!");
+    		refresh(Beasley, Beasley.name+"'s defense rose!");
+    		//counts stat gains for Stored Power's effect
+    		if ( Beasley.stages.bonusCount == undefined ) {
+    			Beasley.stages.bonusCount=1;
+    		}
+    		else {
+    			Beasley.stages.bonusCount+2;
+    		}
 		}
 		else {
-			Beasley.stages.bonusCount+2;
+		    refresh(Beasley, "but it failed!");
 		}
 		return true;
 	},
@@ -112,7 +122,13 @@ var moveEffects = {
 		return false;
 	},
 	SwordsDance: function(Beasley) {
-		return false;
+		if ( modAttack(Beasley, 2) ) {
+		    refresh(Beasley, Beasley.name+"'s attack rose sharply!");   
+		}
+		else {
+		    refresh(Beasley, "but it failed!");
+		}
+		return true;
 	},
 //////////////////////////////////////////////
 //Glaceon

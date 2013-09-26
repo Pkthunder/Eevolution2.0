@@ -14,6 +14,7 @@ function Pokemon( name, attack, defense, speed, health, pokedex, $wrapper ) {
 	this.move = null;
 	this.$wrapper = $wrapper;
 	this.txt = null;
+    this.stages = null;
 }
 
 //Move Object
@@ -35,6 +36,19 @@ function Status( type, duration ) {
 	this.type = type;
 	this.duration = duration;
 	this.started = turn;
+}
+
+//Stat Stage Object
+//holds the individual stages of each stat
+//0 = no change to stat
+function Stat_Stages(attack, defense, speed, health) {
+    this.attack = 0;
+    this.defense = 0;
+    this.speed = 0;
+    this.original_attack = attack;
+    this.original_defense = defense;
+    this.original_speed = speed;
+    this.original_health = health;
 }
 
 //	2 Player's Global variables

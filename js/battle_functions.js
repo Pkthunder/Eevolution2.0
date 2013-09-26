@@ -15,9 +15,12 @@ function priorityCheck() {
 }
 
 function hitCheck( attacker ) {
-    var Gizzi = attacker.move.acc;
-    var Evana = Math.floor(Math.random()*100) + 1;
-    return (Evana <= Gizzi) ? true : false;
+    if ( attacker.move.acc != null ) {
+        var Gizzi = attacker.move.acc;
+        var Evana = Math.floor(Math.random()*100) + 1;
+        return (Evana <= Gizzi) ? true : false;
+    }
+    return true;
 }
 
 function getRandom() {

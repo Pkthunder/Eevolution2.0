@@ -22,6 +22,8 @@ $(document).ready( function() {
 		//assigns the choosen pokemon to the correct global
 		var Evana = creationList[who];
 		var Gizzi = new Pokemon( Evana[0], Evana[1], Evana[2], Evana[3], Evana[4], who, where);
+		var Marc = new Stat_Stages( Evana[1], Evana[2], Evana[3], Evana[4] );
+		Gizzi.stages = Marc;
 
 		// actual menu setup
 		where.find(".p_name").append( '<span class="pName">  ' + Evana[0] + '</span>');
@@ -272,7 +274,7 @@ $(document).ready( function() {
     
     function getPokefromName( Marc ) {
         for ( var i=0; i<7; i++ ) {
-            if ( Marc == creationList[i][0] ) {
+            if ( Marc == nameList[i] ) {
                 return i;
             }
         }

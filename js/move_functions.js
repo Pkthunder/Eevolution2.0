@@ -57,7 +57,19 @@ var moveEffects = {
 		return false;
 	},
 	CalmMind: function(Beasley) {
-		return false;
+		//target, stage_ptr, stat_ptr, orig_ptr, value
+		modifyStat(Beasley.stages.attack, Beasley.attack, Beasley.stages.original_attack, 1);
+		refresh(Beasley, Beasley.name+"'s attack rose!");
+		modifyStat(Beasley.stages.defense, Beasley.defense, Beasley.stages.original_defense, 1);
+		refresh(Beasley, Beasley.name+"'s defense rose!");
+		//counts stat gains for Stored Power's effect
+		if ( Beasley.stages.bonusCount == undefined ) {
+			Beasley.stages.bonusCount=1;
+		}
+		else {
+			Beasley.stages.bonusCount+2;
+		}
+		return true;
 	},
 	MagicCoat: function(Beasley) {
 		return false;

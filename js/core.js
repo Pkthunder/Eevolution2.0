@@ -15,6 +15,7 @@ function Pokemon( name, attack, defense, speed, health, pokedex, $wrapper ) {
 	this.$wrapper = $wrapper;
 	this.txt = null;
     this.stages = null;
+    this.done = false;
 }
 
 //Move Object
@@ -92,40 +93,40 @@ var moveList = [
 //									var[3] = Pre Effect Boolean
 var moveParams = [
 	[ //Jolteon - 0
-		["Yawn", null, 100, false], //0
+		["Yawn", null, 100, true], //0
 		["Discharge", 80, 100, false], //1
 		["Charge Beam", 50, 90, false], //2
 		["Thunderbolt", 95, 100] ], //3
 
 	[ //Vaporeon - 1
-		["Wish", null, null, false], //0
+		["Wish", null, null, true], //0
 		["Flail", 20, 100, true], //1
 		["Water Pulse", 60, 100, false], //2
 		["Auora Beam", 65, 100, false] ], //3
 	
 	[ //Flareon - 2
 		["Facade", 70, 100, true],
-		["Fire Fang", 60, 95, true],
-		["Wil O Wisp", null, 75, false],
+		["Fire Fang", 60, 95, false],
+		["Wil O Wisp", null, 75, true],
 		["Flame Charge", 50, 100, false] ],
 	
 	[ //Espeon - 3
 		["Swift", null, null, true],
-		["Calm Mind", null, null, false],
+		["Calm Mind", null, null, true],
 		["Magic Coat", null, null,, true],
 		["Stored Power", 20, 100, true] ],
 	
 	[ //Umbreon - 4
-		["Taunt", null, 100, false],
-		["Curse", null, null, false],
-		["Toxic", null, 90, false],
+		["Taunt", null, 100, true],
+		["Curse", null, null, true],
+		["Toxic", null, 90, true],
 		["Payback", 50, 100, true] ],
 	
 	[ //Leafeon - 5
 		["Leaf Blade", 90, 100, null],
-		["Leech Seed", null, 90, false],
+		["Leech Seed", null, 90, true],
 		["Substitute", null, null, true], //check priority
-		["Swords Dance", null, null, false] ],
+		["Swords Dance", null, null, true] ],
 		
 	[ //Glaceon - 6
 		["Blizzard", 120, 70, null],

@@ -26,7 +26,7 @@ var moveEffects = {
 	WaterPulse: function(Beasley) {
 	    if ( Beasley.other.status == null ) {
     		var Evana = Math.floor(Math.random()*100) + 1;
-            if ( Evana <= 100 ) {
+            if ( Evana <= 30 ) {
                 addStatusEffects["Confusion"](Beasley.other);
             }
 	    }

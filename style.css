@@ -221,6 +221,8 @@ body {
 }
 /************************************************************/
 
+/*Footer Formatting*/
+
 #footer_wrapper {
     width: 99%;
     overflow:hidden;
@@ -249,16 +251,15 @@ body {
 .line-two {
     display:block;
 }
+
+/*Modal Formatting*/
+
 #move-list-modal-body {
 	overflow-y: scroll;
 }
 #poke-fans {
-	text-align: justify;
-    -moz-text-align-last: center;
-    text-align-last: center;
+    text-align: center;
 }
 #sorry {
-	text-align: justify;
-    -moz-text-align-last: center;
-    text-align-last: center;
+    text-align: center;
 }

@@ -38,7 +38,7 @@ body {
 	width:455px; 
 	height:405px; 
 	font-size: 14px;
-	font-family: Courier;
+	font-family: arial, sans-serif;
 	overflow: auto;
 	padding-left: 5px;
 	padding-top: 5px;
@@ -253,6 +253,9 @@ body {
 }
 
 /*Modal Formatting*/
+.modal {
+	font-family: arial, sans-serif;
+}
 
 #move-list-modal-body {
 	overflow-y: scroll;

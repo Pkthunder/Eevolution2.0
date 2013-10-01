@@ -173,11 +173,3 @@
 			return Gizzi;
 		}
 	};
-
-function removeAliment(Halpert) {
-    if (Halpert.status.duration != false) {
-        if (Halpert.status.type != "Sleep" && Halpert.status.type != "Confusion") {
-            removeStatusEffects[Halpert.status.type](Halpert);
-        }
-    }
-}	

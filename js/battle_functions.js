@@ -77,11 +77,17 @@ function runBattlePhase() {
     $(document).trigger("runAliment", [first]);
 }
 
+//Psuedo-State Machine Begins
+$(document).on("inbetweenTurns", function() {
+    console.log("betweenTurns Status removal...");
+    removeStatusEffects[Halpert.status.type](poke1);
+    if (betweenTurns.poke2 != undefined)
+        removeStatusEffects[Halpert.status.type](poke2);
+});
+
 $(document).on("Done", function( e, attacker ) {
     attacker.done = true;
     if (attacker.other.done) {
-        //starts next round of 'Battle Phase'
-        //if neither player has died
         if (play1.health > 0 && play2.health > 0) {
             $(document).trigger(onDamageRecorded);
         }

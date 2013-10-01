@@ -2,7 +2,7 @@
 var moveEffects = {
 //Jolteon
 	Yawn: function(Beasley) {
-		if (Beasley.other.status == null || Beasley.other.status.type != "Yawn") {
+		if (Beasley.other.status == null) {
 		    addStatusEffects["Yawn"](Beasley.other);
 		}
 		else {

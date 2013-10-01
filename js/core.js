@@ -37,6 +37,7 @@ function Status( type, duration ) {
 	this.type = type;
 	this.duration = duration;
 	this.started = turn;
+    this.bTurn = false;
 }
 
 //Stat Stage Object

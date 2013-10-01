@@ -24,7 +24,7 @@
 			refresh(Halpert.other, Halpert.name+" was struck by Paralysis!");
 		},
 		Yawn: function(Halpert) {
-			Halpert.status = new Status( "Yawn", 2 );
+			Halpert.status = new Status( "Yawn", 1 );
 			refresh(Halpert.other, Halpert.name+" is starting to get drowsy!");
 		},
 		Flinch: function(Halpert) {
@@ -66,13 +66,11 @@
 			Halpert.status = null;
 		},
 		Yawn: function(Halpert) {
-		    if (turn - Halpert.status.started == Halpert.status.duration) {
-		        Halpert.status = null;
-    			addStatusEffects["Sleep"](Halpert);
-		    }
+	        Halpert.status = null;
+			addStatusEffects["Sleep"](Halpert);
 		},
 		Flinch: function(Halpert) {
-		    if (turn - Halpert.status.started == Halpert.status.duration) {
+		    if ( (turn+1) - Halpert.status.started == Halpert.status.duration) {
 			    Halpert.disabled = false;
 			    Halpert.status = null;
 		    }
@@ -129,6 +127,9 @@
 			return (Halpert.health < 1) ? true : false;
 		},
 		Yawn: function(Halpert) {
+			if ( turn - Halpert.status.started == Halpert.status.duration ) {
+			    Halpert.status.bTurn = true;
+			}
 		    if ( Halpert.status.started != turn )
 			    refresh(Halpert, Halpert.name+"'s eyes are getting heavy");
 		},

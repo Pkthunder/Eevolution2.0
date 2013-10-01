@@ -77,18 +77,25 @@ function runBattlePhase() {
     $(document).trigger("runAliment", [first]);
 }
 
-//Psuedo-State Machine Begins
-$(document).on("inbetweenTurns", function() {
+//Psuedo-State Machine Begins Here---
+$(document).on("betweenTurns", function( e, attacker ) {
     console.log("betweenTurns Status removal...");
-    removeStatusEffects[Halpert.status.type](poke1);
-    if (betweenTurns.poke2 != undefined)
-        removeStatusEffects[Halpert.status.type](poke2);
+    removeStatusEffects[attacker.status.type](attacker);
+    setTimeout( function() {
+        $(document).trigger("Done", [attacker]);
+    }, 1000);
 });
 
 $(document).on("Done", function( e, attacker ) {
     attacker.done = true;
     if (attacker.other.done) {
-        if (play1.health > 0 && play2.health > 0) {
+        if (attacker.status != null && attacker.status.bTurn) {
+            $(document).trigger("betweenTurns", [attacker]);
+        }
+        else if (attacker.other.status != null && attacker.other.status.bTurn) {
+            $(document).trigger("betweenTurns", [attacker]);
+        }
+        else if (play1.health > 0 && play2.health > 0) {
             $(document).trigger(onDamageRecorded);
         }
     }
@@ -103,26 +110,15 @@ $(document).on("runAliment", function( e, attacker ) {
         var cont = runAliment(attacker);
         if (!cont) {
             setTimeout( function() {
-                $(document).trigger("stillAlive", [attacker]);
+                $(document).trigger("disabledCheck", [attacker]);
             }, 1000);
+        }
+        else {
+            $(document).trigger("Done", [attacker]);
         }
     }
     else { //skips delay if no status aliment
-        $(document).trigger("stillAlive", [attacker]);
-    }
-});
-
-$(document).on("stillAlive", function( e, attacker ) {
-    if ( attacker.health > 0 ) {
-        refresh(attacker, attacker.name + " uses " + attacker.move.name);
-        setTimeout( function() {
-            $(document).trigger("disabledCheck", [attacker]);
-        }, 1000);
-    }
-    else {
-        setTimeout( function() {
-            $(document).trigger("Done", [attacker]);
-        }, 1000);
+        $(document).trigger("disabledCheck", [attacker]);
     }
 });
 
@@ -130,25 +126,36 @@ $(document).on("stillAlive", function( e, attacker ) {
 
 $(document).on("disabledCheck", function( e, attacker ) {
     if ( attacker.disabled ) {
-        refresh(first, first.name+" is unable to attack!");
+        refresh(attacker, attacker.name+" is unable to attack!");
         setTimeout( function() {
             $(document).trigger("Done", [attacker]);
         }, 1000);
     }
     else {
-        $(document).trigger("preCheck", [attacker]);
+        refresh(attacker, attacker.name + " uses " + attacker.move.name);
+        setTimeout( function() {
+            $(document).trigger("preCheck", [attacker]);
+        }, 1000);
     }
 });
 
 $(document).on("preCheck", function( e, attacker ) {
+    var Evana;
     if ( attacker.move.pre ) {
         if (hitCheck(attacker)) {
             console.log("Running pre-effect...");
-            runEffect(attacker);
+            Evana = runEffect(attacker);
         }
         else {
             console.log(attacker.name +" missed");
             refresh( attacker, "but it failed!");
+        }
+        if(attacker.other.health < 1) { //death Check
+            return;
+        }
+        //temp fix
+        if(!Evana) {
+            refresh( attacker, attacker.move.name+" failed because I haven't added it yet. Sorry!");
         }
         setTimeout( function() {
             $(document).trigger("Done", [attacker]);
@@ -173,6 +180,9 @@ $(document).on("runDamage", function( e, attacker) {
         var dmg = calcDmg(attacker);
         //Record the Calculated Damage
         recordDmg(attacker.other, dmg);
+        if (attacker.other.health < 1) { //death Check
+            return;
+        }
         if (attacker.move.pre == false) { //move has an post-effect
             setTimeout( function() {
                 $(document).trigger("postEffect", [attacker]);

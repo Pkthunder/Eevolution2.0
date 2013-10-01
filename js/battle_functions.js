@@ -154,12 +154,18 @@ $(document).on("preCheck", function( e, attacker ) {
             return;
         }
         //temp fix
-        if(!Evana) {
+        if(!Evana && attacker.move.pwr == null) {
             refresh( attacker, attacker.move.name+" failed because I haven't added it yet. Sorry!");
         }
-        setTimeout( function() {
-            $(document).trigger("Done", [attacker]);
-        }, 1000);
+        //transition state
+        if (attacker.move.pwr != null) {
+            $(document).trigger("runDamage", [attacker]);
+        }
+        else {
+            setTimeout( function() {
+                $(document).trigger("Done", [attacker]);
+            }, 1000);
+        }
     }
     else {
         $(document).trigger("runDamage", [attacker]);

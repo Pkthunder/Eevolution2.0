@@ -70,7 +70,7 @@ var moveEffects = {
     		refresh(Beasley, Beasley.name+"'s defense rose!");
     		//counts stat gains for Stored Power's effect
     		if ( Beasley.stages.bonusCount == undefined ) {
-    			Beasley.stages.bonusCount=1;
+    			Beasley.stages.bonusCount=2;
     		}
     		else {
     			Beasley.stages.bonusCount+2;
@@ -85,7 +85,10 @@ var moveEffects = {
 		return false;
 	},
 	StoredPower: function(Beasley) {
-		return false;
+		var up = Beasley.stages.bonusCount;
+		if (up > 1)
+			Beasley.move.pwr = (20 * up) + 20;
+		return true;
 	},
 ///////////////////////////////////////////////
 //Umbreon

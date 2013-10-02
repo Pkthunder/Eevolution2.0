@@ -112,7 +112,7 @@ var moveParams = [
 		["Flame Charge", 50, 100, false] ],
 	
 	[ //Espeon - 3
-		["Swift", null, null, true],
+		["Swift", 60, "---", null],
 		["Calm Mind", null, null, true],
 		["Magic Coat", null, null,, true],
 		["Stored Power", 20, 100, true] ],

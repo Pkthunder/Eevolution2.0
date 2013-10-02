@@ -226,7 +226,8 @@ body {
 #footer_wrapper {
     width: 99%;
     overflow:hidden;
-    line-height: 10px; 
+    line-height: 10px;
+    padding-bottom: 10px;
 }
 #signature {
     display: inline-block;

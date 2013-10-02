@@ -100,7 +100,7 @@ $(document).on("Done", function( e, attacker ) {
             $(document).trigger("betweenTurns", [attacker]);
         }
         else if (attacker.other.status != null && attacker.other.status.bTurn) {
-            $(document).trigger("betweenTurns", [attacker]);
+            $(document).trigger("betweenTurns", [attacker.other]);
         }
         else if (play1.health > 0 && play2.health > 0) {
             $(document).trigger(onDamageRecorded);

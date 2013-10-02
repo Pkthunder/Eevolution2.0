@@ -150,7 +150,7 @@ $(document).ready( function() {
 		Gizzi = Gizzi - 1;
 		var tooCute = new Move(	moveParams[Evana][Gizzi][1], moveParams[Evana][Gizzi][2],
 								moveParams[Evana][Gizzi][0], moveParams[Evana][Gizzi][3],
-								moveParams[Evana][Gizzi][0] );
+								moveParams[Evana][Gizzi][0], moveParams[Evana][Gizzi][4] );
 		loadMove(tooCute, $(this).parent());
 	});
 

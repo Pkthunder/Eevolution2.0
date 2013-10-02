@@ -35,7 +35,7 @@
 			refresh(Halpert.other, Halpert.name+" is effected by Taunt!");
 		},
 		LeechSeed: function(Halpert) {
-			Halpert.status = new Status( "Leech Seed", false );
+			Halpert.status = new Status( "LeechSeed", false );
 			refresh(Halpert.other, Halpert.name+" is now seeded!");
 		},
 		Confusion: function(Halpert) {
@@ -44,7 +44,7 @@
 		    refresh(Halpert.other, Halpert.name+" has become Confused!");
 		},
 		MagicCoat: function(Halpert) { //a helpful status "aliment"
-			Halpert.status = new Status( "Magic Coat", 1 );
+			Halpert.status = new Status( "MagicCoat", 1 );
 		}
 	};
 
@@ -90,9 +90,7 @@
 		    refresh(Halpert, Halpert.name+" has broke free of confusion!")
 		},
 		MagicCoat: function(Halpert) {
-			var Evana = Math.floor(Math.random()*5) + 1;
-			var Gizzi = new Status( "Magic Coat", Evana );
-			return Gizzi;
+			Halpert.status = null;
 		}
 	};
 
@@ -144,9 +142,15 @@
 			}
 		},
 		LeechSeed: function(Halpert) {
-			var Evana = Math.floor(Math.random()*5) + 1;
-			var Gizzi = new Status( "Sleep", Evana );
-			return Gizzi;
+			var Evana = Math.round(Halpert.original_health * .125);
+			Halpert.other.health = Halpert.other.health + Evana;
+			if ( Halpert.other.health > Halpert.other.original_health ) {
+			    Halpert.other.health = Halpert.other.original_health;
+			}
+			Halpert.health = Halpert.health - Evana;
+			updateHealthBar(Halpert);
+			updateHealthBar(Halpert.other);
+			refresh(Halpert.other, Halpert.other.name+" absorbed "+Evana+" from "+Halpert.name);
 		},
 		Confusion: function(Halpert) {
 		    if ( turn - Halpert.status.started == Halpert.status.duration ) {
@@ -169,8 +173,6 @@
 			return (Halpert.health < 1) ? true : false;
 		},
 		MagicCoat: function(Halpert) {
-			var Evana = Math.floor(Math.random()*5) + 1;
-			var Gizzi = new Status( "Sleep", Evana );
-			return Gizzi;
+			return;
 		}
 	};

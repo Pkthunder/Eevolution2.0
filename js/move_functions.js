@@ -2,6 +2,17 @@
 var moveEffects = {
 //Jolteon
 	Yawn: function(Beasley) {
+	    if (Beasley.other.status != null && Beasley.other.status.type == "MagicCoat") {
+	        Beasley.other.status = null;
+	        refresh(Beasley.other, Beasley.other.name+" reflected Yawn back at "+Beasley.name);
+	        if (Beasley.other.status == null ) {
+	            addStatusEffects["Yawn"](Beasley);   
+    	    }
+    		else {
+    		    refresh(Beasley, "but it failed!");
+    	    }
+    	    return true;
+	    }
 		if (Beasley.other.status == null) {
 		    addStatusEffects["Yawn"](Beasley.other);
 		}
@@ -11,9 +22,20 @@ var moveEffects = {
 		return true;
 	},
 	Discharge: function(Beasley) {
-	    if ( Beasley.other.status == null ) {
-    		var Evana = Math.floor(Math.random()*100) + 1;
-            if ( Evana <= 50 ) {
+	    var Evana = Math.floor(Math.random()*100) + 1;
+        if ( Evana <= 50 ) {
+            if (Beasley.other.status != null && Beasley.other.status.type == "MagicCoat") {
+    	        Beasley.other.status = null;
+    	        refresh(Beasley.other, Beasley.other.name+" reflected Paralysis back at "+Beasley.name);
+    	        if (Beasley.other.status == null ) {
+    	            addStatusEffects["Paralysis"](Beasley);   
+        	    }
+        		else {
+        		    refresh(Beasley, "but it failed!");
+        	    }
+        	    return true;
+    	    }
+	        if ( Beasley.other.status == null ) {
                 addStatusEffects["Paralysis"](Beasley.other);
             }
 	    }
@@ -69,9 +91,20 @@ var moveEffects = {
 		return true;
 	},
 	WaterPulse: function(Beasley) {
-	    if ( Beasley.other.status == null ) {
-    		var Evana = Math.floor(Math.random()*100) + 1;
-            if ( Evana <= 30 ) {
+	    var Evana = Math.floor(Math.random()*100) + 1;
+        if ( Evana <= 30 ) {
+            if (Beasley.other.status != null && Beasley.other.status.type == "MagicCoat") {
+    	        Beasley.other.status = null;
+    	        refresh(Beasley.other, Beasley.other.name+" reflected Confusion back at "+Beasley.name);
+    	        if (Beasley.other.status == null ) {
+    	            addStatusEffects["Confusion"](Beasley);   
+        	    }
+        		else {
+        		    refresh(Beasley, "but it failed!");
+        	    }
+        	    return true;
+    	    }
+	        if ( Beasley.other.status == null ) {
                 addStatusEffects["Confusion"](Beasley.other);
             }
 	    }
@@ -81,7 +114,7 @@ var moveEffects = {
 	    var Evana = Math.floor(Math.random()*100) + 1;
         if ( Evana <= 30 ) {
             if ( modAttack(Beasley.other, -1) ) {
-    		    refresh(Beasley, Beasley.name+"'s attack fell!");   
+    		    refresh(Beasley, Beasley.other.name+"'s attack fell!");   
     		}
         }
 		return true;
@@ -101,6 +134,17 @@ var moveEffects = {
 		return true;
 	},
 	WilOWisp: function(Beasley) {
+	    if (Beasley.other.status != null && Beasley.other.status.type == "MagicCoat") {
+	        Beasley.other.status = null;
+	        refresh(Beasley.other, Beasley.other.name+" reflected Yawn back at "+Beasley.name);
+	        if (Beasley.other.status == null ) {
+	            addStatusEffects["Yawn"](Beasley);   
+    	    }
+    		else {
+    		    refresh(Beasley, "but it failed!");
+    	    }
+    	    return true;
+	    }
 		if (Beasley.other.status == null ) {
 	        addStatusEffects["Burn"](Beasley.other);   
 	    }
@@ -150,10 +194,9 @@ var moveEffects = {
 		return true;
 	},
 	MagicCoat: function(Beasley) {
-	    Beasley.move.priority = 4;
-	    //something...
-	    refresh(Beasley, Beasley.name+" protected himself!")
-		return false;
+	    addStatusEffects["MagicCoat"](Beasley);
+	    refresh(Beasley, Beasley.name+" is protecting itself!");
+		return true;
 	},
 	StoredPower: function(Beasley) {
 		var up = Beasley.stages.bonusCount;
@@ -164,6 +207,17 @@ var moveEffects = {
 ///////////////////////////////////////////////
 //Umbreon
 	Taunt: function(Beasley) {
+	    if (Beasley.other.status != null && Beasley.other.status.type == "MagicCoat") {
+	        Beasley.other.status = null;
+	        refresh(Beasley.other, Beasley.other.name+" reflected Taunt back at "+Beasley.name);
+	        if (Beasley.other.status == null ) {
+	            addStatusEffects["Taunt"](Beasley);   
+    	    }
+    		else {
+    		    refresh(Beasley, "but it failed!");
+    	    }
+    	    return true;
+	    }
 		if (Beasley.other.status == null ) {
 	        addStatusEffects["Taunt"](Beasley.other);   
 	    }
@@ -193,6 +247,17 @@ var moveEffects = {
 		return true;
 	},
 	Toxic: function(Beasley) {
+	    if (Beasley.other.status != null && Beasley.other.status.type == "MagicCoat") {
+	        Beasley.other.status = null;
+	        refresh(Beasley.other, Beasley.other.name+" reflected Poison back at "+Beasley.name);
+	        if (Beasley.other.status == null ) {
+	            addStatusEffects["Poison"](Beasley);   
+    	    }
+    		else {
+    		    refresh(Beasley, "but it failed!");
+    	    }
+    	    return true;
+	    }
 	    if (Beasley.other.status == null ) {
 	        addStatusEffects["Poison"](Beasley.other);   
 	    }
@@ -210,7 +275,24 @@ var moveEffects = {
 //////////////////////////////////////////////
 //Leafeon
 	LeechSeed: function(Beasley) {
-		return false;
+	    if (Beasley.other.status.type == "MagicCoat") {
+	        Beasley.other.status = null;
+	        refresh(Beasley.other, Beasley.other.name+" reflected Leech Seed back at "+Beasley.name);
+	        if (Beasley.other.status == null ) {
+	            addStatusEffects["LeechSeed"](Beasley);   
+    	    }
+    		else {
+    		    refresh(Beasley, "but it failed!");
+    	    }
+    	    return true;
+	    }
+		if (Beasley.other.status == null ) {
+	        addStatusEffects["LeechSeed"](Beasley.other);   
+	    }
+		else {
+		    refresh(Beasley, "but it failed!");
+	    }
+	    return true;
 	},
 	Substitute: function(Beasley) {
 		return false;
@@ -226,15 +308,11 @@ var moveEffects = {
 	},
 //////////////////////////////////////////////
 //Glaceon
-	IceShard: function(Beasley) {
-	    Beasley.move.priority = 10;
-		return true;
-	},
 	MirrorCoat: function(Beasley) {
-	    Beasley.move.dmgmod = true;
-		return true;
+	    return false;
 	},
 	FrostBreath: function(Beasley) {
-		return false;
+		Beasley.move.dmgmod = true;
+		return true;
 	}
 };

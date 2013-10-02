@@ -133,7 +133,15 @@ $(document).on("runAliment", function( e, attacker ) {
 
 $(document).on("disabledCheck", function( e, attacker ) {
     if ( attacker.disabled ) {
-        refresh(attacker, attacker.name+" is unable to attack!");
+        if ( attacker.status.type == "Sleep") {
+            refresh(attacker, attacker.name+" is sleeping!");
+        }
+        else if ( attacker.status.type = "Flinch") {
+            refresh(attacker, attacker.name+" flinched!");
+        }
+        else {
+            refresh(attacker, attacker.name+" is unable to attack!");
+        }
         setTimeout( function() {
             $(document).trigger("Done", [attacker]);
         }, 1000);

@@ -21,13 +21,13 @@ function Pokemon( name, attack, defense, speed, health, pokedex, $wrapper ) {
 //Move Object
 //pre is a boolean representing whether the effect has
 //pre-attack or post-attack effect
-function Move( pwr, acc, effect, pre, name ) {
+function Move( pwr, acc, effect, pre, name, priority ) {
 	this.pwr = pwr;
 	this.acc = acc;
 	this.effect = effect;
 	this.pre = pre;
 	this.player = null;
-	this.priority = 0;
+	this.priority = priority;
 	this.name = name;
 }
 
@@ -92,48 +92,49 @@ var moveList = [
 //									var[1] = Move Power
 //									var[2] = Move Accuracy
 //									var[3] = Pre Effect Boolean
+//                                  var[4] = Move Priority
 var moveParams = [
 	[ //Jolteon - 0
-		["Yawn", null, 100, true], //0
-		["Discharge", 80, 100, false], //1
-		["Charge Beam", 50, 90, false], //2
-		["Thunderbolt", 95, 100] ], //3
+		["Yawn", null, 100, true, 0], //0
+		["Discharge", 80, 100, false, 0], //1
+		["Charge Beam", 50, 90, false, 0], //2
+		["Thunderbolt", 95, 100, null, 0] ], //3
 
 	[ //Vaporeon - 1
-		["Wish", null, null, true], //0
-		["Flail", 20, 100, true], //1
-		["Water Pulse", 60, 100, false], //2
-		["Auora Beam", 65, 100, false] ], //3
+		["Wish", null, null, true, 0], //0
+		["Flail", 20, 100, true, 0], //1
+		["Water Pulse", 60, 100, false, 0], //2
+		["Auora Beam", 65, 100, false, 0] ], //3
 	
 	[ //Flareon - 2
-		["Facade", 70, 100, true],
-		["Fire Fang", 60, 95, false],
-		["Wil O Wisp", null, 75, true],
-		["Flame Charge", 50, 100, false] ],
+		["Facade", 70, 100, true, 0],
+		["Fire Fang", 60, 95, false, 0],
+		["Wil O Wisp", null, 75, true, 0],
+		["Flame Charge", 50, 100, false, 0] ],
 	
 	[ //Espeon - 3
-		["Swift", 60, "---", null],
-		["Calm Mind", null, null, true],
-		["Magic Coat", null, null,, true],
-		["Stored Power", 20, 100, true] ],
+		["Swift", 60, "---", null, 0],
+		["Calm Mind", null, null, true, 0],
+		["Magic Coat", null, null, true, 4],
+		["Stored Power", 20, 100, true, 0] ],
 	
 	[ //Umbreon - 4
-		["Taunt", null, 100, true],
-		["Curse", null, null, true],
-		["Toxic", null, 90, true],
-		["Payback", 50, 100, true] ],
+		["Taunt", null, 100, true, 0],
+		["Curse", null, null, true, 0],
+		["Toxic", null, 90, true, 0],
+		["Payback", 50, 100, true, 0] ],
 	
 	[ //Leafeon - 5
-		["Leaf Blade", 90, 100, null],
-		["Leech Seed", null, 90, true],
-		["Substitute", null, null, true], //check priority
-		["Swords Dance", null, null, true] ],
+		["Leaf Blade", 90, 100, null, 0],
+		["Leech Seed", null, 90, true, 0],
+		["Substitute", null, null, true, 0], //check priority
+		["Swords Dance", null, null, true, 0] ],
 		
 	[ //Glaceon - 6
-		["Blizzard", 120, 70, null],
-		["Ice Shard", 40, 100, true],
-		["Mirror Coat", null, null, true], //check priority
-		["Frost Breath", 40, 90, true] ] ];
+		["Blizzard", 120, 70, null, 0],
+		["Ice Shard", 40, 100, null, 10],
+		["Mirror Coat", null, null, true, -10], //check priority
+		["Frost Breath", 40, 90, true, 0] ] ];
 
 //a array of all move descriptions sorted in the same method
 //as the arrays above. This array is 2D -> moveDesc[Pokedex][Move Number]

@@ -275,7 +275,7 @@ var moveEffects = {
 //////////////////////////////////////////////
 //Leafeon
 	LeechSeed: function(Beasley) {
-	    if (Beasley.other.status.type == "MagicCoat") {
+	    if (Beasley.other.status != null && Beasley.other.status.type == "MagicCoat") {
 	        Beasley.other.status = null;
 	        refresh(Beasley.other, Beasley.other.name+" reflected Leech Seed back at "+Beasley.name);
 	        if (Beasley.other.status == null ) {

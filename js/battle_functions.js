@@ -16,6 +16,9 @@ function priorityCheck() {
 
 function hitCheck( attacker ) {
     if ( attacker.move.acc != null ) {
+        if ( attacker.move.name == "Swift") {
+            return true;
+        }
         var Gizzi = attacker.move.acc;
         var Evana = Math.floor(Math.random()*100) + 1;
         return (Evana <= Gizzi) ? true : false;
@@ -37,6 +40,10 @@ function calcDmg( attacker) {
 
 	var rand = getRandom();
 	var Dmg = (((((42 * attacker.attack * attacker.move.pwr) / attacker.other.defense) / 50) + 2) * rand) / 100;
+	//For Frost Breath
+	if ( attacker.move.dmgmod != undefined && attacker.move.dmgmod) {
+	    Dmg = Math.round(Dmg*2);
+	}
 	return (Dmg > 0 ) ? Math.round(Dmg) : 0;
 }
 
@@ -210,7 +217,7 @@ $(document).on("runDamage", function( e, attacker) {
 
 $(document).on("postEffect", function( e, attacker ) {
     console.log("Running post-effect...");
-    //runEffect(attacker);
+    runEffect(attacker);
     setTimeout( function() {
         $(document).trigger("Done", [attacker]);
     }, 1000);

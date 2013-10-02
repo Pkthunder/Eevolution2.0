@@ -73,7 +73,7 @@ var moveEffects = {
     			Beasley.stages.bonusCount=2;
     		}
     		else {
-    			Beasley.stages.bonusCount = Beasley.stages.bonusCount+2;
+    			Beasley.stages.bonusCount+2;
     		}
 		}
 		else {

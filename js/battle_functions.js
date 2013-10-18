@@ -94,6 +94,9 @@ $(document).on("betweenTurns", function( e, attacker ) {
 });
 
 $(document).on("Done", function( e, attacker ) {
+    if ( attacker.health < 1 || attacker.other.health < 1 ) {
+        return; //checks for death
+    }
     attacker.done = true;
     if (attacker.other.done) {
         if (attacker.status != null && attacker.status.bTurn) {

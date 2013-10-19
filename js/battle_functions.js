@@ -124,7 +124,8 @@ $(document).on("runAliment", function( e, attacker ) {
             }, 1000);
         }
         else {
-            $(document).trigger("Done", [attacker]);
+            return; //returns on death
+            //$(document).trigger("Done", [attacker]);
         }
     }
     else { //skips delay if no status aliment
@@ -172,7 +173,7 @@ $(document).on("preCheck", function( e, attacker ) {
             return;
         }
         //temp fix
-        if(!Evana && attacker.move.pwr == null) {
+        if((!Evana && attacker.move.pwr == null) && attacker.move.name == "MirrorCoat" || attacker.move.name == "Substitution") {
             refresh( attacker, attacker.move.name+" failed because I haven't added it yet. Sorry!");
         }
         //transition state

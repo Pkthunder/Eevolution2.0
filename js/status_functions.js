@@ -148,9 +148,10 @@
 			    Halpert.other.health = Halpert.other.original_health;
 			}
 			Halpert.health = Halpert.health - Evana;
+			refresh(Halpert.other, Halpert.other.name+" absorbed "+Evana+" from "+Halpert.name);
 			updateHealthBar(Halpert);
 			updateHealthBar(Halpert.other);
-			refresh(Halpert.other, Halpert.other.name+" absorbed "+Evana+" from "+Halpert.name);
+			return (Halpert.health < 1) ? true : false;
 		},
 		Confusion: function(Halpert) {
 		    if ( turn - Halpert.status.started == Halpert.status.duration ) {

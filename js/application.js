@@ -265,4 +265,18 @@ $(document).ready( function() {
         }
     }
 
+    $("#tooltips-switch").on("switch-change", function(e, data) {
+    	//Switch State: On
+    	if (data.value) {
+    		$(".button button.activated").tooltip('toggle');
+    		var test = $("#p1_b1").attr('class');
+    		alert(test);
+    		$("#p1_b1").tooltip();
+    	}
+    	else {
+    		$(".button button.activated").tooltip('destroy');
+    		
+    	}
+    });
+ 
 });

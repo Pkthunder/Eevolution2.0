@@ -20,8 +20,10 @@ Copyrighted (c) to Paradoxysaurs, 1827 in Atlantis, Atlantis.
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link type="text/css" rel="stylesheet" href="style.css"/>
 		<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
+        <link type="text/css" rel="stylesheet" href="bootstrap_switch/stylesheets/bootstrap-switch.css"/>
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="bootstrap_switch/js/bootstrap-switch.js"></script>
 		<script type="text/javascript" src="js/core.js"></script>
 		<script type="text/javascript" src="js/status_functions.js"></script>
 		<script type="text/javascript" src="js/stat_modifier.js"></script>
@@ -171,6 +173,28 @@ Copyrighted (c) to Paradoxysaurs, 1827 in Atlantis, Atlantis.
             </div>
             <!-- End of Modal -->
 
+            <!-- Settings Modal -->
+            <div class="modal hide" id="setModal">
+              <div class="modal-header">
+                <button class="close" data-dismiss="modal">×</button>
+                <h4>Settings</h4>
+              </div>
+              <div class="modal-body">
+                <!-- Body of Modal -->
+                <div id="tooltips">
+                    <span>Tooltips:</span>
+                    <div id="tooltips-switch" class="make-switch pull-right" data-on="success" data-off="default">
+                        <input type="checkbox" checked>
+                    </div>
+                </div>
+                <!-- End of Body -->
+              </div>
+              <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal">Close</a>
+              </div>
+            </div>
+            <!-- End of Modal -->
+
 			<div id="heading_wrapper" class="global_wrapper well well-small">
 				<div class="extra_wrapper">
 					<div id="1_pic" class="bg_pic" style="background-image: url( 'img/135Jolteon.png' )"></div>
@@ -307,6 +331,7 @@ Copyrighted (c) to Paradoxysaurs, 1827 in Atlantis, Atlantis.
     		<div id="footer_wrapper">
     		    <span id="signature">Eeveelution 2 created by Jared Perreault<br>using jQuery and Twitter Bootstrap</span>
     		    <button id="reset_btn" class="btn btn-danger" type="button">Reset</button>
+                <a id="settings_btn" class="btn btn-success" data-toggle="modal" href="#setModal">Settings</a>
     		    <a id="how2_btn" class="btn btn-primary" data-toggle="modal" href="#myModal">How To Play</a>
     		    <a id="how2_btn" class="btn btn-primary" data-toggle="modal" href="#moveModal">Move List</a>
     		    <a href="http://www.linkedin.com/in/jaredperreault" target="_blank">

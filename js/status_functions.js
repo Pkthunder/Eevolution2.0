@@ -133,7 +133,7 @@
 		},
 		Flinch: function(Halpert) {
 			Halpert.disabled = true;
-			refresh(Halpret, Halpert.name+" flinched!");
+			refresh(Halpert, Halpert.name+" flinched!");
 		},
 		Taunt: function(Halpert) {
 			if( Halpert.move.pwr == null || Halpert.move.pwr < 1 ) {

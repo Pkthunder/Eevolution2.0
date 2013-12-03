@@ -267,3 +267,10 @@ body {
 #sorry {
     text-align: center;
 }
+
+/************************************************************/
+/*Settings Formatting*/
+
+#setModal {
+	font-family: Arial, sans-serif;
+}

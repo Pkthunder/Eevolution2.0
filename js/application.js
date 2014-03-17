@@ -71,6 +71,8 @@ $(document).ready( function() {
 			$(".btn").removeClass("disabled");
 			play1.other = play2;
 			play2.other = play1;
+			$("#tooltips-switch").bootstrapSwitch('state', true);
+			initTooltip();
 		}
 
 		$(this).unbind("click mouseenter mouseleave");
@@ -119,6 +121,8 @@ $(document).ready( function() {
 			$(".btn").removeClass("disabled");
 			play1.other = play2;
 			play2.other = play1;
+			$("#tooltips-switch").bootstrapSwitch('state', true);
+			initTooltip();
 		}
 
 		//correctly highlights/fades/displays text on the
@@ -265,18 +269,67 @@ $(document).ready( function() {
         }
     }
 
-    $("#tooltips-switch").on("switch-change", function(e, data) {
-    	//Switch State: On
-    	if (data.value) {
-    		$(".button button.activated").tooltip('toggle');
-    		var test = $("#p1_b1").attr('class');
-    		alert(test);
-    		$("#p1_b1").tooltip();
-    	}
-    	else {
-    		$(".button button.activated").tooltip('destroy');
-    		
-    	}
-    });
+    $("#tooltips-switch").bootstrapSwitch();
+
+    function getTooltipState() {
+    	return ($('#tooltips-switch').bootstrapSwitch('state')); 
+    }
+
+    function initTooltip() {
+    	var Evana = $("#p1_b1").parent().parent();
+    	var Gizzi = Evana.find('.pName').text();
+    	var p1 = getPokefromName(Gizzi.trim());
+    	Evana = $("#p2_b1").parent().parent();
+    	Gizzi = Evana.find('.pName').text();
+    	var p2 = getPokefromName(Gizzi.trim());
+
+    	//Player 1
+    	var temp = $("#p1_b1 button");
+    	temp.attr('data-toggle', 'tooltip').attr('data-placement', 'top').attr('title', moveDesc[p1][0]);
+    	temp.tooltip();
+
+    	temp = $("#p1_b2 button");
+    	temp.attr('data-toggle', 'tooltip').attr('data-placement', 'top').attr('title', moveDesc[p1][1]);
+    	temp.tooltip();
+
+    	temp = $("#p1_b3 button");
+    	temp.attr('data-toggle', 'tooltip').attr('data-placement', 'bottom').attr('title', moveDesc[p1][2]);
+    	temp.tooltip();
+
+    	temp = $("#p1_b4 button");
+    	temp.attr('data-toggle', 'tooltip').attr('data-placement', 'bottom').attr('title', moveDesc[p1][3]);
+    	temp.tooltip();
+
+    	//Player 2
+    	var temp = $("#p2_b1 button");
+    	temp.attr('data-toggle', 'tooltip').attr('data-placement', 'top').attr('title', moveDesc[p2][0]);
+    	temp.tooltip();
+
+    	temp = $("#p2_b2 button");
+    	temp.attr('data-toggle', 'tooltip').attr('data-placement', 'top').attr('title', moveDesc[p2][1]);
+    	temp.tooltip();
+
+    	temp = $("#p2_b3 button");
+    	temp.attr('data-toggle', 'tooltip').attr('data-placement', 'bottom').attr('title', moveDesc[p2][2]);
+    	temp.tooltip();
+
+    	temp = $("#p2_b4 button");
+    	temp.attr('data-toggle', 'tooltip').attr('data-placement', 'bottom').attr('title', moveDesc[p2][3]);
+    	temp.tooltip();
+    }
+
+    function removeTooltip() {
+    	$("[data-toggle='tooltip']").tooltip('destroy');
+    }
  
+ 	$('#tooltips-switch').on('switchChange', function (e, data) {
+ 		if (data.value) {
+ 			initTooltip();
+ 			refresh(null, '*** Tooltips are turned on *** <');
+ 		}
+ 		if (!(data.value)) {
+ 			removeTooltip();
+ 			refresh(null, '*** Tooltips are turned off *** <');
+ 		}
+	});
 });

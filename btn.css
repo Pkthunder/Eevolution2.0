@@ -1,0 +1,362 @@
+.btn3 {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.btn3:focus,
+.btn3:active:focus,
+.btn3.active:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.btn3:hover,
+.btn3:focus {
+  color: #333;
+  text-decoration: none;
+}
+.btn3:active,
+.btn3.active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+.btn3.disabled,
+.btn3[disabled],
+fieldset[disabled] .btn3 {
+  pointer-events: none;
+  cursor: not-allowed;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  opacity: .65;
+}
+.btn3-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+.btn3-default:hover,
+.btn3-default:focus,
+.btn3-default:active,
+.btn3-default.active,
+.open .dropdown-toggle.btn3-default {
+  color: #333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+.btn3-default:active,
+.btn3-default.active,
+.open .dropdown-toggle.btn3-default {
+  background-image: none;
+}
+.btn3-default.disabled,
+.btn3-default[disabled],
+fieldset[disabled] .btn3-default,
+.btn3-default.disabled:hover,
+.btn3-default[disabled]:hover,
+fieldset[disabled] .btn3-default:hover,
+.btn3-default.disabled:focus,
+.btn3-default[disabled]:focus,
+fieldset[disabled] .btn3-default:focus,
+.btn3-default.disabled:active,
+.btn3-default[disabled]:active,
+fieldset[disabled] .btn3-default:active,
+.btn3-default.disabled.active,
+.btn3-default[disabled].active,
+fieldset[disabled] .btn3-default.active {
+  background-color: #fff;
+  border-color: #ccc;
+}
+.btn3-default .badge {
+  color: #fff;
+  background-color: #333;
+}
+.btn3-primary {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+.btn3-primary:hover,
+.btn3-primary:focus,
+.btn3-primary:active,
+.btn3-primary.active,
+.open .dropdown-toggle.btn3-primary {
+  color: #fff;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+.btn3-primary:active,
+.btn3-primary.active,
+.open .dropdown-toggle.btn3-primary {
+  background-image: none;
+}
+.btn3-primary.disabled,
+.btn3-primary[disabled],
+fieldset[disabled] .btn3-primary,
+.btn3-primary.disabled:hover,
+.btn3-primary[disabled]:hover,
+fieldset[disabled] .btn3-primary:hover,
+.btn3-primary.disabled:focus,
+.btn3-primary[disabled]:focus,
+fieldset[disabled] .btn3-primary:focus,
+.btn3-primary.disabled:active,
+.btn3-primary[disabled]:active,
+fieldset[disabled] .btn3-primary:active,
+.btn3-primary.disabled.active,
+.btn3-primary[disabled].active,
+fieldset[disabled] .btn3-primary.active {
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+.btn3-primary .badge {
+  color: #428bca;
+  background-color: #fff;
+}
+.btn3-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.btn3-success:hover,
+.btn3-success:focus,
+.btn3-success:active,
+.btn3-success.active,
+.open .dropdown-toggle.btn3-success {
+  color: #fff;
+  background-color: #47a447;
+  border-color: #398439;
+}
+.btn3-success:active,
+.btn3-success.active,
+.open .dropdown-toggle.btn3-success {
+  background-image: none;
+}
+.btn3-success.disabled,
+.btn3-success[disabled],
+fieldset[disabled] .btn3-success,
+.btn3-success.disabled:hover,
+.btn3-success[disabled]:hover,
+fieldset[disabled] .btn3-success:hover,
+.btn3-success.disabled:focus,
+.btn3-success[disabled]:focus,
+fieldset[disabled] .btn3-success:focus,
+.btn3-success.disabled:active,
+.btn3-success[disabled]:active,
+fieldset[disabled] .btn3-success:active,
+.btn3-success.disabled.active,
+.btn3-success[disabled].active,
+fieldset[disabled] .btn3-success.active {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.btn3-success .badge {
+  color: #5cb85c;
+  background-color: #fff;
+}
+.btn3-info {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.btn3-info:hover,
+.btn3-info:focus,
+.btn3-info:active,
+.btn3-info.active,
+.open .dropdown-toggle.btn3-info {
+  color: #fff;
+  background-color: #39b3d7;
+  border-color: #269abc;
+}
+.btn3-info:active,
+.btn3-info.active,
+.open .dropdown-toggle.btn3-info {
+  background-image: none;
+}
+.btn3-info.disabled,
+.btn3-info[disabled],
+fieldset[disabled] .btn3-info,
+.btn3-info.disabled:hover,
+.btn3-info[disabled]:hover,
+fieldset[disabled] .btn3-info:hover,
+.btn3-info.disabled:focus,
+.btn3-info[disabled]:focus,
+fieldset[disabled] .btn3-info:focus,
+.btn3-info.disabled:active,
+.btn3-info[disabled]:active,
+fieldset[disabled] .btn3-info:active,
+.btn3-info.disabled.active,
+.btn3-info[disabled].active,
+fieldset[disabled] .btn3-info.active {
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.btn3-info .badge {
+  color: #5bc0de;
+  background-color: #fff;
+}
+.btn3-warning {
+  color: #fff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.btn3-warning:hover,
+.btn3-warning:focus,
+.btn3-warning:active,
+.btn3-warning.active,
+.open .dropdown-toggle.btn3-warning {
+  color: #fff;
+  background-color: #ed9c28;
+  border-color: #d58512;
+}
+.btn3-warning:active,
+.btn3-warning.active,
+.open .dropdown-toggle.btn3-warning {
+  background-image: none;
+}
+.btn3-warning.disabled,
+.btn3-warning[disabled],
+fieldset[disabled] .btn3-warning,
+.btn3-warning.disabled:hover,
+.btn3-warning[disabled]:hover,
+fieldset[disabled] .btn3-warning:hover,
+.btn3-warning.disabled:focus,
+.btn3-warning[disabled]:focus,
+fieldset[disabled] .btn3-warning:focus,
+.btn3-warning.disabled:active,
+.btn3-warning[disabled]:active,
+fieldset[disabled] .btn3-warning:active,
+.btn3-warning.disabled.active,
+.btn3-warning[disabled].active,
+fieldset[disabled] .btn3-warning.active {
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.btn3-warning .badge {
+  color: #f0ad4e;
+  background-color: #fff;
+}
+.btn3-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.btn3-danger:hover,
+.btn3-danger:focus,
+.btn3-danger:active,
+.btn3-danger.active,
+.open .dropdown-toggle.btn3-danger {
+  color: #fff;
+  background-color: #d2322d;
+  border-color: #ac2925;
+}
+.btn3-danger:active,
+.btn3-danger.active,
+.open .dropdown-toggle.btn3-danger {
+  background-image: none;
+}
+.btn3-danger.disabled,
+.btn3-danger[disabled],
+fieldset[disabled] .btn3-danger,
+.btn3-danger.disabled:hover,
+.btn3-danger[disabled]:hover,
+fieldset[disabled] .btn3-danger:hover,
+.btn3-danger.disabled:focus,
+.btn3-danger[disabled]:focus,
+fieldset[disabled] .btn3-danger:focus,
+.btn3-danger.disabled:active,
+.btn3-danger[disabled]:active,
+fieldset[disabled] .btn3-danger:active,
+.btn3-danger.disabled.active,
+.btn3-danger[disabled].active,
+fieldset[disabled] .btn3-danger.active {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.btn3-danger .badge {
+  color: #d9534f;
+  background-color: #fff;
+}
+.btn3-link {
+  font-weight: normal;
+  color: #428bca;
+  cursor: pointer;
+  border-radius: 0;
+}
+.btn3-link,
+.btn3-link:active,
+.btn3-link[disabled],
+fieldset[disabled] .btn3-link {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.btn3-link,
+.btn3-link:hover,
+.btn3-link:focus,
+.btn3-link:active {
+  border-color: transparent;
+}
+.btn3-link:hover,
+.btn3-link:focus {
+  color: #2a6496;
+  text-decoration: underline;
+  background-color: transparent;
+}
+.btn3-link[disabled]:hover,
+fieldset[disabled] .btn3-link:hover,
+.btn3-link[disabled]:focus,
+fieldset[disabled] .btn3-link:focus {
+  color: #999;
+  text-decoration: none;
+}
+.btn3-lg,
+.btn3-group-lg > .btn3 {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+.btn3-sm,
+.btn3-group-sm > .btn3 {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.btn3-xs,
+.btn3-group-xs > .btn3 {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+.btn3-block {
+  display: block;
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+}
+.btn3-block + .btn3-block {
+  margin-top: 5px;
+}
+input[type="submit"].btn3-block,
+input[type="reset"].btn3-block,
+input[type="button"].btn3-block {
+  width: 100%;
+}

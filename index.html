@@ -13,17 +13,17 @@ Copyrighted (c) to Paradoxysaurs, 1827 in Atlantis, Atlantis.
 3. Re-design moves with Ryan
 4. Overall balance the stats and move damage -->
 
-
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link type="text/css" rel="stylesheet" href="style.css"/>
 		<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
-        <link type="text/css" rel="stylesheet" href="bootstrap_switch/stylesheets/bootstrap-switch.css"/>
+        <link type="text/css" rel="stylesheet" href="bootstrap-switch-master/build/css/bootstrap3/bootstrap-switch.css"/>
+        <link type="text/css" rel="stylesheet" href="btn.css"/>
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-        <script type="text/javascript" src="bootstrap_switch/js/bootstrap-switch.js"></script>
+        <script type="text/javascript" src="bootstrap-switch-master/build/js/bootstrap-switch.js"></script>
 		<script type="text/javascript" src="js/core.js"></script>
 		<script type="text/javascript" src="js/status_functions.js"></script>
 		<script type="text/javascript" src="js/stat_modifier.js"></script>
@@ -183,9 +183,7 @@ Copyrighted (c) to Paradoxysaurs, 1827 in Atlantis, Atlantis.
                 <!-- Body of Modal -->
                 <div id="tooltips">
                     <span>Tooltips:</span>
-                    <div id="tooltips-switch" class="make-switch pull-right" data-on="success" data-off="default">
-                        <input type="checkbox" checked>
-                    </div>
+                    <input id="tooltips-switch" type="checkbox" checked data-on-color="success" data-off-color="danger">
                 </div>
                 <!-- End of Body -->
               </div>
@@ -247,6 +245,7 @@ Copyrighted (c) to Paradoxysaurs, 1827 in Atlantis, Atlantis.
 				</div> 
 			</div>
             
+            <!--
             <div class="alert">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <p style="text-align:center; margin-left:170px; margin-right:170px;">
@@ -254,6 +253,7 @@ Copyrighted (c) to Paradoxysaurs, 1827 in Atlantis, Atlantis.
                     Please let me know if you find any other errors! Thanks and Catch 'Em All!</strong>
                 </p>     
             </div>
+            -->
             
 			<!-- Body Wrapper Begins -->
 
@@ -330,12 +330,12 @@ Copyrighted (c) to Paradoxysaurs, 1827 in Atlantis, Atlantis.
 			
     		<div id="footer_wrapper">
     		    <span id="signature">Eeveelution 2 created by Jared Perreault<br>using jQuery and Twitter Bootstrap</span>
-    		    <button id="reset_btn" class="btn btn-danger" type="button">Reset</button>
-                <a id="settings_btn" class="btn btn-success" data-toggle="modal" href="#setModal">Settings</a>
-    		    <a id="how2_btn" class="btn btn-primary" data-toggle="modal" href="#myModal">How To Play</a>
-    		    <a id="how2_btn" class="btn btn-primary" data-toggle="modal" href="#moveModal">Move List</a>
+    		    <button id="reset_btn" class="btn3 btn3-danger" type="button">Reset</button>
+                <a id="settings_btn" class="btn3 btn3-success" data-toggle="modal" href="#setModal">Settings</a>
+    		    <a id="how2_btn" class="btn3 btn3-primary" data-toggle="modal" href="#myModal">How To Play</a>
+    		    <a id="how2_btn" class="btn3 btn3-primary" data-toggle="modal" href="#moveModal">Move List</a>
     		    <a href="http://www.linkedin.com/in/jaredperreault" target="_blank">
-    		        <button id="abt_me" class="btn btn-info" type="button">About Me</button>
+    		        <button id="abt_me" class="btn3 btn3-info" type="button">About Me</button>
     		    </a>
     		</div>
     	</div>

@@ -6,7 +6,7 @@ function Pokemon( name, attack, defense, speed, health, pokedex, $wrapper ) {
 	this.speed = speed;
 	this.health = health;
 	this.original_health = health;
-	this.pokedex = pokedex;
+	this.pokedex = pokedex; //enum value of each pokemon
 	this.player = null;
 	this.other = {};
 	this.status = null;

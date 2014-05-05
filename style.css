@@ -149,25 +149,21 @@ body {
 	width: 100%;
 	height: 10px;
 }
+.progress-wrapper {
+	position: relative;
+}
 .progress {
     position: relative;
     border: 1px solid black;
-    background-color: orange;
+    color: black;
 }
-.bar {
-    z-index: 1;
-    position: absolute;
-}
-.progress span {
+.progress span, .bar_val {
     position: absolute;
     top: 0;
-    z-index: 2;
+    z-index: 50;
     color: black;
     text-align: center;
     width: 100%;
-}
-.progress .bar.bar-success {
-	float: right;
 }
 /*****************************************************/
 

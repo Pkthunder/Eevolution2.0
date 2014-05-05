@@ -253,5 +253,5 @@ function updateHealthBar( poke ) {
 	$txt.find(".bar_val").remove();
 	$txt.append('<span class="bar_val">' +poke.health+' / '+poke.original_health+'</span>');
 	var percent = (poke.health / poke.original_health) *100;
-	$txt.parent().find(".bar").css({"width" : percent+'%'});
+	$txt.parent().find(".bar.bar-danger").css({"width" : percent+'%'});
 }

@@ -296,23 +296,20 @@ var moveEffects = {
 	},
 	Substitute: function(Beasley) {
 		//return false;
-		var value = Beasley.original_health*0.25;
-
-		if (Beasley.health < value) { //If current health is under 25%
-			Beasley.health = 1;
-		}
-		else {
-			Beasley.health = Beasley.health - value;
-		}
-		updateHealthBar(Beasley);
-
-		var percent = (Beasley.health / Beasley.original_health) * 100;
+		var value = Beasley.health*0.25;
+		var percent = (value / Beasley.original_health) * 100;
 		var container = Beasley.$wrapper.find(".progress");
-		container.find('.bar .bar-danger').css( { "width" : "75%" } );
-		container.find('.bar .bar-danger').before('<div class="bar bar-success" style="width: 25%;"></div>');
-		//container.find('.bar_val').before('<div class="bar bar-success" style="width: 25%;"></div>');
+		var redBar = container.find('.bar.bar-danger');
+		Beasley.health = Math.round(Beasley.health - value);
+		updateHealthBar(Beasley);
+		redBar.after('<div class="bar bar-success" style="width: 0.000001%;"></div>');
 
-		return true;
+		//Short Delay
+		setTimeout( function() {
+			refresh(Beasley, Beasley.name +' made a clone of itself!');
+			container.find('.bar.bar-success').css({"width" : percent+"%"});
+			return true;
+		 }, 600);
 	},
 	SwordsDance: function(Beasley) {
 		if ( modAttack(Beasley, 2) ) {

@@ -173,7 +173,7 @@ $(document).on("preCheck", function( e, attacker ) {
             return;
         }
         //temp fix
-        if((!Evana && attacker.move.pwr == null) && attacker.move.name == "MirrorCoat" || attacker.move.name == "Substitution") {
+        if((!Evana && attacker.move.pwr == null) && (attacker.move.name == "MirrorCoat" || attacker.move.name == "Substitution")) {
             refresh( attacker, attacker.move.name+" failed because I haven't added it yet. Sorry!");
         }
         //transition state

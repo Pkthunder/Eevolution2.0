@@ -7,6 +7,8 @@ TODO:
 	3: Finish All Move Functions
 	4: Finish How To Modal
 	5: Two-Player Mode????
+	6: Fix ineffciencies in State-Machine
+	7: Add while loop for automatic death detection (DUH!)
 
 */
 

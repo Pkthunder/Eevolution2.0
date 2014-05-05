@@ -296,18 +296,28 @@ var moveEffects = {
 	},
 	Substitute: function(Beasley) {
 		//return false;
-		var value = Beasley.health*0.25;
+		var value = Math.round(Beasley.health*0.25);
 		var percent = (value / Beasley.original_health) * 100;
-		var container = Beasley.$wrapper.find(".progress");
+		var container = Beasley.$wrapper.find(".progress-wrapper");
 		var redBar = container.find('.bar.bar-danger');
+		
+		//Record Sacrifice Damage
 		Beasley.health = Math.round(Beasley.health - value);
 		updateHealthBar(Beasley);
 		redBar.after('<div class="bar bar-success" style="width: 0.000001%;"></div>');
+		
+		//Prepare String for Updating Health Bar Text
+		var span = container.find('.bar_val');
+		var text = span.text();
+
+		addStatusEffects["Substitute"](Beasley);
+		Beasley.status.data = value;
 
 		//Short Delay
-		setTimeout( function() {
+		setTimeout( function() { //add '2nd health bar' on short delay for better appearence
 			refresh(Beasley, Beasley.name +' made a clone of itself!');
 			container.find('.bar.bar-success').css({"width" : percent+"%"});
+			span.text(text+" + ("+value+")"); //Update Health Bar Text
 			return true;
 		 }, 600);
 	},

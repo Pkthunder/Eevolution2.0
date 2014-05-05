@@ -236,6 +236,10 @@ function refresh( who, inString ) {
     $("#textarea_wrapper").animate({scrollTop: $("#textarea_wrapper")[0].scrollHeight}, 'slow');
 }
 
+Pokemon.prototype.hasStatus = function(s) {
+    return (this.status != null && this.status.type == s) ? true : false;
+}
+
 // Health Bar Function
 function deathCheck( poke ) {
     if ( poke.health < 1 ) {

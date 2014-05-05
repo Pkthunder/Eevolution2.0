@@ -48,6 +48,13 @@ function calcDmg( attacker) {
 }
 
 function recordDmg(target, damage) {
+    if (target.hasStatus('Substitute')) {
+        var extra = target.status.data;
+        if (damage <= data) { //keep health @ normal level, but lose '2nd bar'
+            updateHealthBar(target);
+        }
+        //TODO: Finish Substitute!
+    }
 	target.health = Math.round(target.health - damage);
 	refresh(target.other, target.other.name+ "'s " + target.other.move.name + " dealt " +
 	        damage +" damage to "+target.name);

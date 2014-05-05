@@ -1,4 +1,14 @@
-/* This file includes all event handlers and a few support functions */
+/* This file includes non-battle event handlers and a few support functions */
+
+/*
+TODO:
+	1: Finish Settings Tab
+	2: Finish Tooltip Setting [done]
+	3: Finish All Move Functions
+	4: Finish How To Modal
+	5: Two-Player Mode????
+
+*/
 
 $(document).ready( function() {
 

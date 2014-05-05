@@ -166,6 +166,9 @@ body {
     text-align: center;
     width: 100%;
 }
+.progress .bar.bar-success {
+	float: right;
+}
 /*****************************************************/
 
 /*Player 1 wrapper/style*/

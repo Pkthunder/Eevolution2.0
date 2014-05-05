@@ -295,7 +295,24 @@ var moveEffects = {
 	    return true;
 	},
 	Substitute: function(Beasley) {
-		return false;
+		//return false;
+		var value = Beasley.original_health*0.25;
+
+		if (Beasley.health < value) { //If current health is under 25%
+			Beasley.health = 1;
+		}
+		else {
+			Beasley.health = Beasley.health - value;
+		}
+		updateHealthBar(Beasley);
+
+		var percent = (Beasley.health / Beasley.original_health) * 100;
+		var container = Beasley.$wrapper.find(".progress");
+		container.find('.bar .bar-danger').css( { "width" : "75%" } );
+		container.find('.bar .bar-danger').before('<div class="bar bar-success" style="width: 25%;"></div>');
+		//container.find('.bar_val').before('<div class="bar bar-success" style="width: 25%;"></div>');
+
+		return true;
 	},
 	SwordsDance: function(Beasley) {
 		if ( modAttack(Beasley, 2) ) {

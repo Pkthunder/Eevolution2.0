@@ -209,10 +209,10 @@ var moveDesc = [
     [
         //Blizzard
         "A very high damage move, but slightly inaccurate",
-        //Ice Shard
+        //Ice Shard.
         "A weaker damage move that always goes first",
         //Mirror Coat
-        "Blocks the opponent's damaging attack, and deals 1.5x the damage it would of dealth",
+        "Returns the opponent's damaging attack, and deals 1.5x of the damage it dealt",
         //Frost Breath
         "A damage move that ignores the opponent's Defense",
     ]

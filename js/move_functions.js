@@ -306,9 +306,8 @@ var moveEffects = {
 		updateHealthBar(Beasley);
 		redBar.after('<div class="bar bar-success" style="width: 0.000001%;"></div>');
 		
-		//Prepare String for Updating Health Bar Text
+		//Prepare Target for Updating Health Bar Text
 		var span = container.find('.bar_val');
-		var text = span.text();
 
 		addStatusEffects["Substitute"](Beasley);
 		Beasley.status.data = value;
@@ -317,7 +316,7 @@ var moveEffects = {
 		setTimeout( function() { //add '2nd health bar' on short delay for better appearence
 			refresh(Beasley, Beasley.name +' made a clone of itself!');
 			container.find('.bar.bar-success').css({"width" : percent+"%"});
-			span.text(text+" + ("+value+")"); //Update Health Bar Text
+			span.append('<span class="bar_val-green"> + ('+value+')</span>'); //Update Health Bar Text
 			return true;
 		 }, 600);
 	},
@@ -333,7 +332,17 @@ var moveEffects = {
 //////////////////////////////////////////////
 //Glaceon
 	MirrorCoat: function(Beasley) {
-	    return false;
+	    //return false;
+	    if ( Beasley.other.move.pwr != null && Beasley.other.move.pwr > 0 ) {
+	    	var dmgDealt = Beasley.original_health - Beasley.health;
+	    	var mcoatDmg = Math.round( Beasley.other.health - (dmgDealt*1.5));
+	    	Beasley.other.health = mcoatDmg;
+	    	updateHealthBar(Beasley.other);
+	    	refresh(Beasley, "Glaceon's Mirror Coat dealt " + mcoatDmg +" damage to "+Beasley.other.name);
+	    }
+	    else
+	    	refresh(Beasley, "but it failed!");
+	    return true;
 	},
 	FrostBreath: function(Beasley) {
 		Beasley.move.dmgmod = true;

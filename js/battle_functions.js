@@ -50,9 +50,38 @@ function calcDmg( attacker) {
 function recordDmg(target, damage) {
     if (target.hasStatus('Substitute')) {
         var extra = target.status.data;
-        if (damage <= data) { //keep health @ normal level, but lose '2nd bar'
-            updateHealthBar(target);
+        if (damage < extra) { //keep health @ normal level, but lose '2nd bar'
+            damage = 0;
+            var value = Math.round(extra - damage);
+            var percent = (value / target.original_health) * 100;
+            var container = target.$wrapper.find(".progress-wrapper");
+            var greenBar = container.find('.bar.bar-success');
+            var span = container.find('.bar_val');
+            target.status.data = value;
+            greenBar.css({"width" : +percent+"%"});
+            container.find('.bar_val-green').remove();
+            span.append('<span class="bar_val-green"> + ('+value+')</span>');
+            refresh(target.other, target.other.name+ "'s " + target.other.move.name + " dealt " +
+            value +" damage to "+target.name+"'s clone");
         }
+        else if (damage >= extra) {
+            damage = damage - extra;
+            var container = target.$wrapper.find(".progress-wrapper");
+            
+            //Handles GreenBar
+            var greenBar = container.find('.bar.bar-success');
+            greenBar.css({"width" : "0%"});
+            container.find('.bar_val-green').remove();
+            target.status = null;
+
+            refresh(target.other, target.other.name+ "'s " + target.other.move.name + " dealt " +
+            extra +" damage to "+target.name+"'s clone");
+
+            setTimeout( function() {
+                greenBar.remove();
+            }, 1000);
+        }
+
         //TODO: Finish Substitute!
     }
 	target.health = Math.round(target.health - damage);
@@ -78,7 +107,7 @@ function runAliment(attacker) {
 function runBattlePhase() {
 	//run priority/speed checks to determine first attacker
 	var first, second;
-    if (play1.move.priority > 0 || play2.move.priority > 0 ) {
+    if (play1.move.priority != 0 || play2.move.priority != 0 ) {
         first = priorityCheck();
     }
     else {

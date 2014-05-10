@@ -1,3 +1,5 @@
+/* This file contains all object definitions, raw data arrays, global variables, and a global functions library */
+
 /*Pokemon Object/Array*/
 function Pokemon( name, attack, defense, speed, health, pokedex, $wrapper ) {
 	this.name = name;
@@ -10,6 +12,7 @@ function Pokemon( name, attack, defense, speed, health, pokedex, $wrapper ) {
 	this.player = null;
 	this.other = {};
 	this.status = null;
+    this.effects = new Array(); //TODO: established this system!
 	this.disabled = false; //cannot attack this turn if true
 	this.move = null;
 	this.$wrapper = $wrapper;
@@ -38,6 +41,16 @@ function Status( type, duration ) {
 	this.duration = duration;
 	this.started = turn;
     this.bTurn = false;
+}
+
+//Effects Object
+//if duration == false, that means infinite
+function Effect( type, duration, family ) {
+    this.type = type;
+    this.duration = duration;
+    this.started = turn;
+    this.bTurn = false;
+    this.family = ( family == null ) ? 'none' : family; //Used to group alike-effects into one boolean check through .hasFamily()
 }
 
 //Stat Stage Object
@@ -238,6 +251,75 @@ function refresh( who, inString ) {
 
 Pokemon.prototype.hasStatus = function(s) {
     return (this.status != null && this.status.type == s) ? true : false;
+}
+
+//Checks if a status CAN be added to target (this returns a boolean)
+Pokemon.prototype.clearedForStatus = function(s) {
+    if ( this.status == null && !(this.hasEffectParentType('preventStatus')) ) {
+        return true;
+    }
+    else if ( this.status != null ) { //temp - TODO: finish this function
+        return false;
+    }
+
+
+    /* ??? Is here the place for this handling? <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    //Magic Coat Handling
+    if ( this.hasEffect('MagicCoat') ) {
+        this.removeEffect('MagicCoat');
+        if (this.other.clearedForStatus(s)) {
+            addStatusEffects[''+s+''](this.other);
+        }
+        return false;
+    }
+
+    //Substitute Handling
+    if ( this.hasEffect('Substitute') ) {
+        return false;
+    }
+    */
+
+    else {
+        alert('Debugging: Error with clearedForStatus()');
+    }
+}
+
+Pokemon.prototype.removeEffect = function(e) {
+    if ( !(this.hasEffect(e)) ) {
+        alert('Debugging: removeEffect() called on absent effect');
+    }
+    for ( var i=0; this.effects.length = 0; i++ ) {
+        if (this.effects[i].type == e) {
+            this.effects.splice(i,1);
+            return;
+        }
+    }
+}
+
+//returns a boolean
+Pokemon.prototype.hasEffect = function(e) {
+    //Skip for loop for effciency if array is empty
+    if ( this.effects.length == 0 ) {
+        return false;
+    }
+
+    for ( var i=0; this.effects.length; i++ ) {
+        if (this.effects[i].type == e) {
+            return true;
+        }
+    }
+    return false;
+}
+
+//returns a boolean
+Pokemon.prototype.hasFamily = function(t) {
+    for ( var i=0; this.effects.length; i++ ) {
+        if (this.effects[i].family == t) {
+            return true;
+        }
+    }
+    return false;
 }
 
 // Health Bar Function

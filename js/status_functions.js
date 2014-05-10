@@ -1,3 +1,5 @@
+/* This file contains 3 large literal objects for adding, removing, and turn-effects of each Status Aliment */
+
 var addStatusEffects = {
 	Sleep: function(Halpert) {
 		var Evana = Math.floor(Math.random()*5) + 1;

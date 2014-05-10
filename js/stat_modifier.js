@@ -1,3 +1,5 @@
+/* This file contains all functions involved with adjusting stat stages and stat values */
+
 //stores the multiplier value for each stat stage from -6 to +6
 //array is indexed with an offset of +6 (stage number + 6 = index number)
 var stageLibrary = [.25, .285, .33, .4, .5, .66, 1, 1.5, 2, 2.5, 3, 3.5, 4]

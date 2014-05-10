@@ -1,3 +1,5 @@
+/* This file contains all battle functions and the psudeo state-machine */
+
 function speedCheck() {
 	if ( play1.speed == play2.speed ) {
 		var coin = Math.floor(Math.random()*2);
@@ -15,6 +17,7 @@ function priorityCheck() {
 }
 
 function hitCheck( attacker ) {
+    alert('hitCheck called');
     if ( attacker.move.acc != null ) {
         if ( attacker.move.name == "Swift") {
             return true;
@@ -65,7 +68,7 @@ function recordDmg(target, damage) {
             value +" damage to "+target.name+"'s clone");
         }
         else if (damage >= extra) {
-            damage = damage - extra;
+            damage = Math.round(damage - extra);
             var container = target.$wrapper.find(".progress-wrapper");
             
             //Handles GreenBar
@@ -79,7 +82,7 @@ function recordDmg(target, damage) {
 
             setTimeout( function() {
                 greenBar.remove();
-            }, 1000);
+            }, 500);
         }
 
         //TODO: Finish Substitute!
@@ -119,7 +122,7 @@ function runBattlePhase() {
     refresh(null, "--- Turn: "+turn+" --- <");
     $(document).trigger("runAliment", [first]);
 }
-
+/***************************************************************************************************************************/
 //Psuedo-State Machine Begins Here---
 $(document).on("betweenTurns", function( e, attacker ) {
     console.log("betweenTurns Status removal...");
@@ -207,10 +210,6 @@ $(document).on("preCheck", function( e, attacker ) {
         }
         if(attacker.other.health < 1) { //death Check
             return;
-        }
-        //temp fix
-        if((!Evana && attacker.move.pwr == null) && (attacker.move.name == "MirrorCoat" || attacker.move.name == "Substitution")) {
-            refresh( attacker, attacker.move.name+" failed because I haven't added it yet. Sorry!");
         }
         //transition state
         if (attacker.move.pwr != null) {

@@ -1,4 +1,5 @@
-//All effects of moves
+/* This file contains all move effect functions stored in a large literal object for easy indexing/calling */
+
 var moveEffects = {
 //Jolteon
 	Yawn: function(Beasley) {

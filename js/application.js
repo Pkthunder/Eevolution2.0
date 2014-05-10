@@ -4,11 +4,12 @@
 TODO:
 	1: Finish Settings Tab
 	2: Finish Tooltip Setting [done]
-	3: Finish All Move Functions
+	3: Finish All Move Functions [done]
 	4: Finish How To Modal
 	5: Two-Player Mode????
 	6: Fix ineffciencies in State-Machine
 	7: Add while loop for automatic death detection (DUH!)
+	8: Eliminate all uses of 'eval()' [done]
 
 */
 
@@ -100,13 +101,13 @@ $(document).ready( function() {
 		//prevents duplicates
 		do {
 			 Evana = Math.floor(Math.random()*7) + 1;
-			 Gizzi = '"#' + Evana + '_pic"';
+			 Gizzi = '#' + Evana + '_pic';
 			 Evana--;
 		} while ( Evana == play1.pokedex );
 
 		//retrieves correct picture from the background-pics
 		//and places it in the correct player location
-		var shesBomb = $(".extra_wrapper").find( eval(Gizzi) );
+		var shesBomb = $(".extra_wrapper").find( ''+Gizzi+'' );
 		var dotCom = shesBomb.css("background-image");
 		if ( pick_turn == 1 ) {
 			$("#intro").remove();
@@ -174,7 +175,8 @@ $(document).ready( function() {
 		var Evana = Gizzi.parent().attr("id");
 		Evana = Evana.replace('p','').replace('_button_wrapper','');
 		var Gizzi = "play" + Evana;
-		var akaBeez = eval(Gizzi);
+		//var akaBeez = eval(Gizzi);
+		var akaBeez = window[Gizzi];
 		return akaBeez.pokedex;
 	}
 
@@ -198,7 +200,8 @@ $(document).ready( function() {
 		var which = datPointer.parent().attr("id");
 		which = which.replace('p', '').replace('_button_wrapper', '');
 		var who = "play" + which;
-		var user = eval(who);
+		//var user = eval(who);
+		var user = window[who];
 		user.move = moveItGurl;
 		//disable buttons
 		disabledButtons(datPointer);

@@ -97,7 +97,7 @@ function runEffect( attacker ) {
 function runAliment(attacker) {
     if (attacker.status) {
         console.log("running status effect: " + attacker.status.type + " on " + attacker.name);
-        return turnStatusEffects[attacker.status.type](attacker); //returns true if Aliment causes death
+        return turnStatusAliments[attacker.status.type](attacker); //returns true if Aliment causes death
     }
     return false;
 }

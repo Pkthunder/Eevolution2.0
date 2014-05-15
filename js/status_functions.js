@@ -1,11 +1,11 @@
 /* This file contains 3 large literal objects for adding, removing, and turn-effects of each Status Aliment */
 
-var addStatusEffects = {
+var addStatusAliments = {
 	Sleep: function(Halpert) {
 		var Evana = Math.floor(Math.random()*5) + 1;
 		Halpert.status = new Status( "Sleep", Evana );
 		Halpert.disabled = true;
-		Halpert.disabled_msg = Halpert.name+ 'is sleeping!';
+		Halpert.disabled_msg = Halpert.name+ ' is sleeping!';
 		refresh(Halpert.other, Halpert.name+" fell Asleep!");
 	},
 	Poison: function(Halpert) {
@@ -54,7 +54,7 @@ var addStatusEffects = {
 	}
 };
 
-var removeStatusEffects = {
+var removeStatusAliments = {
 	Sleep: function(Halpert) {
 	    Halpert.disabled = false;
 		Halpert.status = null;
@@ -73,7 +73,7 @@ var removeStatusEffects = {
 	},
 	Yawn: function(Halpert) {
         Halpert.status = null;
-		addStatusEffects["Sleep"](Halpert);
+		addStatusAliments["Sleep"](Halpert);
 	},
 	Flinch: function(Halpert) {
 	    if ( (turn+1) - Halpert.status.started == Halpert.status.duration) {
@@ -103,10 +103,10 @@ var removeStatusEffects = {
 	}
 };
 
-var turnStatusEffects = {
+var turnStatusAliments = {
 	Sleep: function(Halpert) {
 		if ( turn - Halpert.status.started == Halpert.status.duration ) {
-		    removeStatusEffects["Sleep"](Halpert);
+		    removeStatusAliments["Sleep"](Halpert);
 		}
 	},
 	Poison: function(Halpert) {
@@ -164,7 +164,7 @@ var turnStatusEffects = {
 	},
 	Confusion: function(Halpert) {
 	    if ( turn - Halpert.status.started == Halpert.status.duration ) {
-		    removeStatusEffects["Confusion"](Halpert);
+		    removeStatusAliments["Confusion"](Halpert);
 		    return;
 	    }
 	    //The confused condition causes a Pokémon to hurt itself in its confusion 50% of the time. 

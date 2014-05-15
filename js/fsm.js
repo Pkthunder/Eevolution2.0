@@ -80,7 +80,9 @@ function BattlePhase() {
 						longDelay();
 					} 
 					else {
-						refresh(attacker, attacker.name+' missed!');
+						setTimeout( function() {
+							refresh(attacker, attacker.name+' missed!');
+						},700);
 						this.toTurnDone(attacker);
 						shortDelay();
 					}
@@ -113,15 +115,16 @@ function BattlePhase() {
 				if (!isFirstDone()) {
 					setFirstDone();
 					this.bTurn(attacker.other);
+					shortDelay();
 				}
 				else { //handles 'between turn status aliments'
 					if (attacker.status != null && attacker.status.bTurn) 
-						removeStatusEffects[attacker.status.type](attacker);
+						removeStatusAliments[attacker.status.type](attacker);
 					if (attacker.other.status != null && attacker.other.status.bTurn) 
-						removeStatusEffects[attacker.status.type](attacker.other);
+						removeStatusAliments[attacker.status.type](attacker.other);
 					this.toPhaseOver();
+					shiftDelay();
 				}
-				shortDelay();
 			},
 			onover: function(event, from, to, attacker) {
 				$(document).trigger(onDamageRecorded);

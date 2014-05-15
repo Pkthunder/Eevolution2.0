@@ -7,7 +7,7 @@ var moveEffects = {
 	        Beasley.other.status = null;
 	        refresh(Beasley.other, Beasley.other.name+" reflected Yawn back at "+Beasley.name);
 	        if (Beasley.other.status == null ) {
-	            addStatusEffects["Yawn"](Beasley);   
+	            addStatusAliments["Yawn"](Beasley);   
     	    }
     		else {
     		    refresh(Beasley, "but it failed!");
@@ -15,7 +15,7 @@ var moveEffects = {
     	    return true;
 	    }
 		if (Beasley.other.status == null) {
-		    addStatusEffects["Yawn"](Beasley.other);
+		    addStatusAliments["Yawn"](Beasley.other);
 		}
 		else {
 		    refresh(Beasley, "but it failed!")   
@@ -29,7 +29,7 @@ var moveEffects = {
     	        Beasley.other.status = null;
     	        refresh(Beasley.other, Beasley.other.name+" reflected Paralysis back at "+Beasley.name);
     	        if (Beasley.other.status == null ) {
-    	            addStatusEffects["Paralysis"](Beasley);   
+    	            addStatusAliments["Paralysis"](Beasley);   
         	    }
         		else {
         		    refresh(Beasley, "but it failed!");
@@ -37,7 +37,7 @@ var moveEffects = {
         	    return true;
     	    }
 	        if ( Beasley.other.status == null ) {
-                addStatusEffects["Paralysis"](Beasley.other);
+                addStatusAliments["Paralysis"](Beasley.other);
             }
 	    }
 		return true;
@@ -98,7 +98,7 @@ var moveEffects = {
     	        Beasley.other.status = null;
     	        refresh(Beasley.other, Beasley.other.name+" reflected Confusion back at "+Beasley.name);
     	        if (Beasley.other.status == null ) {
-    	            addStatusEffects["Confusion"](Beasley);   
+    	            addStatusAliments["Confusion"](Beasley);   
         	    }
         		else {
         		    refresh(Beasley, "but it failed!");
@@ -106,7 +106,7 @@ var moveEffects = {
         	    return true;
     	    }
 	        if ( Beasley.other.status == null ) {
-                addStatusEffects["Confusion"](Beasley.other);
+                addStatusAliments["Confusion"](Beasley.other);
             }
 	    }
 	    return true;
@@ -130,7 +130,7 @@ var moveEffects = {
 	FireFang: function(Beasley) {
 		var Evana = Math.floor(Math.random()*100) + 1;
         if ( Evana <= 20 ) {
-            addStatusEffects["Flinch"](Beasley.other);
+            addStatusAliments["Flinch"](Beasley.other);
         }
 		return true;
 	},
@@ -139,7 +139,7 @@ var moveEffects = {
 	        Beasley.other.status = null;
 	        refresh(Beasley.other, Beasley.other.name+" reflected Yawn back at "+Beasley.name);
 	        if (Beasley.other.status == null ) {
-	            addStatusEffects["Yawn"](Beasley);   
+	            addStatusAliments["Yawn"](Beasley);   
     	    }
     		else {
     		    refresh(Beasley, "but it failed!");
@@ -147,7 +147,7 @@ var moveEffects = {
     	    return true;
 	    }
 		if (Beasley.other.status == null ) {
-	        addStatusEffects["Burn"](Beasley.other);   
+	        addStatusAliments["Burn"](Beasley.other);   
 	    }
 		else {
 		    refresh(Beasley, "but it failed!");
@@ -195,7 +195,7 @@ var moveEffects = {
 		return true;
 	},
 	MagicCoat: function(Beasley) {
-	    addStatusEffects["MagicCoat"](Beasley);
+	    addStatusAliments["MagicCoat"](Beasley);
 	    refresh(Beasley, Beasley.name+" is protecting itself!");
 		return true;
 	},
@@ -212,7 +212,7 @@ var moveEffects = {
 	        Beasley.other.status = null;
 	        refresh(Beasley.other, Beasley.other.name+" reflected Taunt back at "+Beasley.name);
 	        if (Beasley.other.status == null ) {
-	            addStatusEffects["Taunt"](Beasley);   
+	            addStatusAliments["Taunt"](Beasley);   
     	    }
     		else {
     		    refresh(Beasley, "but it failed!");
@@ -220,7 +220,7 @@ var moveEffects = {
     	    return true;
 	    }
 		if (Beasley.other.status == null ) {
-	        addStatusEffects["Taunt"](Beasley.other);   
+	        addStatusAliments["Taunt"](Beasley.other);   
 	    }
 		else {
 		    refresh(Beasley, "but it failed!");
@@ -252,7 +252,7 @@ var moveEffects = {
 	        Beasley.other.status = null;
 	        refresh(Beasley.other, Beasley.other.name+" reflected Poison back at "+Beasley.name);
 	        if (Beasley.other.status == null ) {
-	            addStatusEffects["Poison"](Beasley);   
+	            addStatusAliments["Poison"](Beasley);   
     	    }
     		else {
     		    refresh(Beasley, "but it failed!");
@@ -260,7 +260,7 @@ var moveEffects = {
     	    return true;
 	    }
 	    if (Beasley.other.status == null ) {
-	        addStatusEffects["Poison"](Beasley.other);   
+	        addStatusAliments["Poison"](Beasley.other);   
 	    }
 		else {
 		    refresh(Beasley, "but it failed!");
@@ -280,7 +280,7 @@ var moveEffects = {
 	        Beasley.other.status = null;
 	        refresh(Beasley.other, Beasley.other.name+" reflected Leech Seed back at "+Beasley.name);
 	        if (Beasley.other.status == null ) {
-	            addStatusEffects["LeechSeed"](Beasley);   
+	            addStatusAliments["LeechSeed"](Beasley);   
     	    }
     		else {
     		    refresh(Beasley, "but it failed!");
@@ -288,7 +288,7 @@ var moveEffects = {
     	    return true;
 	    }
 		if (Beasley.other.status == null ) {
-	        addStatusEffects["LeechSeed"](Beasley.other);   
+	        addStatusAliments["LeechSeed"](Beasley.other);   
 	    }
 		else {
 		    refresh(Beasley, "but it failed!");
@@ -310,7 +310,7 @@ var moveEffects = {
 		//Prepare Target for Updating Health Bar Text
 		var span = container.find('.bar_val');
 
-		addStatusEffects["Substitute"](Beasley);
+		addStatusAliments["Substitute"](Beasley);
 		Beasley.status.data = value;
 
 		//Short Delay
@@ -345,20 +345,21 @@ var moveEffects = {
 	    	refresh(Beasley, "but it failed!");
 	    return true;
 	},
-	FrostBreath: function(Beasley) { //TODO REPLACE WITH SWAGGER
-		//calcDmg()
-		var Evana = Math.floor(Math.random()*15) + 1;
-		var rand = Evana + 85;
-		var Dmg = (((((42 * Beasley.attack * 40) / (Beasley.other.defense/2)) / 50) + 2) * rand) / 100;
-		Dmg = (Dmg > 0 ) ? Math.round(Dmg) : 0;
-		
-		//recordDmg()
-		Beasley.other.health = Math.round(Beasley.other.health - Dmg);
-		refresh(Beasley, Beasley.name+ "'s " + Beasley.move.name + " dealt " +
-	        Dmg +" damage to "+Beasley.other.name);
-		updateHealthBar(Beasley.other);
-
-		Beasley.move.pwr = null; //set to null to skip Damage Phase
+	Swagger: function(Beasley) {
+		var target = Beasley.other;
+		if ( target.hasStatus('MagicCoat') ) {
+			target = Beasley;
+			refresh(Beasley.other, Beasley.other.name+" reflected Swagger back at "+Beasley.name);
+		}
+		if ( modAttack(target, 2) ) {
+			    refresh(Beasley, target.name+"'s attack rose sharply!");   
+		}
+		if (target.status == null) {
+			addStatusAliments["Confusion"](target);
+		}
+		else {
+			refresh(Beasley, "but it failed!");
+		}
 		return true;
 	}
 };

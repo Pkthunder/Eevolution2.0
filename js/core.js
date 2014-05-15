@@ -97,15 +97,15 @@ var moveList = [
 	["Swift", "Calm Mind", "Magic Coat", "Stored Power"],
 	["Taunt", "Curse", "Toxic", "Payback"],
 	["Leaf Blade", "Leech Seed", "Substitute", "Swords Dance"],
-	["Blizzard", "Ice Shard", "Mirror Coat", "Frost Breath"] ];
+	["Swagger", "Blizzard", "Ice Shard", "Mirror Coat"] ];
 
 //To access: var[Pokemon.pokedex][Move Number][Move Stat Info]
 //Move Stat Info is organized as follows: var[][][index]
-//									var[0] = Move Name/Effect
-//									var[1] = Move Power
-//									var[2] = Move Accuracy
-//									var[3] = Pre Effect Boolean
-//                                  var[4] = Move Priority
+//									index[0] = Move Name/Effect
+//									index[1] = Move Power
+//									index[2] = Move Accuracy
+//									index[3] = Pre Effect Boolean
+//                                  index[4] = Move Priority
 var moveParams = [
 	[ //Jolteon - 0
 		["Yawn", null, 100, true, 0], //0
@@ -120,7 +120,7 @@ var moveParams = [
 		["Auora Beam", 65, 100, false, 0] ], //3
 	
 	[ //Flareon - 2
-		["Facade", 70, 100, true, 0],
+		["Facade", 70, 0, true, 0],
 		["Fire Fang", 60, 95, false, 0],
 		["Wil O Wisp", null, 75, true, 0],
 		["Flame Charge", 50, 100, false, 0] ],
@@ -144,10 +144,10 @@ var moveParams = [
 		["Swords Dance", null, null, true, 0] ],
 		
 	[ //Glaceon - 6
+        ["Swagger", null, 90, true, 0],
 		["Blizzard", 120, 70, null, 0],
 		["Ice Shard", 40, 100, null, 10],
-		["Mirror Coat", null, null, true, -10], //check priority
-		["Frost Breath", 40, 90, true, 0] ] ];
+		["Mirror Coat", null, null, true, -10] ] ];
 
 //a array of all move descriptions sorted in the same method
 //as the arrays above. This array is 2D -> moveDesc[Pokedex][Move Number]
@@ -220,14 +220,14 @@ var moveDesc = [
     ],
     //Glaceon
     [
+        //Swagger
+        "Increases opponent's Atttack by two stages, but also causes Confusion",
         //Blizzard
         "A very high damage move, but slightly inaccurate",
         //Ice Shard.
         "A weaker damage move that always goes first",
         //Mirror Coat
-        "Returns the opponent's damaging attack, and deals 1.5x of the damage it dealt",
-        //Frost Breath
-        "A damage move that ignores the opponent's Defense",
+        "Returns the opponent's damaging attack, and deals 1.5x of the damage it dealt"
     ]
 ];
 

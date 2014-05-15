@@ -345,8 +345,20 @@ var moveEffects = {
 	    	refresh(Beasley, "but it failed!");
 	    return true;
 	},
-	FrostBreath: function(Beasley) {
-		Beasley.move.dmgmod = true;
+	FrostBreath: function(Beasley) { //TODO REPLACE WITH SWAGGER
+		//calcDmg()
+		var Evana = Math.floor(Math.random()*15) + 1;
+		var rand = Evana + 85;
+		var Dmg = (((((42 * Beasley.attack * 40) / (Beasley.other.defense/2)) / 50) + 2) * rand) / 100;
+		Dmg = (Dmg > 0 ) ? Math.round(Dmg) : 0;
+		
+		//recordDmg()
+		Beasley.other.health = Math.round(Beasley.other.health - Dmg);
+		refresh(Beasley, Beasley.name+ "'s " + Beasley.move.name + " dealt " +
+	        Dmg +" damage to "+Beasley.other.name);
+		updateHealthBar(Beasley.other);
+
+		Beasley.move.pwr = null; //set to null to skip Damage Phase
 		return true;
 	}
 };

@@ -161,7 +161,8 @@ $(document).ready( function() {
 	//Example: Facade is a Pre Effect to increase power if status
 	//Example: Charge Beam is a Post Effect, increases attack AFTER the turn
 	$(document).on( "click", ".activated", function() {
-	    console.log("running btn click handler");
+	    //console.log("running btn click handler");
+	    $("[data-toggle='tooltip']").tooltip('hide');
 		var Evana = getPoke($(this).parent());
 		var Gizzi = getMove($(this).parent());
 		Gizzi = Gizzi - 1;
@@ -207,7 +208,6 @@ $(document).ready( function() {
 		disabledButtons(datPointer);
 		if ( play1.move != null && play2.move != null ) {
 			$(document).trigger(onBothPlayersReady);
-			console.log("onBothPlayersReady triggered");
 		}
 	}
 
@@ -216,15 +216,16 @@ $(document).ready( function() {
 //Custom Event Handlers - BothPlayersReady, DamageRecorded, Death
 
 	$(document).on( "BothPlayersReady", function() {
-		console.log("BothPlayersReady triggered successful");
+		//console.log("BothPlayersReady triggered successful");
 		//starts 'Battle Phase'
 		//all functions are defined inside battle_functions.js
-		runBattlePhase();
+		//runBattlePhase();
+		var test = new BattlePhase();
 	});
 
 	$(document).on( "DamageRecorded", function() {
 	    if (play1.health > 0 && play2.health > 0 ) {
-    	    console.log("DamageRecorded triggered successsful");
+    	    //console.log("DamageRecorded triggered successsful");
     	    play1.move = null;
     	    play2.move = null;
     	    play1.done = false;
@@ -239,9 +240,10 @@ $(document).ready( function() {
 	});
 	
 	$(document).on( "Death", function() {
-	    console.log("onDeath was triggered successfully");
+	    //console.log("onDeath was triggered successfully");
 	    $(".btn.activated").addClass("disabled");
 		$(".btn").removeClass("activated");
+		removeTooltip();
 	    refresh(onDeath.who.other, onDeath.who.name+" has fainted! "+onDeath.who.other.name+" wins!");
 	});
 	

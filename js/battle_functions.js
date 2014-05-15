@@ -17,7 +17,6 @@ function priorityCheck() {
 }
 
 function hitCheck( attacker ) {
-    alert('hitCheck called');
     if ( attacker.move.acc != null ) {
         if ( attacker.move.name == "Swift") {
             return true;
@@ -32,7 +31,7 @@ function hitCheck( attacker ) {
 function getRandom() {
 	var Evana = Math.floor(Math.random()*15) + 1;
 	Evana = Evana + 85;
-	console.log("RandomNumber: " +Evana);
+	//console.log("RandomNumber: " +Evana);
 	return Evana;
 }
 
@@ -43,10 +42,6 @@ function calcDmg( attacker) {
 
 	var rand = getRandom();
 	var Dmg = (((((42 * attacker.attack * attacker.move.pwr) / attacker.other.defense) / 50) + 2) * rand) / 100;
-	//For Frost Breath
-	if ( attacker.move.dmgmod != undefined && attacker.move.dmgmod) {
-	    Dmg = Math.round(Dmg*2);
-	}
 	return (Dmg > 0 ) ? Math.round(Dmg) : 0;
 }
 
@@ -108,19 +103,21 @@ function runAliment(attacker) {
 }
 
 function runBattlePhase() {
-	//run priority/speed checks to determine first attacker
-	var first, second;
-    if (play1.move.priority != 0 || play2.move.priority != 0 ) {
-        first = priorityCheck();
-    }
-    else {
-        first = speedCheck();
-    }
-    second = first.other;
+	// //run priority/speed checks to determine first attacker
+	// var first, second;
+ //    if (play1.move.priority != 0 || play2.move.priority != 0 ) {
+ //        first = priorityCheck();
+ //    }
+ //    else {
+ //        first = speedCheck();
+ //    }
+ //    second = first.other;
     
-    //prints the Turn # (in black i.e. the null)
-    refresh(null, "--- Turn: "+turn+" --- <");
-    $(document).trigger("runAliment", [first]);
+ //    //prints the Turn # (in black i.e. the null)
+ //    refresh(null, "--- Turn: "+turn+" --- <");
+ //    $(document).trigger("runAliment", [first]);
+    //var test = new BattlePhase();
+    return false;
 }
 /***************************************************************************************************************************/
 //Psuedo-State Machine Begins Here---
@@ -148,7 +145,7 @@ $(document).on("Done", function( e, attacker ) {
             $(document).trigger(onDamageRecorded);
         }
     }
-    else {
+    else { //first done, last to go
         $(document).trigger("runAliment", [attacker.other]);
     }
 });

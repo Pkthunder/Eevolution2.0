@@ -5,6 +5,7 @@ var addStatusEffects = {
 		var Evana = Math.floor(Math.random()*5) + 1;
 		Halpert.status = new Status( "Sleep", Evana );
 		Halpert.disabled = true;
+		Halpert.disabled_msg = Halpert.name+ 'is sleeping!';
 		refresh(Halpert.other, Halpert.name+" fell Asleep!");
 	},
 	Poison: function(Halpert) {
@@ -128,7 +129,7 @@ var turnStatusEffects = {
 		Halpert.disabled = false;
 		if (Evana == 1) {
 		    Halpert.disabled = true;
-		    refresh(Halpert, Halpert.name+" is paralyzed!");
+		    Halpert.disabled_msg = Halpert.name+" is paralyzed!";
 		}
 		return (Halpert.health < 1) ? true : false;
 	},
@@ -141,12 +142,12 @@ var turnStatusEffects = {
 	},
 	Flinch: function(Halpert) {
 		Halpert.disabled = true;
-		refresh(Halpert, Halpert.name+" flinched!");
+		Halpert.disabled_msg = Halpert.name+" flinched!";
 	},
 	Taunt: function(Halpert) {
 		if( Halpert.move.pwr == null || Halpert.move.pwr < 1 ) {
 		    Halpert.disabled = true;
-		    refresh(Halpert, Halpert.name+" has to use a damage move due to Taunt!");
+		    Halpert.disabled_msg = Halpert.name+" has to use a damage move due to Taunt!";
 		}
 	},
 	LeechSeed: function(Halpert) {
@@ -174,7 +175,7 @@ var turnStatusEffects = {
 	    Halpert.disabled = false;
 	    if (Evana == 1) {
 		    Halpert.disabled = true;
-		    refresh(Halpert, Halpert.name+" hurts itself due to confusion!");
+		    Halpert.disabled_msg = Halpert.name+" hurts itself due to confusion!";
 		    var dmg = (((((42 * Halpert.attack * 40) / Halpert.defense) / 50) + 2) * 93) / 100;
 		    Halpert.health = Math.round(Halpert.health - dmg);
             updateHealthBar(Halpert);

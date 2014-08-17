@@ -1,0 +1,9 @@
+ 1: Finish Settings Tab
+ 2: Finish Tooltip Setting [done]
+ 4: Finish How To Modal [done]
+ 5: Two-Player Mode????
+ 6: Fix ineffciencies in State-Machine
+ 7: Add while loop for automatic death detection (DUH!)
+ 8: Eliminate all uses of 'eval()' [done]
+ 9: Rework 'Reset' to no longer cause a page reload
+10: Add blinking text 'Choose Pokemon' too player panels [done]

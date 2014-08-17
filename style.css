@@ -220,6 +220,12 @@ body {
 	margin: 0px auto;
   	text-align: center;
 }
+.choose {
+	display: inline-block;
+	width: 70%;
+	margin: 0px auto;
+  	text-align: center;
+}
 /************************************************************/
 
 /*Footer Formatting*/
@@ -274,4 +280,13 @@ body {
 
 #setModal {
 	font-family: Arial, sans-serif;
+}
+
+/************************************************************/
+/*How To Modal Formatting*/
+
+.howto-pic {
+	margin-bottom: 10px;
+	border: 2px solid black;
+	border-radius: 5px;
 }

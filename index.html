@@ -48,11 +48,21 @@ Copyrighted (c) to Paradoxysaurs, 1827 in Atlantis, Atlantis.
                 <h4>How To Play</h4>
               </div>
               <div class="modal-body">
-                <p><strong>Coming Soon!</strong></p>
+                <p><strong>Step One: Choose A Pokemon!</strong></p>
+                <p>Both players must first choose which Pokemon they would like you use. To do this, click on the Pokemon you wish to select, or select the random button at the top of the screen. An example is given below</p>
+                <img class="howto-pic" src="img/howto/step1a.png"/>
+                <img class="howto-pic" src="img/howto/step1b.png"/>
+                <br>
+                <p><strong>Step Two: Battle!</strong></p>
+                <p>Once both players have selected their Pokemon, the move buttons will become activated. Both players must select which move they wish to use, then the turn will play out. The Text Display will record everything that happens and can be referred to at anytime. There is a complete Move List that will explain what every move does that can also be referred to at anytme. There is also an option to toggle tooltips (mouse-over triggered move descriptions) on and off.</p>
+                <br>
+                <p>Quick Overview of the Player Panel</p>
+                <img class="howto-pic" src="img/howto/panel.png"/>
                 <div id="sorry" class="alert">
-                    <strong>Not all moves work yet! SORRY! This page will be updated once all the moves are functional</strong>
-                    <br> As of right now, all non-effect moves (moves that do damage, i.e. move's power > 0) are the only ones that work
+                    <strong>Note:</strong> to all hardcore Pokemon fans, some moves may have been adjusted slightly in an attempt to balance the game. You may want to quickly review each move before playing, because they may be different compared to the actual Pokemon games.
                 </div>
+                <p>Just like in the real Pokemon games, the battle will continue until one Pokemon faints. Have fun!</p>
+                <img class="howto-pic" src="img/howto/overview.png"/>
               </div>
               <div class="modal-footer">
                 <a href="#" class="btn" data-dismiss="modal">Close</a>
@@ -266,7 +276,7 @@ Copyrighted (c) to Paradoxysaurs, 1827 in Atlantis, Atlantis.
 					<div id="p1_wrapper" class="p_wrapper">
 						<div id="p1_pic" class="player_pic" style="background-image: url( 'img/133Eevee.png' )"></div>
 						<div id="p1_info" class="player_info well well-small">
-							<span id="p1_name" class="p_name">Player 1: </span>
+							<span id="p1_name" class="p_name">Player 1: <span class="choose">Choose A Pokemon!</span> </span>
 							<div class="bar_div"></div>
                             <div class="progress-wrapper">
     							<div class="progress">
@@ -300,7 +310,7 @@ Copyrighted (c) to Paradoxysaurs, 1827 in Atlantis, Atlantis.
 					<!-- Player 2 Menu -->
 					<div id="p2_wrapper" class="p_wrapper">
 						<div id="p2_info" class="player_info well well-small">
-							<span id="p2_name" class="p_name">Player 2: </span>
+							<span id="p2_name" class="p_name">Player 2: <span class="choose">Choose A Pokemon!</span> </span>
 							<div class="bar_div"></div>
                             <div class="progress-wrapper">
     							<div class="progress">
@@ -328,7 +338,7 @@ Copyrighted (c) to Paradoxysaurs, 1827 in Atlantis, Atlantis.
 				</div>
 				<div id="textarea_wrapper" class="global_wrapper well well-small">
 					<!-- Attempting to re-create a "textarea" using div's and ul's -->
-					<span id="intro">Choose A Pokemon!</span>
+					<span id="intro" class="choose">Choose A Pokemon!</span>
 					<ul>
 						<!-- a series of li's are created by the JQuery code to "re-create" a text area -->
 					</ul>

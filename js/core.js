@@ -299,7 +299,7 @@ Pokemon.prototype.removeEffect = function(e) {
 
 //returns a boolean
 Pokemon.prototype.hasEffect = function(e) {
-    //Skip for loop for effciency if array is empty
+    //Skip for-loop for effciency if array is empty
     if ( this.effects.length == 0 ) {
         return false;
     }
@@ -333,6 +333,7 @@ function deathCheck( poke ) {
     }
     return false;
 }
+
 function updateHealthBar( poke ) {
     deathCheck(poke);
 	var $txt = poke.$wrapper.find(".bar_val").parent();

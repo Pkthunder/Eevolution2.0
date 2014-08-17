@@ -1,18 +1,5 @@
 /* This file includes non-battle event handlers and a few support functions */
 
-/*
-TODO:
-	1: Finish Settings Tab
-	2: Finish Tooltip Setting [done]
-	3: Finish All Move Functions [done]
-	4: Finish How To Modal
-	5: Two-Player Mode????
-	6: Fix ineffciencies in State-Machine
-	7: Add while loop for automatic death detection (DUH!)
-	8: Eliminate all uses of 'eval()' [done]
-
-*/
-
 $(document).ready( function() {
 
 	/*Header Button Functions*/
@@ -39,6 +26,7 @@ $(document).ready( function() {
 		Gizzi.stages = Marc;
 
 		// actual menu setup
+		where.find(".choose").remove();
 		where.find(".p_name").append( '<span class="pName">  ' + Evana[0] + '</span>');
 		
 		// set button names
@@ -148,6 +136,12 @@ $(document).ready( function() {
 		//refresh( "Player " + pick_turn + " has choosen " + creationList[Evana][0] );
 		pick_turn++;
 	});
+
+	//to draw attention to the fact the players need to select pokemon
+	//Flashes 'Choose a Pokemon'
+	setInterval( function() {
+		$(".choose").toggle();
+	}, 750);
 
 	/*******************************************************************************************************/
 

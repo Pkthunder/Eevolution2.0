@@ -15,7 +15,8 @@ $(document).ready( function() {
 			$(this).find("span").toggleClass("over");
 			$(this).find(".head_pic").css( {"border": "none"});
 			$(this).find(".bg_pic").fadeTo( 25, 1 );
-		});
+		}
+	);
 
 	/*Mouse click header button functions*/
 	function setMenu( who, where ) {
@@ -42,38 +43,47 @@ $(document).ready( function() {
 		return Gizzi;
 	}
 
+	function PickOne($img, $Evana) {
+		$("#intro").remove();
+		$("#p1_pic").css( { "background-image" : $img } );
+		play1 = setMenu($Evana, $("#p1_info") );
+		play1.player = 1;
+        play1.txt = "p1t";
+        refresh( play1, "Player 1 has choosen " + creationList[$Evana][0] );
+	}
+
+	function PickTwo($img, $Evana) {
+		$("#p2_pic").css( { "background-image" : $img } );
+		$(".extra_wrapper, .random_wrapper").each( function() {
+			$(this).unbind("click mouseenter mouseleave");
+		});
+		play2 = setMenu($Evana, $("#p2_info") );
+		play2.player = 2;
+		play2.txt = "p2t";
+		refresh( play2, "Player 2 has choosen " + creationList[$Evana][0] );
+		$(".btn.disabled").addClass("activated");
+		$(".btn").removeClass("disabled");
+		play1.other = play2;
+		play2.other = play1;
+		$("#tooltips-switch").bootstrapSwitch('state', true);
+		initTooltip();
+		$("#player_wrapper").css('opacity', 1.0);
+	}
+
 	//Pokemon Button Function
 	$(".extra_wrapper").on( "click", function() {
 		var $img = $(this).find(".bg_pic").css('background-image');
-		$img = $img.replace('url(', '').replace(')', '');
 
 		var $Evana = $(this).find(".bg_pic").attr("id");
 		$Evana = $Evana.replace('"', '').replace('_pic', '').replace('"', '');
 		$Evana--;
 
 		if ( pick_turn == 1) {
-			$("#intro").remove();
-			$("#p1_pic").css( { "background-image" : 'url( ' + $img + ')' } );
-			play1 = setMenu($Evana, $("#p1_info") );
-			play1.player = 1;
-            play1.txt = "p1t";
-            refresh( play1, "Player 1 has choosen " + creationList[$Evana][0] );
+   			PickOne($img, $Evana);
 		}
+
 		else if ( pick_turn == 2 ) {
-			$("#p2_pic").css( { "background-image" : 'url( ' + $img + ')' } );
-			$(".extra_wrapper, .random_wrapper").each( function() {
-				$(this).unbind("click mouseenter mouseleave");
-			});
-			play2 = setMenu($Evana, $("#p2_info") );
-			play2.player = 2;
-			play2.txt = "p2t";
-			refresh( play2, "Player 2 has choosen " + creationList[$Evana][0] );
-			$(".btn.disabled").addClass("activated");
-			$(".btn").removeClass("disabled");
-			play1.other = play2;
-			play2.other = play1;
-			$("#tooltips-switch").bootstrapSwitch('state', true);
-			initTooltip();
+			PickTwo($img, $Evana);
 		}
 
 		$(this).unbind("click mouseenter mouseleave");
@@ -97,33 +107,13 @@ $(document).ready( function() {
 		//and places it in the correct player location
 		var shesBomb = $(".extra_wrapper").find( ''+Gizzi+'' );
 		var dotCom = shesBomb.css("background-image");
+
 		if ( pick_turn == 1 ) {
-			$("#intro").remove();
-			$("#p1_pic").css( { "background-image" : dotCom } );
-			play1 = setMenu(Evana, $("#p1_info") );
-			play1.player = 1;
-			play1.txt = "p1t";
-			refresh( play1, "Player 1 has choosen " + creationList[Evana][0] );
+			PickOne(dotCom, Evana);
 		}
+
 		else if ( pick_turn == 2 ) {
-		    $(".random_wrapper").unbind("click");
-			$("#p2_pic").css( { "background-image" : dotCom } );
-			$(".extra_wrapper").each( function() {
-				$(".extra_wrapper").unbind("click mouseenter mouseleave");
-			});
-			play2 = setMenu(Evana, $("#p2_info") );
-			play2.player = 2;
-			play2.txt = "p2t";
-			refresh( play2, "Player 2 has choosen " + creationList[Evana][0] );
-			$(".random_wrapper").on("mouseleave", function() {
-				$(".random_wrapper").unbind("mouseenter mouseleave");
-			});
-			$(".btn.disabled").addClass("activated");
-			$(".btn").removeClass("disabled");
-			play1.other = play2;
-			play2.other = play1;
-			$("#tooltips-switch").bootstrapSwitch('state', true);
-			initTooltip();
+			PickTwo(dotCom, Evana);
 		}
 
 		//correctly highlights/fades/displays text on the
@@ -139,9 +129,12 @@ $(document).ready( function() {
 
 	//to draw attention to the fact the players need to select pokemon
 	//Flashes 'Choose a Pokemon'
+	//Move to Init() Function?
 	setInterval( function() {
 		$(".choose").toggle();
 	}, 750);
+	$("#player_wrapper").css('opacity', 0.55);
+
 
 	/*******************************************************************************************************/
 

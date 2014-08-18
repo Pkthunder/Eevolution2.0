@@ -226,6 +226,12 @@ body {
 	margin: 0px auto;
   	text-align: center;
 }
+#intro {
+	display: inline-block;
+	width: 62%;
+	margin: 0px auto;
+  	text-align: center;
+}
 /************************************************************/
 
 /*Footer Formatting*/
@@ -290,3 +296,4 @@ body {
 	border: 2px solid black;
 	border-radius: 5px;
 }
+

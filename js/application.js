@@ -2,6 +2,17 @@
 
 $(document).ready( function() {
 
+	/*Init Function, once all images and etc are fully loaded*/
+	//to draw attention to the fact the players need to select pokemon
+	//Flashes 'Choose a Pokemon'
+	//Move to Init() Function?
+	$("#player_wrapper").css('opacity', 0.55);
+	$(window).load( function() { //doesn't start animation until images are loaded
+		setInterval( function() {
+			$(".choose").toggle();
+		}, 750);
+	});
+
 	/*Header Button Functions*/
 
 	/*Mouse over header button functions*/
@@ -126,14 +137,6 @@ $(document).ready( function() {
 		//refresh( "Player " + pick_turn + " has choosen " + creationList[Evana][0] );
 		pick_turn++;
 	});
-
-	//to draw attention to the fact the players need to select pokemon
-	//Flashes 'Choose a Pokemon'
-	//Move to Init() Function?
-	setInterval( function() {
-		$(".choose").toggle();
-	}, 750);
-	$("#player_wrapper").css('opacity', 0.55);
 
 
 	/*******************************************************************************************************/

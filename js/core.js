@@ -120,7 +120,7 @@ var moveParams = [
 		["Auora Beam", 65, 100, false, 0] ], //3
 	
 	[ //Flareon - 2
-		["Facade", 70, 0, true, 0],
+		["Facade", 70, 100, true, 0],
 		["Fire Fang", 60, 95, false, 0],
 		["Wil O Wisp", null, 75, true, 0],
 		["Flame Charge", 50, 100, false, 0] ],
@@ -322,7 +322,16 @@ Pokemon.prototype.hasFamily = function(t) {
     return false;
 }
 
-// Health Bar Function
+// Health Bar Functions
+Pokemon.prototype.updateHealthBar = function() {
+    deathCheck(this);
+    var $txt = this.$wrapper.find(".bar_val").parent();
+    $txt.find(".bar_val").remove();
+    $txt.append('<span class="bar_val">' +this.health+' / '+this.original_health+'</span>');
+    var percent = (this.health / this.original_health) *100;
+    $txt.parent().find(".bar.bar-danger").css({"width" : percent+'%'});
+}
+
 function deathCheck( poke ) {
     if ( poke.health < 1 ) {
         poke.health = 0;
@@ -332,13 +341,4 @@ function deathCheck( poke ) {
         return true;
     }
     return false;
-}
-
-function updateHealthBar( poke ) {
-    deathCheck(poke);
-	var $txt = poke.$wrapper.find(".bar_val").parent();
-	$txt.find(".bar_val").remove();
-	$txt.append('<span class="bar_val">' +poke.health+' / '+poke.original_health+'</span>');
-	var percent = (poke.health / poke.original_health) *100;
-	$txt.parent().find(".bar.bar-danger").css({"width" : percent+'%'});
 }

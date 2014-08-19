@@ -85,7 +85,7 @@ function recordDmg(target, damage) {
 	target.health = Math.round(target.health - damage);
 	refresh(target.other, target.other.name+ "'s " + target.other.move.name + " dealt " +
 	        damage +" damage to "+target.name);
-	updateHealthBar(target);
+    target.updateHealthBar();
 }
 
 function runEffect( attacker ) {
@@ -121,148 +121,148 @@ function runBattlePhase() {
 }
 /***************************************************************************************************************************/
 //Psuedo-State Machine Begins Here---
-$(document).on("betweenTurns", function( e, attacker ) {
-    console.log("betweenTurns Status removal...");
-    removeStatusEffects[attacker.status.type](attacker);
-    setTimeout( function() {
-        $(document).trigger("Done", [attacker]);
-    }, 1000);
-});
+// $(document).on("betweenTurns", function( e, attacker ) {
+//     console.log("betweenTurns Status removal...");
+//     removeStatusEffects[attacker.status.type](attacker);
+//     setTimeout( function() {
+//         $(document).trigger("Done", [attacker]);
+//     }, 1000);
+// });
 
-$(document).on("Done", function( e, attacker ) {
-    if ( attacker.health < 1 || attacker.other.health < 1 ) {
-        return; //checks for death
-    }
-    attacker.done = true;
-    if (attacker.other.done) {
-        if (attacker.status != null && attacker.status.bTurn) {
-            $(document).trigger("betweenTurns", [attacker]);
-        }
-        else if (attacker.other.status != null && attacker.other.status.bTurn) {
-            $(document).trigger("betweenTurns", [attacker.other]);
-        }
-        else if (play1.health > 0 && play2.health > 0) {
-            $(document).trigger(onDamageRecorded);
-        }
-    }
-    else { //first done, last to go
-        $(document).trigger("runAliment", [attacker.other]);
-    }
-});
+// $(document).on("Done", function( e, attacker ) {
+//     if ( attacker.health < 1 || attacker.other.health < 1 ) {
+//         return; //checks for death
+//     }
+//     attacker.done = true;
+//     if (attacker.other.done) {
+//         if (attacker.status != null && attacker.status.bTurn) {
+//             $(document).trigger("betweenTurns", [attacker]);
+//         }
+//         else if (attacker.other.status != null && attacker.other.status.bTurn) {
+//             $(document).trigger("betweenTurns", [attacker.other]);
+//         }
+//         else if (play1.health > 0 && play2.health > 0) {
+//             $(document).trigger(onDamageRecorded);
+//         }
+//     }
+//     else { //first done, last to go
+//         $(document).trigger("runAliment", [attacker.other]);
+//     }
+// });
 
-$(document).on("runAliment", function( e, attacker ) {
-    if (attacker.status != null) {
-        //returns true if death is caused
-        var cont = runAliment(attacker);
-        if (!cont) {
-            setTimeout( function() {
-                $(document).trigger("disabledCheck", [attacker]);
-            }, 1000);
-        }
-        else {
-            return; //returns on death
-            //$(document).trigger("Done", [attacker]);
-        }
-    }
-    else { //skips delay if no status aliment
-        $(document).trigger("disabledCheck", [attacker]);
-    }
-});
+// $(document).on("runAliment", function( e, attacker ) {
+//     if (attacker.status != null) {
+//         //returns true if death is caused
+//         var cont = runAliment(attacker);
+//         if (!cont) {
+//             setTimeout( function() {
+//                 $(document).trigger("disabledCheck", [attacker]);
+//             }, 1000);
+//         }
+//         else {
+//             return; //returns on death
+//             //$(document).trigger("Done", [attacker]);
+//         }
+//     }
+//     else { //skips delay if no status aliment
+//         $(document).trigger("disabledCheck", [attacker]);
+//     }
+// });
 
-//TODO: add Aliment/Effect difference and runEffectAliment function???
+// //TODO: add Aliment/Effect difference and runEffectAliment function???
 
-$(document).on("disabledCheck", function( e, attacker ) {
-    if ( attacker.disabled ) {
-        if ( attacker.status.type == "Sleep") {
-            refresh(attacker, attacker.name+" is sleeping!");
-        }
-        else if ( attacker.status.type = "Flinch") {
-            refresh(attacker, attacker.name+" flinched!");
-        }
-        else {
-            refresh(attacker, attacker.name+" is unable to attack!");
-        }
-        setTimeout( function() {
-            $(document).trigger("Done", [attacker]);
-        }, 1000);
-    }
-    else {
-        refresh(attacker, attacker.name + " uses " + attacker.move.name);
-        setTimeout( function() {
-            $(document).trigger("preCheck", [attacker]);
-        }, 1000);
-    }
-});
+// $(document).on("disabledCheck", function( e, attacker ) {
+//     if ( attacker.disabled ) {
+//         if ( attacker.status.type == "Sleep") {
+//             refresh(attacker, attacker.name+" is sleeping!");
+//         }
+//         else if ( attacker.status.type = "Flinch") {
+//             refresh(attacker, attacker.name+" flinched!");
+//         }
+//         else {
+//             refresh(attacker, attacker.name+" is unable to attack!");
+//         }
+//         setTimeout( function() {
+//             $(document).trigger("Done", [attacker]);
+//         }, 1000);
+//     }
+//     else {
+//         refresh(attacker, attacker.name + " uses " + attacker.move.name);
+//         setTimeout( function() {
+//             $(document).trigger("preCheck", [attacker]);
+//         }, 1000);
+//     }
+// });
 
-$(document).on("preCheck", function( e, attacker ) {
-    var Evana;
-    if ( attacker.move.pre ) {
-        if (hitCheck(attacker)) {
-            console.log("Running pre-effect...");
-            Evana = runEffect(attacker);
-        }
-        else {
-            console.log(attacker.name +" missed");
-            refresh( attacker, "but it failed!");
-        }
-        if(attacker.other.health < 1) { //death Check
-            return;
-        }
-        //transition state
-        if (attacker.move.pwr != null) {
-            $(document).trigger("runDamage", [attacker]);
-        }
-        else {
-            setTimeout( function() {
-                $(document).trigger("Done", [attacker]);
-            }, 1000);
-        }
-    }
-    else {
-        $(document).trigger("runDamage", [attacker]);
-    }
-});
+// $(document).on("preCheck", function( e, attacker ) {
+//     var Evana;
+//     if ( attacker.move.pre ) {
+//         if (hitCheck(attacker)) {
+//             console.log("Running pre-effect...");
+//             Evana = runEffect(attacker);
+//         }
+//         else {
+//             console.log(attacker.name +" missed");
+//             refresh( attacker, "but it failed!");
+//         }
+//         if(attacker.other.health < 1) { //death Check
+//             return;
+//         }
+//         //transition state
+//         if (attacker.move.pwr != null) {
+//             $(document).trigger("runDamage", [attacker]);
+//         }
+//         else {
+//             setTimeout( function() {
+//                 $(document).trigger("Done", [attacker]);
+//             }, 1000);
+//         }
+//     }
+//     else {
+//         $(document).trigger("runDamage", [attacker]);
+//     }
+// });
 
-$(document).on("runDamage", function( e, attacker) {
-    if (attacker.move.pwr != null) {
-        console.log("Running damage move...")
-        if (!hitCheck(attacker)) {
-            console.log(attacker.name +" missed");
-            refresh(attacker, "but "+attacker.name+" missed the target!");
-            setTimeout( function() {
-                $(document).trigger("Done", [attacker]);
-            }, 1000);
-            return;
-        }
-        var dmg = calcDmg(attacker);
-        //Record the Calculated Damage
-        recordDmg(attacker.other, dmg);
-        if (attacker.other.health < 1) { //death Check
-            return;
-        }
-        if (attacker.move.pre == false) { //move has an post-effect
-            setTimeout( function() {
-                $(document).trigger("postEffect", [attacker]);
-            }, 1000);
-        }
-        else {
-            setTimeout( function() {
-                $(document).trigger("Done", [attacker]);
-            }, 1000);
-        }
-    }
-    else {
-        console.log("Error - runDamage reached, but move deals no damge");
-        setTimeout( function() {
-            $(document).trigger("Done", [attacker]);
-        }, 1000);
-    }
-});
+// $(document).on("runDamage", function( e, attacker) {
+//     if (attacker.move.pwr != null) {
+//         console.log("Running damage move...")
+//         if (!hitCheck(attacker)) {
+//             console.log(attacker.name +" missed");
+//             refresh(attacker, "but "+attacker.name+" missed the target!");
+//             setTimeout( function() {
+//                 $(document).trigger("Done", [attacker]);
+//             }, 1000);
+//             return;
+//         }
+//         var dmg = calcDmg(attacker);
+//         //Record the Calculated Damage
+//         recordDmg(attacker.other, dmg);
+//         if (attacker.other.health < 1) { //death Check
+//             return;
+//         }
+//         if (attacker.move.pre == false) { //move has an post-effect
+//             setTimeout( function() {
+//                 $(document).trigger("postEffect", [attacker]);
+//             }, 1000);
+//         }
+//         else {
+//             setTimeout( function() {
+//                 $(document).trigger("Done", [attacker]);
+//             }, 1000);
+//         }
+//     }
+//     else {
+//         console.log("Error - runDamage reached, but move deals no damge");
+//         setTimeout( function() {
+//             $(document).trigger("Done", [attacker]);
+//         }, 1000);
+//     }
+// });
 
-$(document).on("postEffect", function( e, attacker ) {
-    console.log("Running post-effect...");
-    runEffect(attacker);
-    setTimeout( function() {
-        $(document).trigger("Done", [attacker]);
-    }, 1000);
-});
+// $(document).on("postEffect", function( e, attacker ) {
+//     console.log("Running post-effect...");
+//     runEffect(attacker);
+//     setTimeout( function() {
+//         $(document).trigger("Done", [attacker]);
+//     }, 1000);
+// });

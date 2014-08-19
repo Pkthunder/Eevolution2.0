@@ -63,7 +63,7 @@ var moveEffects = {
 		    heal = heal - (Beasley.health - Beasley.original_health);
 		    Beasley.health = Beasley.original_health;
 		}
-		updateHealthBar(Beasley);
+		Beasley.updateHealthBar();
 		refresh(Beasley, Beasley.name+" healed for "+heal);
 		return true;
 	},
@@ -304,7 +304,7 @@ var moveEffects = {
 		
 		//Record Sacrifice Damage
 		Beasley.health = Math.round(Beasley.health - value);
-		updateHealthBar(Beasley);
+		Beasley.updateHealthBar();
 		redBar.after('<div class="bar bar-success" style="width: 0.000001%;"></div>');
 		
 		//Prepare Target for Updating Health Bar Text
@@ -333,12 +333,11 @@ var moveEffects = {
 //////////////////////////////////////////////
 //Glaceon
 	MirrorCoat: function(Beasley) {
-	    //return false;
 	    if ( Beasley.other.move.pwr != null && Beasley.other.move.pwr > 0 ) {
 	    	var dmgDealt = Beasley.original_health - Beasley.health;
-	    	var mcoatDmg = Math.round( Beasley.other.health - (dmgDealt*1.5));
-	    	Beasley.other.health = mcoatDmg;
-	    	updateHealthBar(Beasley.other);
+	    	var mcoatDmg = Math.round( dmgDealt*1.5 );
+	    	Beasley.other.health = Beasley.other.health - mcoatDmg;
+	    	Beasley.other.updateHealthBar();
 	    	refresh(Beasley, "Glaceon's Mirror Coat dealt " + mcoatDmg +" damage to "+Beasley.other.name);
 	    }
 	    else

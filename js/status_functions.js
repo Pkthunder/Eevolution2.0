@@ -113,7 +113,7 @@ var turnStatusAliments = {
 		var Evana = Math.round(Halpert.original_health * Halpert.status.poisonValue);
 		Halpert.health = Math.round(Halpert.health - Evana);
 		refresh(Halpert, Halpert.name+" took "+Evana+" damage from Poison");
-		updateHealthBar(Halpert);
+		Halpert.updateHealthBar();
 		Halpert.status.poisonValue = Halpert.status.poisonValue + .0625; //increases by "1/16th"
 		return (Halpert.health < 1) ? true : false;
 	},
@@ -121,7 +121,7 @@ var turnStatusAliments = {
 		var Evana = Math.round(Halpert.original_health * .0625); // "1/16th"
 		Halpert.health = Math.round(Halpert.health - Evana);
 		refresh(Halpert, Halpert.name+" was hurt by burn for "+Evana);
-		updateHealthBar(Halpert);
+		Halpert.updateHealthBar();
 		return (Halpert.health < 1) ? true : false;
 	},
 	Paralysis: function(Halpert) {
@@ -158,8 +158,8 @@ var turnStatusAliments = {
 		}
 		Halpert.health = Halpert.health - Evana;
 		refresh(Halpert.other, Halpert.other.name+" absorbed "+Evana+" from "+Halpert.name);
-		updateHealthBar(Halpert);
-		updateHealthBar(Halpert.other);
+		Halpert.updateHealthBar();
+		Halpert.other.updateHealthBar();
 		return (Halpert.health < 1) ? true : false;
 	},
 	Confusion: function(Halpert) {
@@ -178,7 +178,7 @@ var turnStatusAliments = {
 		    Halpert.disabled_msg = Halpert.name+" hurts itself due to confusion!";
 		    var dmg = (((((42 * Halpert.attack * 40) / Halpert.defense) / 50) + 2) * 93) / 100;
 		    Halpert.health = Math.round(Halpert.health - dmg);
-            updateHealthBar(Halpert);
+            Halpert.updateHealthBar();
 		}
 		return (Halpert.health < 1) ? true : false;
 	},

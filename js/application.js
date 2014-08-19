@@ -6,7 +6,7 @@ $(document).ready( function() {
 	//to draw attention to the fact the players need to select pokemon
 	//Flashes 'Choose a Pokemon'
 	//Move to Init() Function?
-	$("#player_wrapper").css('opacity', 0.55);
+	$(".player_info > :not(:has(span.choose)), .player_pic").css('opacity', 0.3);
 	$(window).load( function() { //doesn't start animation until images are loaded
 		setInterval( function() {
 			$(".choose").toggle();
@@ -48,7 +48,7 @@ $(document).ready( function() {
 		where.find(".b4 > button").text(moveList[who][3]);
 
 		//set health
-		updateHealthBar(Gizzi);
+		Gizzi.updateHealthBar();
 		
 
 		return Gizzi;
@@ -78,7 +78,13 @@ $(document).ready( function() {
 		play2.other = play1;
 		$("#tooltips-switch").bootstrapSwitch('state', true);
 		initTooltip();
-		$("#player_wrapper").css('opacity', 1.0);
+		$(".player_info > , .player_pic").css('opacity', 1.0);
+		$(".extra_wrapper").each( function() {
+			if (!$(this).find("span").hasClass("over")) {
+				$(this).find(".bg_pic").hide();
+			}
+		});
+		$(".random_wrapper").find(".bg_pic").hide();
 	}
 
 	//Pokemon Button Function
@@ -89,6 +95,8 @@ $(document).ready( function() {
 		$Evana = $Evana.replace('"', '').replace('_pic', '').replace('"', '');
 		$Evana--;
 
+		$(this).unbind("click mouseenter mouseleave");
+
 		if ( pick_turn == 1) {
    			PickOne($img, $Evana);
 		}
@@ -97,8 +105,6 @@ $(document).ready( function() {
 			PickTwo($img, $Evana);
 		}
 
-		$(this).unbind("click mouseenter mouseleave");
-		//refresh( "Player " + pick_turn + " has choosen " + creationList[$Evana][0] );
 		pick_turn++;
 	});
 	
@@ -119,14 +125,6 @@ $(document).ready( function() {
 		var shesBomb = $(".extra_wrapper").find( ''+Gizzi+'' );
 		var dotCom = shesBomb.css("background-image");
 
-		if ( pick_turn == 1 ) {
-			PickOne(dotCom, Evana);
-		}
-
-		else if ( pick_turn == 2 ) {
-			PickTwo(dotCom, Evana);
-		}
-
 		//correctly highlights/fades/displays text on the
 		//randomly choosen pokemon
 		var MarcG = shesBomb.parent();
@@ -134,7 +132,16 @@ $(document).ready( function() {
 		MarcG.find(".head_pic").css( {"border": "2px solid red"} );
 		MarcG.find(".bg_pic").fadeTo( "fast", 0.3 );
 		MarcG.unbind("click mouseenter mouseleave");
-		//refresh( "Player " + pick_turn + " has choosen " + creationList[Evana][0] );
+
+		if ( pick_turn == 1 ) {
+			PickOne(dotCom, Evana);
+		}
+
+		else if ( pick_turn == 2 ) {
+			$(this).trigger('mouseleave');
+			PickTwo(dotCom, Evana);
+		}
+
 		pick_turn++;
 	});
 
@@ -246,6 +253,22 @@ $(document).ready( function() {
         $(this).unbind("click");
         window.location.reload();
     });
+
+  //   function resetGame() {
+		// //Reset Player Panel
+		// $(".player_pic").css( "background-image", "url( 'img/133Eevee.png' )");
+		// //temporary simply to reset health bar
+		// play1.health = play1.original_health = play2.health = play2.original_health = 0;
+		// play1.updateHealthBar();
+		// play2.updateHealthBar();
+		// //Reset Name
+
+		// //Resets all Global Variables
+  //   	play1 = new Pokemon();
+		// play2 = new Pokemon();
+		// turn = 1;
+		// pick_turn = 1;
+  //   }
     
     $(".accordion-group a").on("click", function() {
         $(this).unbind("click");

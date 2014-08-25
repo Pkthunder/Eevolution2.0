@@ -23,7 +23,7 @@ $(document).ready( function() {
 			toggleHeaderAni($temp);
 			headerId = setInterval( function() {
 				toggleHeaderAni($temp);
-				$temp = $temp.nextOrFirst();
+				$temp = $temp.nextOrFirst(); //nexOrFirst Documented in core.js
 				toggleHeaderAni($temp);
 			}, 1200);
 	}

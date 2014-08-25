@@ -11,9 +11,64 @@ $(document).ready( function() {
 		setInterval( function() {
 			$(".choose").toggle();
 		}, 750);
+		animateHeader();
 	});
 
+/*************************************************************************************************/
+/* Header Animation Functions */
+
+	var headerId;
+	function animateHeader() {
+			var $temp = $(".extra_wrapper:first");
+			toggleHeaderAni($temp);
+			headerId = setInterval( function() {
+				toggleHeaderAni($temp);
+				$temp = $temp.nextOrFirst();
+				toggleHeaderAni($temp);
+			}, 1200);
+	}
+
+	function resetHeaderAni() {
+		headerId = setTimeout( function() {
+			animateHeader();
+		}, 2500);
+	}
+
+	function cancelHeaderAni() {
+		clearInterval(headerId);
+		$(".extra_wrapper, .random_wrapper").each( function() {
+			$(this).find("span").removeClass("over");
+			$(this).find(".head_pic").css( {"border": "none"});
+			$(this).find(".bg_pic").fadeTo( 25, 1 );
+		});
+	}
+
+	function toggleHeaderAni(obj) {
+		if (!obj.find("span").hasClass("over")) {
+			//mouseenter
+			obj.find("span").toggleClass("over");
+			obj.find(".head_pic").css( {"border": "2px solid red"} );
+			obj.find(".bg_pic").fadeTo( 25, 0.3 );
+		}
+		else {
+			//mouseleave
+			obj.find("span").toggleClass("over");
+			obj.find(".head_pic").css( {"border": "none"});
+			obj.find(".bg_pic").fadeTo( 25, 1 );
+		}
+	}
+
 	/*Header Button Functions*/
+	$("#heading_wrapper").hover(
+		function() {
+			cancelHeaderAni();
+			console.log(".bg_pic mouseenter");
+		},
+		function() {
+			resetHeaderAni();
+			console.log(".bg_pic mouseleave");
+		}
+	);
 
 	/*Mouse over header button functions*/
 	$(".extra_wrapper, .random_wrapper").hover(

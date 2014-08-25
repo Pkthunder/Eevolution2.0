@@ -342,3 +342,16 @@ function deathCheck( poke ) {
     }
     return false;
 }
+
+/********************************************************************************
+nextOrFirst found at:
+http://www.mattvanandel.com/999/jquery-nextorfirst-function-guarantees-a-selection/
+
+* jQuery.nextOrFirst()
+*
+* PURPOSE:  Works like next(), except gets the first item from siblings if there is no "next" sibling to get.
+********************************************************************************/
+jQuery.fn.nextOrFirst = function(selector){
+var next = this.next(selector);
+return (next.length) ? next : this.prevAll(selector).last();
+}

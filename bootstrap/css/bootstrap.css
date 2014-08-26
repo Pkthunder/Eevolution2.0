@@ -5335,7 +5335,7 @@ input[type="submit"].btn.btn-mini {
 .tooltip-inner {
   /*max-width: 750px;*/
   width: 400px;
-  padding: 8px;
+  padding: 4px;
   color: #ffffff;
   text-align: center;
   text-decoration: none;
@@ -5386,12 +5386,20 @@ input[type="submit"].btn.btn-mini {
 }
 
 .popover {
+  /*added*/
+ /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  color: #333;
+  text-align: center;
+  /*min-width: 267px;*/
+  /*done*/
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1010;
   display: none;
-  max-width: 276px;
+  max-width: 267px;
   padding: 1px;
   text-align: left;
   white-space: normal;
@@ -5426,9 +5434,12 @@ input[type="submit"].btn.btn-mini {
 }
 
 .popover-title {
+  /*added*/
+  text-align: center;
+  /*done*/
   padding: 8px 14px;
   margin: 0;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: normal;
   line-height: 18px;
   background-color: #f7f7f7;
@@ -5443,6 +5454,9 @@ input[type="submit"].btn.btn-mini {
 }
 
 .popover-content {
+  /*added*/
+  max-height: 95px;
+  /*done*/
   padding: 9px 14px;
 }
 

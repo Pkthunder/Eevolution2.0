@@ -7,4 +7,4 @@
  8: Eliminate all uses of 'eval()' [done]
  9: Rework 'Reset' to no longer cause a page reload - necessary?
 10: Add blinking text 'Choose Pokemon' too player panels [done]
-11: Add flashing mouseenter animation on choose pokemon buttons
+11: Add flashing mouseenter animation on choose pokemon buttons [done]

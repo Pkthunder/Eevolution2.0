@@ -8,10 +8,12 @@ $(document).ready( function() {
 	//Move to Init() Function?
 	$(".player_info > :not(:has(span.choose)), .player_pic").css('opacity', 0.3);
 	$(window).load( function() { //doesn't start animation until images are loaded
-		setInterval( function() {
-			$(".choose").toggle();
-		}, 750);
-		animateHeader();
+		setTimeout( function() {
+			setInterval( function() {
+				$(".choose").toggle();
+			}, 750);
+			animateHeader();
+		});
 	});
 
 /*************************************************************************************************/
@@ -19,42 +21,46 @@ $(document).ready( function() {
 
 	var headerId;
 	function animateHeader() {
-			var $temp = $(".extra_wrapper:first");
+			var $temp = $(".extra_wrapper:not(.picked):first");
 			toggleHeaderAni($temp);
 			headerId = setInterval( function() {
 				toggleHeaderAni($temp);
-				$temp = $temp.nextOrFirst(); //nexOrFirst Documented in core.js
+				$temp = $temp.nextOrFirst(); //nexOrFirst documented in core.js
+				if ($temp.hasClass("picked"))
+					$temp = $temp.nextOrFirst();
 				toggleHeaderAni($temp);
 			}, 1200);
 	}
 
 	function resetHeaderAni() {
-		headerId = setTimeout( function() {
-			animateHeader();
-		}, 2500);
+		if ( pick_turn < 3 ) {
+			headerId = setTimeout( function() {
+				animateHeader();
+			}, 2500);
+		}
 	}
 
 	function cancelHeaderAni() {
 		clearInterval(headerId);
-		$(".extra_wrapper, .random_wrapper").each( function() {
+		$(".extra_wrapper:not(.picked), .random_wrapper").each( function() {
 			$(this).find("span").removeClass("over");
 			$(this).find(".head_pic").css( {"border": "none"});
-			$(this).find(".bg_pic").fadeTo( 25, 1 );
+			$(this).find(".bg_pic").css( {"opacity" : 1.0});
 		});
 	}
 
 	function toggleHeaderAni(obj) {
 		if (!obj.find("span").hasClass("over")) {
 			//mouseenter
-			obj.find("span").toggleClass("over");
+			obj.find("span").addClass("over");
 			obj.find(".head_pic").css( {"border": "2px solid red"} );
-			obj.find(".bg_pic").fadeTo( 25, 0.3 );
+			obj.find(".bg_pic").css( {"opacity" : 0.3});
 		}
 		else {
 			//mouseleave
-			obj.find("span").toggleClass("over");
+			obj.find("span").removeClass("over");
 			obj.find(".head_pic").css( {"border": "none"});
-			obj.find(".bg_pic").fadeTo( 25, 1 );
+			obj.find(".bg_pic").css( {"opacity" : 1.0});
 		}
 	}
 
@@ -62,25 +68,25 @@ $(document).ready( function() {
 	$("#heading_wrapper").hover(
 		function() {
 			cancelHeaderAni();
-			console.log(".bg_pic mouseenter");
+			//console.log(".bg_pic mouseenter");
 		},
 		function() {
 			resetHeaderAni();
-			console.log(".bg_pic mouseleave");
+			//console.log(".bg_pic mouseleave");
 		}
 	);
 
 	/*Mouse over header button functions*/
 	$(".extra_wrapper, .random_wrapper").hover(
 		function() {
-			$(this).find("span").toggleClass("over");
+			$(this).find("span").addClass("over");
 			$(this).find(".head_pic").css( {"border": "2px solid red"} );
-			$(this).find(".bg_pic").fadeTo( 25, 0.3 );
+			$(this).find(".bg_pic").css( {"opacity" : 0.3});
 		},
 		function() {
-			$(this).find("span").toggleClass("over");
+			$(this).find("span").removeClass("over");
 			$(this).find(".head_pic").css( {"border": "none"});
-			$(this).find(".bg_pic").fadeTo( 25, 1 );
+			$(this).find(".bg_pic").css( {"opacity" : 1.0});
 		}
 	);
 
@@ -116,6 +122,7 @@ $(document).ready( function() {
 		play1.player = 1;
         play1.txt = "p1t";
         refresh( play1, "Player 1 has choosen " + creationList[$Evana][0] );
+        cancelHeaderAni();
 	}
 
 	function PickTwo($img, $Evana) {
@@ -135,11 +142,12 @@ $(document).ready( function() {
 		initTooltip();
 		$(".player_info > , .player_pic").css('opacity', 1.0);
 		$(".extra_wrapper").each( function() {
-			if (!$(this).find("span").hasClass("over")) {
+			if (!$(this).hasClass("picked")) {
 				$(this).find(".bg_pic").hide();
 			}
 		});
 		$(".random_wrapper").find(".bg_pic").hide();
+		$("#heading_wrapper").unbind("mouseenter mouseleave");
 	}
 
 	//Pokemon Button Function
@@ -151,6 +159,7 @@ $(document).ready( function() {
 		$Evana--;
 
 		$(this).unbind("click mouseenter mouseleave");
+		$(this).addClass("picked");
 
 		if ( pick_turn == 1) {
    			PickOne($img, $Evana);
@@ -183,10 +192,11 @@ $(document).ready( function() {
 		//correctly highlights/fades/displays text on the
 		//randomly choosen pokemon
 		var MarcG = shesBomb.parent();
-		MarcG.find("span").toggleClass("over");
+		MarcG.find("span").addClass("over");
 		MarcG.find(".head_pic").css( {"border": "2px solid red"} );
-		MarcG.find(".bg_pic").fadeTo( "fast", 0.3 );
+		MarcG.find(".bg_pic").css( {"opacity" : 0.3});
 		MarcG.unbind("click mouseenter mouseleave");
+		MarcG.addClass("picked");
 
 		if ( pick_turn == 1 ) {
 			PickOne(dotCom, Evana);
@@ -360,7 +370,7 @@ $(document).ready( function() {
     	return ($('#tooltips-switch').bootstrapSwitch('state')); 
     }
 
-    function initTooltip() {
+   /*function initTooltip() {
     	var Evana = $("#p1_b1").parent().parent();
     	var Gizzi = Evana.find('.pName').text();
     	var p1 = getPokefromName(Gizzi.trim());
@@ -386,7 +396,7 @@ $(document).ready( function() {
     	temp.tooltip();
 
     	//Player 2
-    	var temp = $("#p2_b1 button");
+    	temp = $("#p2_b1 button");
     	temp.attr('data-toggle', 'tooltip').attr('data-placement', 'top').attr('title', moveDesc[p2][0]);
     	temp.tooltip();
 
@@ -401,6 +411,30 @@ $(document).ready( function() {
     	temp = $("#p2_b4 button");
     	temp.attr('data-toggle', 'tooltip').attr('data-placement', 'bottom').attr('title', moveDesc[p2][3]);
     	temp.tooltip();
+    }*/
+
+    function initTooltip() {
+    	var Evana = $("#p1_b1").parent().parent();
+    	var Gizzi = Evana.find('.pName').text();
+    	var p1 = getPokefromName(Gizzi.trim());
+    	Evana = $("#p2_b1").parent().parent();
+    	Gizzi = Evana.find('.pName').text();
+    	var p2 = getPokefromName(Gizzi.trim());
+    	var totalCount = 0;
+    	var repCount = 0;
+
+    	$(".button_wrapper div.button button").each( function() {
+    		var placement = ( $(this).hasClass("b1") || $(this).hasClass("b2") ) ? 'top' : 'bottom';
+    		var pokeId = ( totalCount < 4 ) ? p1 : p2;
+
+    		$(this).tooltip({
+	            'placement' : placement,
+	            'title' : moveDesc[pokeId][repCount]
+	        });
+	        totalCount++;
+	        repCount++;
+	        if (repCount > 3) repCount = 0;
+    	});
     }
 
     function removeTooltip() {

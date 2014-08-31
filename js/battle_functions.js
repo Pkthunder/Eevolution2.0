@@ -79,8 +79,6 @@ function recordDmg(target, damage) {
                 greenBar.remove();
             }, 500);
         }
-
-        //TODO: Finish Substitute!
     }
 	target.health = Math.round(target.health - damage);
 	refresh(target.other, target.other.name+ "'s " + target.other.move.name + " dealt " +

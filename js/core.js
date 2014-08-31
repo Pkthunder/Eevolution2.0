@@ -235,6 +235,9 @@ var moveDesc = [
 //Function Library
 
 // Text Area Function
+//This function updates the text area with the most recent event,
+//@param who - the pokemon that is doing the event
+//@param inString - a description of the event
 function refresh( who, inString ) {
     if ( who == null ) {
         var format = $(".p3t");

@@ -13,7 +13,7 @@ $(document).ready( function() {
 				$(".choose").toggle();
 			}, 750);
 			animateHeader();
-		});
+		}, 500);
 	});
 
 /*************************************************************************************************/
@@ -78,12 +78,12 @@ $(document).ready( function() {
 
 	/*Mouse over header button functions*/
 	$(".extra_wrapper, .random_wrapper").hover(
-		function() {
+		function() { //mouseenter
 			$(this).find("span").addClass("over");
 			$(this).find(".head_pic").css( {"border": "2px solid red"} );
 			$(this).find(".bg_pic").css( {"opacity" : 0.3});
 		},
-		function() {
+		function() { //mouseleave
 			$(this).find("span").removeClass("over");
 			$(this).find(".head_pic").css( {"border": "none"});
 			$(this).find(".bg_pic").css( {"opacity" : 1.0});

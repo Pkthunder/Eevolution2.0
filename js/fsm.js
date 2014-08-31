@@ -26,7 +26,6 @@ function BattlePhase() {
 					console.log('Death Detected');
 					if ( !(to === 'death') ) {
 						console.log('Canceling '+event);
-						setDeath();
 						return false;
 					}
 				}
@@ -165,9 +164,6 @@ function BattlePhase() {
 	}
 	var isFirstDone = function() {
 		return this_.firstDone;
-	}
-	var setDeath = function() {
-		this_.death = true;
 	}
 
 	this.fsm.start();

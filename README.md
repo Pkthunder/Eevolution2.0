@@ -14,3 +14,9 @@ jared_perreault@yahoo.com
 
 
 NOTE: I DO NOT OWN THE RIGHTS TO THE POKEMON CHARACTERS DISPLAYED IN MY GAME - THE GAME IS NOT FOR COMMERICAL GAIN; IT IS ONLY FOR THE EDUCATIONAL BENEFIT OF DEVELOPING THE GAME.
+
+Special Thanks to:
+jQuery (http://jquery.com)
+Twitter Bootstrap v2.3.2 (http://getbootstrap.com/2.3.2)
+Twitter Bootstrap v3.0 (http://getbootstrap.com) - code in btn.css
+Bootstrap Switch v3.0 (http://www.bootstrap-switch.org/)

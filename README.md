@@ -17,6 +17,10 @@ NOTE: I DO NOT OWN THE RIGHTS TO THE POKEMON CHARACTERS DISPLAYED IN MY GAME - T
 
 Special Thanks to:
 jQuery (http://jquery.com)
+<br>
 Twitter Bootstrap v2.3.2 (http://getbootstrap.com/2.3.2)
+<br>
 Twitter Bootstrap v3.0 (http://getbootstrap.com) - code in btn.css
+<br>
 Bootstrap Switch v3.0 (http://www.bootstrap-switch.org/)
+<br>

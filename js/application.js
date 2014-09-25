@@ -21,23 +21,11 @@ $(document).ready( function() {
 
 	var headerId;
 	function animateHeader() {
-			var $temp = $(".extra_wrapper:not(.picked):first");
-			toggleHeaderAni($temp);
 			headerId = setInterval( function() {
-				toggleHeaderAni($temp);
-				$temp = $temp.nextOrFirst(); //nexOrFirst documented in core.js
-				if ($temp.hasClass("picked"))
-					$temp = $temp.nextOrFirst();
-				toggleHeaderAni($temp);
-			}, 1200);
-	}
-
-	function resetHeaderAni() {
-		if ( pick_turn < 3 ) {
-			headerId = setTimeout( function() {
-				animateHeader();
-			}, 2500);
-		}
+				$(".extra_wrapper, .random_wrapper").each( function() {
+					toggleHeaderAni($(this));
+				});
+			}, 750);
 	}
 
 	function cancelHeaderAni() {
@@ -65,14 +53,9 @@ $(document).ready( function() {
 	}
 
 	/*Header Button Functions*/
-	$("#heading_wrapper").hover(
-		function() {
+	$("#heading_wrapper").on( "mouseenter", function() {
 			cancelHeaderAni();
 			//console.log(".bg_pic mouseenter");
-		},
-		function() {
-			resetHeaderAni();
-			//console.log(".bg_pic mouseleave");
 		}
 	);
 

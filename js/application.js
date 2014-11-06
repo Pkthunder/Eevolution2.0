@@ -93,7 +93,7 @@ $(document).ready( function() {
 
 		//set health
 		Gizzi.updateHealthBar();
-		
+
 
 		return Gizzi;
 	}
@@ -406,7 +406,7 @@ $(document).ready( function() {
     	var totalCount = 0;
     	var repCount = 0;
 
-    	$(".button_wrapper div.button button").each( function() {
+    	$("div.button_wrapper div.button button").each( function() {
     		var placement = ( $(this).hasClass("b1") || $(this).hasClass("b2") ) ? 'top' : 'bottom';
     		var pokeId = ( totalCount < 4 ) ? p1 : p2;
 
@@ -421,7 +421,7 @@ $(document).ready( function() {
     }
 
     function removeTooltip() {
-    	$("[data-toggle='tooltip']").tooltip('destroy');
+    	$("div.button_wrapper div.button button").tooltip('destroy');
     }
  
  	$('#tooltips-switch').on('switchChange', function (e, data) {
